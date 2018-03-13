@@ -18,7 +18,6 @@ public abstract class Block implements IBlock {
         this.outputPort = new OutputPort(PortType.NUMBER, 0.0);
     }
 
-    //getter pro output setter pryc
     @Override
     public void executeBlock() {
     }

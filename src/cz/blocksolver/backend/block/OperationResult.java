@@ -21,4 +21,12 @@ public class OperationResult {
             this.status = true;
         }
     }
+
+    public Double getResult() {
+        return result;
+    }
+
+    public Boolean getStatus() {
+        return status;
+    }
 }

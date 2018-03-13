@@ -11,15 +11,15 @@ public class ArithmeticBlock extends Block  {
 
     private Collection<IArithmeticOperation> listOfOperations;
     private IArithmeticOperation operation;
-    private InputPort[] inputPorts;
+    private InputPort[] inputPorts = new InputPort[2];
     private OperationResult result;
 
     public ArithmeticBlock(String name, Integer x, Integer y, Integer width, Integer height, IArithmeticOperation operation) {
         super(name, x, y, width, height);
         this.operation = operation;
         this.listOfOperations = new ArrayList<>();
-        this.inputPorts[0] = (new InputPort(PortType.NUMBER, 0.0, 1));
-        this.inputPorts[1] = (new InputPort(PortType.NUMBER, 0.0,2));
+        this.inputPorts[0] = new InputPort(PortType.NUMBER, 0.0, 1);
+        this.inputPorts[1] = new InputPort(PortType.NUMBER, 0.0,2);
         initializeOperations();
     }
     //gettery na inputy
@@ -38,7 +38,9 @@ public class ArithmeticBlock extends Block  {
     @Override
     public void executeBlock(){
         if(compareTypes()) {
+//            tODO: check if succeded
             this.result = operation.executeOperation(inputPorts[0].getValue(), inputPorts[1].getValue());
+            outputPort.setValue(result.getResult());
         }else{
 //            TODO:
         }
