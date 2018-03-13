@@ -8,25 +8,21 @@ import cz.blocksolver.backend.port.OutputPort;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public abstract class Block implements IBlock{
+public abstract class Block implements IBlock {
     protected String name;
     protected Integer x, y, width, height;
-    protected Collection<InputPort> inputPorts;
     protected OutputPort outputPort;
 
-    public Block(String name, Integer x, Integer y, Integer width, Integer height){
+    public Block(String name, Integer x, Integer y, Integer width, Integer height) {
         this.name = name;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
-        this.inputPorts = new ArrayList<>();
+        this.outputPort = new OutputPort();
     }
 
-    public void getFirstInput(){
-        IArithmeticOperation oper = PowOperation.getInstance();
-    }
-
+    //getter pro output setter pryc
     @Override
     public void executeBlock() {
     }
