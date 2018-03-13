@@ -1,4 +1,6 @@
 package cz.blocksolver.backend.port;
 
-public class Port {
+public abstract class Port {
+    private String name;
+
 }
