@@ -10,10 +10,13 @@ public class DivisionOperation implements IArithmeticOperation {
     public OperationResult executeOperation(Double firstInput, Double secondInput) {
         try
         {
-            return firstInput / secondInput;
+            result = firstInput / secondInput;
+            outcome = new OperationResult(result);
+            return outcome;
         }
         catch (ArithmeticException exception){
-            return 0.0;
+            outcome = new OperationResult(0.0, false);
+            return outcome;
         }
     }
 }
