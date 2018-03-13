@@ -1,5 +1,7 @@
 package cz.blocksolver.backend.port;
 
+import java.util.Objects;
+
 public class OutputPort extends Port {
     private InputPort inputPort;
 
@@ -12,19 +14,20 @@ public class OutputPort extends Port {
     }
 
     @Override
-    public int hashCode() {
-        return this.inputPort.hashCode() ^ this.name.hashCode() ^ this.type.hashCode() ^ this.value.hashCode();
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof OutputPort)) return false;
+        OutputPort that = (OutputPort) o;
+        return Objects.equals(this.inputPort, that.inputPort) &&
+                Objects.equals(this.name, that.name) &&
+                Objects.equals(this.value, that.value) &&
+                Objects.equals(this.type, that.type);
     }
 
     @Override
-    public boolean equals(Object obj) {
-        if (this == obj) return true;
-        if (obj == null || getClass() != obj.getClass()) return false;
-        OutputPort outputPort = (OutputPort) obj;
-        return this.inputPort.equals(outputPort.inputPort)
-                && this.name.equals(outputPort.name)
-                && this.type == outputPort.type
-                && this.value.equals(outputPort.value);
+    public int hashCode() {
+
+        return Objects.hash(inputPort, name,value,type);
     }
 
     @Override
