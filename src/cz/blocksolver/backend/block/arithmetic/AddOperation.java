@@ -6,8 +6,9 @@ public class AddOperation implements IArithmeticOperation {
     OperationResult outcome;
     Double result;
 
+    @Override
     public OperationResult executeOperation(Double firstInput, Double secondInput) {
-        result = Math.addExact(firstInput, secondInput);
+        result = firstInput + secondInput;
         outcome = new OperationResult(result);
         return outcome;
     }

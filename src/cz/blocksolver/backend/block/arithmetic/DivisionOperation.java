@@ -3,8 +3,11 @@ package cz.blocksolver.backend.block.arithmetic;
 import cz.blocksolver.backend.block.IArithmeticOperation;
 
 public class DivisionOperation implements IArithmeticOperation {
+    OperationResult outcome;
+    Double result;
+
     @Override
-    public Double executeOperation(Double firstInput, Double secondInput) {
+    public OperationResult executeOperation(Double firstInput, Double secondInput) {
         try
         {
             return firstInput / secondInput;
