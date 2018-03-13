@@ -3,8 +3,12 @@ package cz.blocksolver.backend.block.arithmetic;
 import cz.blocksolver.backend.block.IArithmeticOperation;
 
 public class AddOperation implements IArithmeticOperation {
-    @Override
-    public Double executeOperation(Double firstInput, Double secondInput) {
-        return firstInput + secondInput;
+    OperationResult outcome;
+    Double result;
+
+    public OperationResult executeOperation(Double firstInput, Double secondInput) {
+        result = Math.addExact(firstInput, secondInput);
+        outcome = new OperationResult(result);
+        return outcome;
     }
 }
