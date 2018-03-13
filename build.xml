@@ -1,0 +1,83 @@
+<?xml version = "1.0"?>
+<project name = "Block Solver" default = "dist">
+    <description>
+
+    </description>
+    <property name="src" location="src"/>
+    <property name="build" location="bin"/>
+    <property name="dist" location="dist"/>
+    <property name="doc" location="docs/" />
+    <property name="main.build.dir" value="bin/main"/>
+    <property name="test.build.dir" value="bin/test"/>
+
+    <target name="init">
+        <!-- Create the time stamp -->
+        <tstamp/>
+        <!-- Create the build directory structure used by compile -->
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="compile" depends="init"
+            description="compile the source">
+        <!-- Compile the java code from ${src} into ${build} -->
+        <mkdir dir="${main.build.dir}" />
+        <javac includeantruntime="false" srcdir="${src}" destdir="${main.build.dir}"/>
+    </target>
+
+    <target name="test-compile" depends="compile">
+        <mkdir dir="${test.build.dir}" />
+        <javac includeantruntime="true" srcdir="tests/" destdir="${test.build.dir}">
+            <classpath location="lib/junit-4.12.jar" />
+            <classpath location="lib/hamcrest-core-1.3.jar" />
+            <classpath location="${main.build.dir}" />
+        </javac>
+    </target>
+
+    <target name="dist" depends="compile"
+            description="generate the distribution">
+        <!-- Create the distribution directory -->
+        <mkdir dir="${dist}/lib"/>
+
+        <!-- Put everything in ${build} into the MyProject-${DSTAMP}.jar file -->
+        <jar jarfile="${dist}/lib/BlockSolver-${DSTAMP}.jar" basedir="${main.build.dir}">
+            <manifest>
+                <attribute name = "Main-Class" value = "pack1.Main"/>
+            </manifest>
+        </jar>
+    </target>
+    <target name="docs" description="Generate documentation">
+        <javadoc packagenames = "test.*" sourcepath = "${src}"
+                 destdir = "docs/javadoc" version = "true" windowtitle = "BlockSolver">
+
+            <doctitle><![CDATA[= BlockSolver =]]></doctitle>
+
+            <bottom>
+                <![CDATA[Copyright © 2018. All Rights Reserved.]]>
+            </bottom>
+
+
+        </javadoc>
+    </target>
+    <target name="junit" depends="test-compile" >
+        <mkdir dir="tests/report"/>
+        <junit fork="true" printsummary="yes" haltonfailure="no">
+            <classpath location="lib/junit-4.12.jar" />
+            <classpath location="lib/hamcrest-core-1.3.jar" />
+            <formatter type="xml" />
+            <formatter type="plain" />
+
+            <batchtest todir="tests/report">
+                <fileset dir="${test.build.dir}">
+                    <include name="**/*Test*.class" />
+                </fileset>
+            </batchtest>
+        </junit>
+    </target>
+
+    <target name="clean"
+            description="clean up">
+        <!-- Delete the ${build} and ${dist} directory trees -->
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>
