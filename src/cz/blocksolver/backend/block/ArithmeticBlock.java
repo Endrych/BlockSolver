@@ -2,26 +2,24 @@ package cz.blocksolver.backend.block;
 
 import cz.blocksolver.backend.block.arithmetic.*;
 import cz.blocksolver.backend.port.InputPort;
+import cz.blocksolver.backend.port.PortType;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 public class ArithmeticBlock extends Block  {
 
     private Collection<IArithmeticOperation> listOfOperations;
     private IArithmeticOperation operation;
-    private Collection<InputPort> inputPorts;
-    private Double result;
-    private List<Double> inputValues;
+    private InputPort[] inputPorts;
+    private OperationResult result;
 
     public ArithmeticBlock(String name, Integer x, Integer y, Integer width, Integer height, IArithmeticOperation operation) {
         super(name, x, y, width, height);
         this.operation = operation;
         this.listOfOperations = new ArrayList<>();
-        this.inputPorts = new ArrayList<>();
-        this.inputPorts.add(new InputPort(1));
-        this.inputPorts.add(new InputPort(2));
+        this.inputPorts[0] = (new InputPort(PortType.NUMBER, 0.0, 1));
+        this.inputPorts[1] = (new InputPort(PortType.NUMBER, 0.0,2));
         initializeOperations();
     }
     //gettery na inputy
@@ -36,21 +34,27 @@ public class ArithmeticBlock extends Block  {
     public void changeOperation(IArithmeticOperation operation){
         this.operation = operation;
     }
+
     @Override
     public void executeBlock(){
-        this.result = operation.executeOperation();
-    }
-
-    public Double getResult() {
-        return result;
-    }
-
-    public void getInputs(){
-        if (getNumberOfInputPorts() != 2){
+        if(compareTypes()) {
+            this.result = operation.executeOperation(inputPorts[0].getValue(), inputPorts[1].getValue());
         }else{
-            this.inputPorts =
-
+//            TODO:
         }
     }
 
+    private Boolean compareTypes(){
+        return inputPorts[0].getType() == inputPorts[1].getType();
+    }
+
+    public InputPort getInputPort(Integer index){
+        if(index == 1){
+            return inputPorts[0];
+        }else if(index == 2){
+            return inputPorts[1];
+        }else{
+            throw new IndexOutOfBoundsException("getInputPort in ArithmeticBlock\n");
+        }
+    }
 }

@@ -1,12 +1,8 @@
 package cz.blocksolver.backend.block;
 
 
-import cz.blocksolver.backend.block.arithmetic.PowOperation;
-import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
-
-import java.util.ArrayList;
-import java.util.Collection;
+import cz.blocksolver.backend.port.PortType;
 
 public abstract class Block implements IBlock {
     protected String name;
@@ -19,7 +15,7 @@ public abstract class Block implements IBlock {
         this.y = y;
         this.width = width;
         this.height = height;
-        this.outputPort = new OutputPort();
+        this.outputPort = new OutputPort(PortType.NUMBER, 0.0);
     }
 
     //getter pro output setter pryc
@@ -67,19 +63,8 @@ public abstract class Block implements IBlock {
         this.height = height;
     }
 
-    public Collection<InputPort> getInputPorts() {
-        return inputPorts;
-    }
-
-    public void setInputPorts(InputPort inputPort) {
-        inputPorts.add(inputPort);
-    }
-
     public OutputPort getOutputPort() {
         return outputPort;
     }
 
-    public void setOutputPort(OutputPort outputPort) {
-        this.outputPort = outputPort;
-    }
 }
