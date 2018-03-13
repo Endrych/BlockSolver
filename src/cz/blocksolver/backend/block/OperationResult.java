@@ -1,8 +1,8 @@
-package cz.blocksolver.backend.block.arithmetic;
+package cz.blocksolver.backend.block;
 
 public class OperationResult {
-    Double result;
-    Boolean status;
+    private Double result;
+    private Boolean status;
 
     public OperationResult(Double result, Boolean status){
         this.result = result;

@@ -5,9 +5,9 @@ import java.util.Collection;
 
 public class ArithmeticBlock extends Block  {
 
-    Collection<IArithmeticOperation> operations;
-    IArithmeticOperation operation;
-    Double result;
+    private Collection<IArithmeticOperation> operations;
+    private IArithmeticOperation operation;
+    private Double result;
 
     public ArithmeticBlock(String name, Integer x, Integer y, Integer width, Integer height, IArithmeticOperation operation) {
         super(name, x, y, width, height);

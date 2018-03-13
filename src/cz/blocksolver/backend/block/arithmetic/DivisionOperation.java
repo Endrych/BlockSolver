@@ -1,10 +1,11 @@
 package cz.blocksolver.backend.block.arithmetic;
 
 import cz.blocksolver.backend.block.IArithmeticOperation;
+import cz.blocksolver.backend.block.OperationResult;
 
 public class DivisionOperation implements IArithmeticOperation {
-    OperationResult outcome;
-    Double result;
+    private OperationResult outcome;
+    private Double result;
 
     @Override
     public OperationResult executeOperation(Double firstInput, Double secondInput) {
@@ -19,4 +20,7 @@ public class DivisionOperation implements IArithmeticOperation {
             return outcome;
         }
     }
+
+    @Override
+    public String toString() { return "Dělení"; }
 }

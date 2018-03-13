@@ -1,10 +1,11 @@
 package cz.blocksolver.backend.block.arithmetic;
 
 import cz.blocksolver.backend.block.IArithmeticOperation;
+import cz.blocksolver.backend.block.OperationResult;
 
 public class SubtractionOperation  implements IArithmeticOperation {
-    OperationResult outcome;
-    Double result;
+    private OperationResult outcome;
+    private Double result;
 
     @Override
     public OperationResult executeOperation(Double firstInput, Double secondInput) {
@@ -12,4 +13,7 @@ public class SubtractionOperation  implements IArithmeticOperation {
         outcome = new OperationResult(result);
         return outcome;
     }
+
+    @Override
+    public String toString() { return "Odčítání"; }
 }
