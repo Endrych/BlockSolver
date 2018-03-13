@@ -18,7 +18,10 @@ public class InputPort extends Port {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InputPort inputPort = (InputPort) o;
-        return Objects.equals(outputPort, inputPort.outputPort);
+        return this.outputPort.equals(inputPort.outputPort)
+                && this.name.equals(inputPort.name)
+                && this.type == inputPort.type
+                && this.value.equals(inputPort.value);
     }
 
     @Override

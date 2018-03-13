@@ -13,12 +13,18 @@ public class OutputPort extends Port {
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return this.inputPort.hashCode() ^ this.name.hashCode() ^ this.type.hashCode() ^ this.value.hashCode();
     }
 
     @Override
     public boolean equals(Object obj) {
-        return super.equals(obj);
+        if (this == obj) return true;
+        if (obj == null || getClass() != obj.getClass()) return false;
+        OutputPort outputPort = (OutputPort) obj;
+        return this.inputPort.equals(outputPort.inputPort)
+                && this.name.equals(outputPort.name)
+                && this.type == outputPort.type
+                && this.value.equals(outputPort.value);
     }
 
     @Override
