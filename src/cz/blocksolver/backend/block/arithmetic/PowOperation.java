@@ -9,6 +9,19 @@ public class PowOperation implements IArithmeticOperation {
     private OperationResult outcome;
     private Double result;
 
+    private static IArithmeticOperation instance;
+
+    private PowOperation(){
+    }
+
+    public static IArithmeticOperation getInstance(){
+        if(instance == null){
+            instance = new PowOperation();
+        }
+        return instance;
+    }
+
+
     @Override
     public OperationResult executeOperation(Double firstInput, Double secondInput) {
         result = pow(firstInput, secondInput);

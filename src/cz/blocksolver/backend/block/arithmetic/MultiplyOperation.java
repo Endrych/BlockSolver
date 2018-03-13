@@ -7,6 +7,18 @@ public class MultiplyOperation implements IArithmeticOperation {
     private OperationResult outcome;
     private Double result;
 
+    private static IArithmeticOperation instance;
+
+    private MultiplyOperation(){
+    }
+
+    public static IArithmeticOperation getInstance(){
+        if(instance == null){
+            instance = new MultiplyOperation();
+        }
+        return instance;
+    }
+
     @Override
     public OperationResult executeOperation(Double firstInput, Double secondInput) {
         result = firstInput * secondInput;

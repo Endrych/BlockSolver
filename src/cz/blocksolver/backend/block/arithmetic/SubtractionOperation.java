@@ -7,6 +7,17 @@ public class SubtractionOperation  implements IArithmeticOperation {
     private OperationResult outcome;
     private Double result;
 
+    private static IArithmeticOperation instance;
+
+    private SubtractionOperation(){
+    }
+
+    public static IArithmeticOperation getInstance(){
+        if(instance == null){
+            instance = new SubtractionOperation();
+        }
+        return instance;
+    }
     @Override
     public OperationResult executeOperation(Double firstInput, Double secondInput) {
         result = firstInput - secondInput;

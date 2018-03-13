@@ -14,12 +14,10 @@ public class OperationResult {
     }
 
     private void setStatus(){
-        if(this.result == Double.POSITIVE_INFINITY || this.result == Double.NEGATIVE_INFINITY)
-        {
+        if(this.result == Double.POSITIVE_INFINITY || this.result == Double.NEGATIVE_INFINITY){
             this.status = false;
         }
-        else
-        {
+        else{
             this.status = true;
         }
     }

@@ -1,6 +1,7 @@
 package cz.blocksolver.backend.block;
 
 
+import cz.blocksolver.backend.block.arithmetic.PowOperation;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 
@@ -20,6 +21,10 @@ public abstract class Block implements IBlock{
         this.width = width;
         this.height = height;
         this.inputPorts = new ArrayList<>();
+    }
+
+    public void getFirstInput(){
+        IArithmeticOperation oper = PowOperation.getInstance();
     }
 
     @Override
