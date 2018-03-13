@@ -1,9 +1,9 @@
 package cz.blocksolver.backend.port;
 
 public abstract class Port {
-    private String name;
-    private PortType type;
-    private Double value;
+    protected String name;
+    protected PortType type;
+    protected Double value;
 
     public String getName() {
         return name;
