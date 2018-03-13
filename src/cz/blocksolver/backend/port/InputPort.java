@@ -5,6 +5,20 @@ import java.util.Objects;
 public class InputPort extends Port {
     private OutputPort outputPort;
 
+    public InputPort(Integer index) {
+        this.index = index;
+    }
+
+    public Integer getIndex() {
+        return index;
+    }
+
+    public void setIndex(Integer index) {
+        this.index = index;
+    }
+
+    private Integer index;
+
     public OutputPort getOutputPort() {
         return outputPort;
     }
@@ -18,19 +32,21 @@ public class InputPort extends Port {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         InputPort inputPort = (InputPort) o;
-        return this.outputPort.equals(inputPort.outputPort)
-                && this.name.equals(inputPort.name)
-                && this.type == inputPort.type
-                && this.value.equals(inputPort.value);
+        return Objects.equals(this.outputPort, inputPort.outputPort) &&
+                Objects.equals(this.index, inputPort.index) &&
+                Objects.equals(this.name, inputPort.name) &&
+                Objects.equals(this.value, inputPort.value) &&
+                Objects.equals(this.type, inputPort.type);
     }
 
     @Override
     public int hashCode() {
-        return this.outputPort.hashCode() ^ this.name.hashCode() ^ this.type.hashCode() ^ this.value.hashCode();
+
+        return Objects.hash(outputPort, index, name,value,type);
     }
 
     @Override
     public String toString() {
-        return "Vstupní port";
+        return "Vstupní port " + this.index;
     }
 }
