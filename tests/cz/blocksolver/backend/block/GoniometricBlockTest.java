@@ -3,6 +3,7 @@ package cz.blocksolver.backend.block;
 import cz.blocksolver.backend.block.goniometric.ArcsinusOperation;
 import cz.blocksolver.backend.block.goniometric.CosinusOperation;
 import cz.blocksolver.backend.block.goniometric.SinusOperation;
+import cz.blocksolver.backend.block.goniometric.TangensOperation;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 import cz.blocksolver.backend.port.PortType;
@@ -21,7 +22,7 @@ public class GoniometricBlockTest {
     }
 
     @Test
-    public void testDegreeFunctionalitySinus(){
+    public void testSinusOperationDegree(){
         InputPort a = gBlock.getInputPort(1);
         a.setValue(180.0);
         a.setType(PortType.DEGREE);
@@ -31,7 +32,7 @@ public class GoniometricBlockTest {
     }
 
     @Test
-    public void testRadianFunctionalitySinus(){
+    public void testSinusOperationRadian(){
         InputPort a = gBlock.getInputPort(1);
         a.setValue(1.5);
         a.setType(PortType.RADIAN);
@@ -61,6 +62,29 @@ public class GoniometricBlockTest {
         OutputPort b = gBlock.getOutputPort();
         Assert.assertEquals(new Double(0.87758), b.getValue());
     }
+
+    @Test
+    public void testTangensOperationRadian(){
+        gBlock.changeOperation(TangensOperation.getInstance());
+        InputPort a = gBlock.getInputPort(1);
+        a.setValue(5.0);
+        a.setType(PortType.RADIAN);
+        gBlock.executeBlock();
+        OutputPort b = gBlock.getOutputPort();
+        Assert.assertEquals(new Double(-3.38052), b.getValue());
+    }
+
+    @Test
+    public void testTangensOperationDegree(){
+        gBlock.changeOperation(TangensOperation.getInstance());
+        InputPort a = gBlock.getInputPort(1);
+        a.setValue(180.0);
+        a.setType(PortType.DEGREE);
+        gBlock.executeBlock();
+        OutputPort b = gBlock.getOutputPort();
+        Assert.assertEquals(new Double(0.0), b.getValue());
+    }
+
 
     @Ignore
     @Test

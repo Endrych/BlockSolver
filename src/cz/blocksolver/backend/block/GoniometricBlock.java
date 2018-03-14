@@ -1,5 +1,8 @@
 package cz.blocksolver.backend.block;
 
+import cz.blocksolver.backend.block.goniometric.CosinusOperation;
+import cz.blocksolver.backend.block.goniometric.SinusOperation;
+import cz.blocksolver.backend.block.goniometric.TangensOperation;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.PortType;
 
@@ -23,6 +26,9 @@ public class GoniometricBlock extends Block {
     }
 
     private void initializeListOfOperations() {
+        listOfOperations.add(SinusOperation.getInstance());
+        listOfOperations.add(CosinusOperation.getInstance());
+        listOfOperations.add(TangensOperation.getInstance());
     }
 
     public void changeOperation(IGoniometricOperation operation){
