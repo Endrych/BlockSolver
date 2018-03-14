@@ -38,9 +38,11 @@ public class ArithmeticBlock extends Block  {
     @Override
     public void executeBlock(){
         if(compareTypes()) {
-//            tODO: check if succeded
             this.result = operation.executeOperation(inputPorts[0].getValue(), inputPorts[1].getValue());
-            outputPort.setValue(result.getResult());
+            if(this.result.getStatus()){
+                outputPort.setValue(result.getResult());
+            }else{
+            }
         }else{
 //            TODO:
         }

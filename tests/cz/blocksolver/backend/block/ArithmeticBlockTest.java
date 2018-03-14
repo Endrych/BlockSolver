@@ -10,7 +10,7 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ArithmeticBlockTest {
-    ArithmeticBlock aBlock;
+    public ArithmeticBlock aBlock;
 
     @Before
     public void setup(){
