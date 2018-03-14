@@ -3,6 +3,7 @@ package cz.blocksolver.backend.block;
 import cz.blocksolver.backend.block.unary.DecrementOperation;
 import cz.blocksolver.backend.block.unary.IncrementOperation;
 import cz.blocksolver.backend.block.unary.SquareOperation;
+import cz.blocksolver.backend.block.unary.SquareRootOperation;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 import org.junit.Assert;
@@ -42,6 +43,16 @@ public class UnaryBlockTest {
         uBlock.executeBlock();
         OutputPort b = uBlock.getOutputPort();
         Assert.assertEquals(new Double(100.0), b.getValue());
+    }
+
+    @Test
+    public void testSquareRootOperation(){
+        uBlock.changeOperation(SquareRootOperation.getInstance());
+        InputPort a = uBlock.getInputPort(1);
+        a.setValue(16.0);
+        uBlock.executeBlock();
+        OutputPort b = uBlock.getOutputPort();
+        Assert.assertEquals(new Double(4.0), b.getValue());
     }
 
 }
