@@ -10,11 +10,11 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 
 public class ArithmeticBlockTest {
-    public ArithmeticBlock aBlock;
+    private ArithmeticBlock aBlock;
 
     @Before
     public void setup(){
-        aBlock = new ArithmeticBlock("ArithmeticBlock1",45,65,100,100, AddOperation.getInstance());
+        aBlock = new ArithmeticBlock("ArithmeticBlock1",45,65,100,100, BlockType.ARITHMETIC ,AddOperation.getInstance());
         InputPort a = aBlock.getInputPort(1);
         a.setValue(50.0);
         InputPort d = aBlock.getInputPort(2);
@@ -32,6 +32,11 @@ public class ArithmeticBlockTest {
     public void testChangeNme(){
         aBlock.setName("Scitaci blok");
         Assert.assertEquals("Scitaci blok", aBlock.getName());
+    }
+
+    @Test
+    public void testGetBlockType(){
+        Assert.assertEquals(BlockType.ARITHMETIC, aBlock.getType());
     }
 
     @Test

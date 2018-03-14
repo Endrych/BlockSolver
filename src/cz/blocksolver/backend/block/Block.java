@@ -1,6 +1,7 @@
 package cz.blocksolver.backend.block;
 
 
+import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 import cz.blocksolver.backend.port.PortType;
 
@@ -27,6 +28,9 @@ public abstract class Block implements IBlock {
     @Override
     public void executeBlock() {
     }
+
+    @Override
+    public abstract InputPort getInputPort(Integer index);
 
     public String getName() {
         return name;
