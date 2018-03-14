@@ -20,10 +20,10 @@ public class ArithmeticBlock extends Block  {
         this.listOfOperations = new ArrayList<>();
         this.inputPorts[0] = new InputPort(PortType.NUMBER, 0.0, 1);
         this.inputPorts[1] = new InputPort(PortType.NUMBER, 0.0,2);
-        initializeOperations();
+        initializeListOfOperations();
     }
     //gettery na inputy
-    private void initializeOperations() {
+    private void initializeListOfOperations() {
         this.listOfOperations.add(AddOperation.getInstance());
         this.listOfOperations.add(SubtractionOperation.getInstance());
         this.listOfOperations.add(MultiplyOperation.getInstance());
