@@ -1,9 +1,11 @@
 package cz.blocksolver.backend.block;
 
+import cz.blocksolver.backend.block.unary.IncrementOperation;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 import cz.blocksolver.backend.port.PortType;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class UnaryBlock extends Block{
@@ -17,11 +19,12 @@ public class UnaryBlock extends Block{
         super(name, x, y, width, height);
         this.operation = operation;
         inputPort = new InputPort(PortType.NUMBER, 0.0, 1 );
+        listOfOperations = new ArrayList<>();
         initializeListOfOperations();
     }
 
     private void initializeListOfOperations() {
-
+        listOfOperations.add(IncrementOperation.getInstance());
     }
 
     @Override
