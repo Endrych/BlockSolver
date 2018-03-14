@@ -1,9 +1,6 @@
 package cz.blocksolver.backend.block;
 
-import cz.blocksolver.backend.block.goniometric.ArcsinusOperation;
-import cz.blocksolver.backend.block.goniometric.CosinusOperation;
-import cz.blocksolver.backend.block.goniometric.SinusOperation;
-import cz.blocksolver.backend.block.goniometric.TangensOperation;
+import cz.blocksolver.backend.block.goniometric.*;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 import cz.blocksolver.backend.port.PortType;
@@ -83,6 +80,28 @@ public class GoniometricBlockTest {
         gBlock.executeBlock();
         OutputPort b = gBlock.getOutputPort();
         Assert.assertEquals(new Double(0.0), b.getValue());
+    }
+
+    @Test
+    public void testCotangensOperationRadian(){
+        gBlock.changeOperation(CotangensOperation.getInstance());
+        InputPort a = gBlock.getInputPort(1);
+        a.setValue(0.5);
+        a.setType(PortType.RADIAN);
+        gBlock.executeBlock();
+        OutputPort b = gBlock.getOutputPort();
+        Assert.assertEquals(new Double(1.83049), b.getValue());
+    }
+
+    @Test
+    public void testCotangensOperationDegree(){
+        gBlock.changeOperation(CotangensOperation.getInstance());
+        InputPort a = gBlock.getInputPort(1);
+        a.setValue(50.0);
+        a.setType(PortType.DEGREE);
+        gBlock.executeBlock();
+        OutputPort b = gBlock.getOutputPort();
+        Assert.assertEquals(new Double(0.8391), b.getValue());
     }
 
 
