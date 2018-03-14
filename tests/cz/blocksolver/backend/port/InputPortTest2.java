@@ -15,6 +15,5 @@ public class InputPortTest2 {
     public void TestToString() {
         String test = input.toString();
         Assert.assertEquals("Vstupní port 1", input.toString());
-
     }
 }

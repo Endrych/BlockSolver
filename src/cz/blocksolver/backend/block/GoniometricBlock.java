@@ -30,7 +30,10 @@ public class GoniometricBlock extends Block {
     }
 
     public void executeBlock(){
-
+        //TODO kontrola zda uspel execute
+        result = operation.executeOperation(inputPort);
+        outputPort.setValue(result.getResult());
+        outputPort.setType(result.getPortType());
     }
 
     public InputPort getInputPort(Integer index){
@@ -40,4 +43,5 @@ public class GoniometricBlock extends Block {
             throw new IndexOutOfBoundsException("getInputPort in GoniometricBlock\n");
         }
     }
+
 }

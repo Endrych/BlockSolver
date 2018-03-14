@@ -1,5 +1,7 @@
 package cz.blocksolver.backend.block;
 
+import cz.blocksolver.backend.port.InputPort;
+
 public interface IGoniometricOperation {
-    Double executeOperation(Double input);
+    OperationResult executeOperation(InputPort input);
 }
