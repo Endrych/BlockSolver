@@ -1,5 +1,6 @@
 package cz.blocksolver.backend.block;
 
+import cz.blocksolver.backend.block.unary.DecrementOperation;
 import cz.blocksolver.backend.block.unary.IncrementOperation;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
@@ -25,6 +26,7 @@ public class UnaryBlock extends Block{
 
     private void initializeListOfOperations() {
         listOfOperations.add(IncrementOperation.getInstance());
+        listOfOperations.add(DecrementOperation.getInstance());
     }
 
     @Override
