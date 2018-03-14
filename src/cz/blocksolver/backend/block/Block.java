@@ -1,6 +1,7 @@
 package cz.blocksolver.backend.block;
 
 
+import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 import cz.blocksolver.backend.port.PortType;
 
@@ -8,19 +9,28 @@ public abstract class Block implements IBlock {
     protected String name;
     protected Integer x, y, width, height;
     protected OutputPort outputPort;
+    protected BlockType type;
 
-    public Block(String name, Integer x, Integer y, Integer width, Integer height) {
+    public Block(String name, Integer x, Integer y, Integer width, Integer height, BlockType type) {
         this.name = name;
         this.x = x;
         this.y = y;
         this.width = width;
         this.height = height;
         this.outputPort = new OutputPort(PortType.NUMBER, 0.0);
+        this.type = type;
+    }
+
+    public BlockType getType() {
+        return type;
     }
 
     @Override
     public void executeBlock() {
     }
+
+    @Override
+    public abstract InputPort getInputPort(Integer index);
 
     public String getName() {
         return name;
