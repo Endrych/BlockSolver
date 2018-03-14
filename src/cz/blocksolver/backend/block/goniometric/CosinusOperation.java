@@ -7,21 +7,19 @@ import cz.blocksolver.backend.port.PortType;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
-import java.text.DecimalFormat;
 
-public class SinusOperation implements IGoniometricOperation {
-
+public class CosinusOperation implements IGoniometricOperation{
     private OperationResult outcome;
     private Double result;
 
     private static IGoniometricOperation instance;
 
-    private SinusOperation() {
+    private CosinusOperation() {
     }
 
     public static IGoniometricOperation getInstance(){
         if(instance == null){
-            instance = new SinusOperation();
+            instance = new CosinusOperation();
         }
 
         return instance;
@@ -31,9 +29,9 @@ public class SinusOperation implements IGoniometricOperation {
     public OperationResult executeOperation(InputPort input) {
         PortType type = input.getType();
         if(type == PortType.RADIAN){
-            result = sinusFromRadian(input.getValue());
+            result = cosinusFromRadian(input.getValue());
         }else if(type == PortType.DEGREE){
-            result = sinusFromDegree(input.getValue());
+            result = cosinusFromDegree(input.getValue());
         }else{
 //            TODO: CHYBA
         }
@@ -47,14 +45,12 @@ public class SinusOperation implements IGoniometricOperation {
         return bd.doubleValue();
     }
 
-    private Double sinusFromRadian(Double radian) {
-        return Math.sin(radian);
+    private Double cosinusFromRadian(Double radian) {
+        return Math.cos(radian);
     }
 
-    private Double sinusFromDegree(Double degree){
-        return Math.sin(Math.toRadians(degree));
+    private Double cosinusFromDegree(Double degree){
+        return Math.cos(Math.toRadians(degree));
     }
-
-
 
 }
