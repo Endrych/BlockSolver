@@ -5,6 +5,11 @@ public abstract class Port {
     protected PortType type;
     protected Double value;
 
+    public Port(PortType type, Double value){
+        this.type = type;
+        this.value = value;
+    }
+
     public String getName() {
         return name;
     }

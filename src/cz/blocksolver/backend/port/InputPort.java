@@ -4,8 +4,10 @@ import java.util.Objects;
 
 public class InputPort extends Port {
     private OutputPort outputPort;
+    private Integer index;
 
-    public InputPort(Integer index) {
+    public InputPort(PortType type, Double value, Integer index) {
+        super(type, value);
         this.index = index;
     }
 
@@ -16,8 +18,6 @@ public class InputPort extends Port {
     public void setIndex(Integer index) {
         this.index = index;
     }
-
-    private Integer index;
 
     public OutputPort getOutputPort() {
         return outputPort;

@@ -5,6 +5,10 @@ import java.util.Objects;
 public class OutputPort extends Port {
     private InputPort inputPort;
 
+    public OutputPort(PortType type, Double value) {
+        super(type, value);
+    }
+
     public InputPort getInputPort() {
         return inputPort;
     }
