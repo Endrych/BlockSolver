@@ -125,5 +125,28 @@ public class ArithmeticBlockTest {
         assertEquals("ArithmeticBlock1",aBlock.toString());
     }
 
+    @Test
+    public void testHashCode(){
+        ArithmeticBlock aBlock1 = new ArithmeticBlock("ArithmeticBlock1",45,65,100,100, AddOperation.getInstance());
+        aBlock1.getInputPort(1).setName("Port1");
+        aBlock.getInputPort(1).setName("Port1");
+        aBlock1.getInputPort(1).setValue(50.0);
+        aBlock1.getInputPort(2).setValue(5.0);
+        assertEquals(aBlock1.hashCode(),aBlock.hashCode());
+        aBlock1.getInputPort(1).setValue(15.);
+        assertNotEquals(aBlock1.hashCode(),aBlock.hashCode());
+    }
+
+    @Test
+    public void testEquals(){
+        ArithmeticBlock aBlock1 = new ArithmeticBlock("ArithmeticBlock1",45,65,100,100, AddOperation.getInstance());
+        aBlock1.getInputPort(1).setName("Port1");
+        aBlock.getInputPort(1).setName("Port1");
+        aBlock1.getInputPort(1).setValue(50.0);
+        aBlock1.getInputPort(2).setValue(5.0);
+        assertEquals(aBlock1.equals(aBlock),true);
+        aBlock1.getInputPort(1).setValue(15.);
+        assertEquals(aBlock1.equals(aBlock),false);
+    }
 
 }
