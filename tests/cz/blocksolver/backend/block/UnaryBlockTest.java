@@ -14,7 +14,7 @@ public class UnaryBlockTest {
 
     @Before
     public void setUp(){
-        uBlock = new UnaryBlock("Unary Block 1", 40,40,80,60, BlockType.UNARY, IncrementOperation.getInstance());
+        uBlock = new UnaryBlock("Unary Block 1", 40,40,80,60, IncrementOperation.getInstance());
         InputPort a = uBlock.getInputPort(1);
         a.setValue(10.0);
     }

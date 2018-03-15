@@ -18,8 +18,8 @@ public class GoniometricBlock extends Block {
     private OperationResult result;
 
 
-    public GoniometricBlock(String name, Integer x, Integer y, Integer width, Integer height,BlockType type, IGoniometricOperation operation) {
-        super(name, x, y, width, height, type);
+    public GoniometricBlock(String name, Integer x, Integer y, Integer width, Integer height, IGoniometricOperation operation) {
+        super(name, x, y, width, height, BlockType.GONIOMETRIC);
         this.operation = operation;
         this.inputPort = new InputPort(PortType.NUMBER, 0.0,1);
         listOfOperations = new ArrayList<>();

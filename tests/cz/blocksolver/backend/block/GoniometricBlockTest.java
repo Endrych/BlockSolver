@@ -14,7 +14,7 @@ public class GoniometricBlockTest {
     private GoniometricBlock gBlock;
     @Before
     public void setUp() {
-        gBlock = new GoniometricBlock("Goniometricky blok 1", 45, 65, 100, 50,BlockType.GONIOMETRIC, SinusOperation.getInstance());
+        gBlock = new GoniometricBlock("Goniometricky blok 1", 45, 65, 100, 50, SinusOperation.getInstance());
 
     }
 

@@ -14,7 +14,7 @@ public class ArithmeticBlockTest {
 
     @Before
     public void setup(){
-        aBlock = new ArithmeticBlock("ArithmeticBlock1",45,65,100,100, BlockType.ARITHMETIC ,AddOperation.getInstance());
+        aBlock = new ArithmeticBlock("ArithmeticBlock1",45,65,100,100, AddOperation.getInstance());
         InputPort a = aBlock.getInputPort(1);
         a.setValue(50.0);
         InputPort d = aBlock.getInputPort(2);
