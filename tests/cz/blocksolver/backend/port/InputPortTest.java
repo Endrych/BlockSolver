@@ -11,12 +11,12 @@ public class InputPortTest {
     private InputPort inputPort;
 
     @Before
-    public void Init(){
+    public void init(){
         inputPort = new InputPort(PortType.NUMBER, 0.0, 1);
     }
 
     @Test
-    public void InputHashTest(){
+    public void inputHashTest(){
         InputPort inputPort1 = new InputPort(PortType.NUMBER, 0.0, 1);
         inputPort1.setOutputPort(new OutputPort(PortType.NUMBER, 0.0));
         inputPort.setOutputPort(new OutputPort(PortType.NUMBER, 0.0));
@@ -27,7 +27,7 @@ public class InputPortTest {
     }
 
     @Test
-    public void InputTwoEqualInputsPort(){
+    public void inputTwoEqualInputsPort(){
         InputPort inputPort1 = new InputPort(PortType.NUMBER, 0.0, 1);
         inputPort1.setOutputPort(new OutputPort(PortType.NUMBER, 0.0));
         inputPort.setOutputPort(new OutputPort(PortType.NUMBER, 0.0));
@@ -36,7 +36,7 @@ public class InputPortTest {
         assertEquals(inputPort1.equals(inputPort),false);
     }
     @Test
-    public void InputPortToString(){
+    public void inputPortToString(){
         assertEquals("Vstupní port 1",inputPort.toString());
     }
 }
