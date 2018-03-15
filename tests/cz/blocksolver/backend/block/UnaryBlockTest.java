@@ -62,4 +62,9 @@ public class UnaryBlockTest {
         Assert.assertEquals(new Double(8.0), b.getValue());
     }
 
+    @Test
+    public void testToString(){
+        Assert.assertEquals("Unary Block 1",uBlock.toString());
+    }
+
 }

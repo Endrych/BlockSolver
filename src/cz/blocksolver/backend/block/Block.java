@@ -75,4 +75,8 @@ public abstract class Block implements IBlock {
         return outputPort;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }

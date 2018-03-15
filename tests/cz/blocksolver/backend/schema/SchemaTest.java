@@ -14,7 +14,7 @@ public class SchemaTest {
 
     @Before
     public void init(){
-        schema = new Schema();
+        schema = new Schema("TestSchema");
     }
 
     @Test
@@ -33,4 +33,8 @@ public class SchemaTest {
         assertEquals(schema.getBlocks().size(),0);
     }
 
+    @Test
+    public void testToString(){
+        assertEquals("TestSchema",schema.toString());
+    }
 }

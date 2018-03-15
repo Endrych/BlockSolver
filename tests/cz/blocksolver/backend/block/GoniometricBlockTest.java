@@ -117,4 +117,9 @@ public class GoniometricBlockTest {
         Assert.assertEquals(new Double(0.5235), b.getValue());
     }
 
+    @Test
+    public void testToString(){
+        Assert.assertEquals("Goniometricky blok 1",gBlock.toString());
+    }
+
 }

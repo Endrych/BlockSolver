@@ -120,5 +120,10 @@ public class ArithmeticBlockTest {
         Assert.assertEquals(new Double(312500000), b.getValue());
     }
 
+    @Test
+    public void testToString(){
+        assertEquals("ArithmeticBlock1",aBlock.toString());
+    }
+
 
 }

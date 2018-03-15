@@ -51,5 +51,4 @@ public class GoniometricBlock extends Block {
             throw new IndexOutOfBoundsException("getInputPort in GoniometricBlock\n");
         }
     }
-
 }
