@@ -15,8 +15,8 @@ public class UnaryBlock extends Block{
     private InputPort inputPort;
     private OperationResult result;
 
-    public UnaryBlock(String name, Integer x, Integer y, Integer width, Integer height, IUnaryOperation operation) {
-        super(name, x, y, width, height);
+    public UnaryBlock(String name, Integer x, Integer y, Integer width, Integer height, BlockType type, IUnaryOperation operation) {
+        super(name, x, y, width, height, type);
         this.operation = operation;
         inputPort = new InputPort(PortType.NUMBER, 0.0, 1 );
         listOfOperations = new ArrayList<>();

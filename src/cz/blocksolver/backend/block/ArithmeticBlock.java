@@ -14,8 +14,8 @@ public class ArithmeticBlock extends Block  {
     private InputPort[] inputPorts = new InputPort[2];
     private OperationResult result;
 
-    public ArithmeticBlock(String name, Integer x, Integer y, Integer width, Integer height, IArithmeticOperation operation) {
-        super(name, x, y, width, height);
+    public ArithmeticBlock(String name, Integer x, Integer y, Integer width, Integer height, BlockType type, IArithmeticOperation operation) {
+        super(name, x, y, width, height, type);
         this.operation = operation;
         this.listOfOperations = new ArrayList<>();
         this.inputPorts[0] = new InputPort(PortType.NUMBER, 0.0, 1);
