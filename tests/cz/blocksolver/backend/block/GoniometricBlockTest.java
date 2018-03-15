@@ -1,5 +1,6 @@
 package cz.blocksolver.backend.block;
 
+import cz.blocksolver.backend.block.arithmetic.AddOperation;
 import cz.blocksolver.backend.block.goniometric.*;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
@@ -9,12 +10,15 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotEquals;
+
 public class GoniometricBlockTest {
 
     private GoniometricBlock gBlock;
     @Before
     public void setUp() {
-        gBlock = new GoniometricBlock("Goniometricky blok 1", 45, 65, 100, 50,BlockType.GONIOMETRIC, SinusOperation.getInstance());
+        gBlock = new GoniometricBlock("Goniometricky blok 1", 45, 65, 100, 50, SinusOperation.getInstance());
 
     }
 
@@ -115,6 +119,31 @@ public class GoniometricBlockTest {
         gBlock.executeBlock();
         OutputPort b = gBlock.getOutputPort();
         Assert.assertEquals(new Double(0.5235), b.getValue());
+    }
+
+    @Test
+    public void testToString(){
+        Assert.assertEquals("Goniometricky blok 1",gBlock.toString());
+    }
+
+    @Test
+    public void testHashCode(){
+        GoniometricBlock gBlock1 = new GoniometricBlock("Goniometricky blok 1", 45, 65, 100, 50, SinusOperation.getInstance());
+        gBlock1.getInputPort(1).setName("Port1");
+        gBlock.getInputPort(1).setName("Port1");
+        assertEquals(gBlock1.hashCode(),gBlock.hashCode());
+        gBlock1.getInputPort(1).setValue(15.);
+        assertNotEquals(gBlock1.hashCode(),gBlock.hashCode());
+    }
+
+    @Test
+    public void testEquals(){
+        GoniometricBlock gBlock1 = new GoniometricBlock("Goniometricky blok 1", 45, 65, 100, 50, SinusOperation.getInstance());
+        gBlock1.getInputPort(1).setName("Port1");
+        gBlock.getInputPort(1).setName("Port1");
+        assertEquals(gBlock.equals(gBlock1),true);
+        gBlock1.getInputPort(1).setValue(15.);
+        assertEquals(gBlock1.equals(gBlock),false);
     }
 
 }

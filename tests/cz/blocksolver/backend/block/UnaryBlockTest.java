@@ -14,7 +14,7 @@ public class UnaryBlockTest {
 
     @Before
     public void setUp(){
-        uBlock = new UnaryBlock("Unary Block 1", 40,40,80,60, BlockType.UNARY, IncrementOperation.getInstance());
+        uBlock = new UnaryBlock("Unary Block 1", 40,40,80,60, IncrementOperation.getInstance());
         InputPort a = uBlock.getInputPort(1);
         a.setValue(10.0);
     }
@@ -62,4 +62,30 @@ public class UnaryBlockTest {
         Assert.assertEquals(new Double(8.0), b.getValue());
     }
 
+    @Test
+    public void testToString(){
+        Assert.assertEquals("Unary Block 1",uBlock.toString());
+    }
+
+    @Test
+    public void testHashCode(){
+        UnaryBlock uBlock1 = new UnaryBlock("Unary Block 1", 40,40,80,60, IncrementOperation.getInstance());
+        uBlock1.getInputPort(1).setValue(10.);
+        uBlock.getInputPort(1).setName("Port1");
+        uBlock1.getInputPort(1).setName("Port1");
+        assertEquals(uBlock1.hashCode(),uBlock.hashCode());
+        uBlock1.getInputPort(1).setValue(15.);
+        assertNotEquals(uBlock1.hashCode(),uBlock.hashCode());
+    }
+
+    @Test
+    public void testEquals(){
+        UnaryBlock uBlock1 = new UnaryBlock("Unary Block 1", 40,40,80,60, IncrementOperation.getInstance());
+        uBlock1.getInputPort(1).setValue(10.);
+        uBlock.getInputPort(1).setName("Port1");
+        uBlock1.getInputPort(1).setName("Port1");
+        assertEquals(uBlock.equals(uBlock1),true);
+        uBlock1.getInputPort(1).setValue(15.);
+        assertEquals(uBlock.equals(uBlock1),false);
+    }
 }

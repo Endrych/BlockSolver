@@ -26,8 +26,7 @@ public abstract class Block implements IBlock {
     }
 
     @Override
-    public void executeBlock() {
-    }
+    public abstract void executeBlock();
 
     @Override
     public abstract InputPort getInputPort(Integer index);
@@ -76,4 +75,8 @@ public abstract class Block implements IBlock {
         return outputPort;
     }
 
+    @Override
+    public String toString() {
+        return this.name;
+    }
 }
