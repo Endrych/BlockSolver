@@ -22,7 +22,7 @@ public class ArithmeticBlock extends Block  {
         this.inputPorts[1] = new InputPort(PortType.NUMBER, 0.0,2);
         initializeListOfOperations();
     }
-    //gettery na inputy
+
     private void initializeListOfOperations() {
         this.listOfOperations.add(AddOperation.getInstance());
         this.listOfOperations.add(SubtractionOperation.getInstance());

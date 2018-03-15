@@ -19,8 +19,7 @@ public abstract class Block implements IBlock {
     }
 
     @Override
-    public void executeBlock() {
-    }
+    public abstract void executeBlock();
 
     public String getName() {
         return name;
