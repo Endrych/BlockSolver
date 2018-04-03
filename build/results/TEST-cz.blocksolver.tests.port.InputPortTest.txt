@@ -1,0 +1,6 @@
+Testsuite: cz.blocksolver.tests.port.InputPortTest
+Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.162 sec
+
+Testcase: inputTwoEqualInputsPort took 0.005 sec
+Testcase: inputHashTest took 0 sec
+Testcase: inputPortToString took 0 sec
