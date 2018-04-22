@@ -11,6 +11,7 @@
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 
+
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="720.0" prefWidth="1280.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <VBox BorderPane.alignment="CENTER">
@@ -38,40 +39,22 @@
          </children>
       </VBox>
    </top>
-   <left>
-      <TreeView prefHeight="368.0" prefWidth="165.0" BorderPane.alignment="CENTER" />
-   </left>
-   <right>
-      <TabPane prefHeight="200.0" prefWidth="300.0" tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
-        <tabs>
-          <Tab text="Schema">
-               <content>
-                  <VBox prefHeight="329.0" prefWidth="250.0">
-                     <children>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="296.0" text="Nazev schematu">
-                           <VBox.margin>
-                              <Insets top="20.0" />
-                           </VBox.margin></Label>
-                        <TextArea prefHeight="48.0" prefWidth="150.0" promptText="Nazev">
-                           <VBox.margin>
-                              <Insets bottom="30.0" left="20.0" right="20.0" top="5.0" />
-                           </VBox.margin></TextArea>
-                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="21.0" prefWidth="293.0" text="Hierarchie schematu">
-                           <VBox.margin>
-                              <Insets bottom="5.0" />
-                           </VBox.margin></Label>
-                        <TreeView minWidth="100.0" prefHeight="300.0" prefWidth="210.0">
-                           <VBox.margin>
-                              <Insets left="20.0" right="20.0" />
-                           </VBox.margin></TreeView>
-                     </children>
-                  </VBox>
-               </content>
-          </Tab>
-          <Tab text="Blok" />
-        </tabs>
-      </TabPane>
-   </right>
    <center>
+   </center>
+   <center>
+      <AnchorPane fx:id="root_pane" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <SplitPane fx:id="base_pane" dividerPositions="0.5" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+               <items>
+                  <ScrollPane hbarPolicy="NEVER" maxWidth="-Infinity" minWidth="-Infinity" prefHeight="200.0" prefWidth="200.0">
+                     <content>
+                        <VBox fx:id="block_chooser" spacing="10.0" />
+                     </content>
+                  </ScrollPane>
+                  <AnchorPane fx:id="main_display" />
+               </items>
+            </SplitPane>
+         </children>
+      </AnchorPane>
    </center>
 </BorderPane>
