@@ -9,7 +9,7 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
-public class ArithmeticBlock extends Block  {
+public class ArithmeticBlock extends Block implements IBlock {
 
     private Collection<IArithmeticOperation> listOfOperations;
     private IArithmeticOperation operation;
