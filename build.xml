@@ -1,0 +1,89 @@
+<?xml version = "1.0"?>
+<project name = "Block Solver" default = "dist"
+         xmlns:fx="javafx:com.sun.javafx.tools.ant">
+    <description>
+
+    </description>
+    <property name="src" location="src"/>
+    <property name="build" location="build"/>
+    <property name="dist" location="dest-client"/>
+    <property name="doc" location="doc/" />
+    <property name="main.build.dir" value="build/"/>
+    <property name="test.build.dir" value="build/"/>
+
+    <path id="classpath.test">
+        <pathelement location="lib/junit-4.12.jar" />
+        <pathelement location="lib/hamcrest-core-1.3.jar" />
+        <pathelement location="${main.build.dir}"/>
+    </path>
+
+    <target name="init">
+        <tstamp/>
+        <mkdir dir="${build}"/>
+    </target>
+
+    <target name="compile-src" depends="init"
+            description="compile the source">
+        <mkdir dir="${main.build.dir}" />
+        <javac includeantruntime="false" srcdir="${src}" destdir="${main.build.dir}">
+            <classpath location="${main.build.dir}" />
+        </javac>
+    </target>
+
+
+
+    <target name="dist" depends="compile-src"
+            description="generate the distribution">
+        <taskdef resource="com/sun/javafx/tools/ant/antlib.xml"
+                 uri="javafx:com.sun.javafx.tools.ant"
+                 classpath="lib/ant-javafx.jar"/>
+
+        <fx:application id="Blocksolver"
+                        name="BlockSolver"
+                        mainClass="cz.blocksolver.frontend.Main"/>
+
+     <fx:resources id="appRes">
+            <fx:fileset dir="${dist}" includes="ija-client.jar"/>
+        </fx:resources>
+
+        <fx:jar destfile="${dist}/ija-client.jar">
+            <fx:application refid="Blocksolver"/>
+            <fx:resources refid="appRes"/>
+            <fileset dir="${build}"/>
+            <fileset dir="src/" casesensitive="no">
+                <include name="**/*.fxml" />
+                <include name="**/*.css" />
+            </fileset>
+        </fx:jar>
+
+    </target>
+
+
+
+    <target name="doc" description="Generate documentation">
+        <javadoc packagenames = "cz.blocksolver.backend.*" sourcepath = "${src}"
+                 destdir = "doc/javadoc" version = "true" windowtitle = "BlockSolver">
+
+            <doctitle><![CDATA[= BlockSolver =]]></doctitle>
+
+            <bottom>
+                <![CDATA[Copyright © 2018. All Rights Reserved.]]>
+            </bottom>
+        </javadoc>
+    </target>
+
+
+    <target name="compile" depends="dist, doc">
+    </target>
+
+
+    <target name="run">
+        <java jar="dest-client/ija-client.jar" fork="true"></java>
+    </target>
+
+    <target name="clean"
+            description="clean up">
+        <delete dir="${build}"/>
+        <delete dir="${dist}"/>
+    </target>
+</project>

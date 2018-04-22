@@ -1,0 +1,1160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="47c3e608-3b35-440b-9c9a-e6ebfe2fb97a" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change beforePath="$PROJECT_DIR$/build.xml" afterPath="$PROJECT_DIR$/build.xml" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.block.ArithmeticBlockTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.block.ArithmeticBlockTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.block.GoniometricBlockTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.block.GoniometricBlockTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.block.UnaryBlockTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.block.UnaryBlockTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.port.InputPortTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.port.InputPortTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.port.OutputPortTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.port.OutputPortTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.schema.SchemaTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.backend.schema.SchemaTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.block.ArithmeticBlockTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.block.ArithmeticBlockTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.block.GoniometricBlockTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.block.GoniometricBlockTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.block.UnaryBlockTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.block.UnaryBlockTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.port.InputPortTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.port.InputPortTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.port.OutputPortTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.port.OutputPortTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.schema.SchemaTest.txt" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/build/results/TEST-cz.blocksolver.tests.schema.SchemaTest.xml" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/allclasses-frame.html" afterPath="$PROJECT_DIR$/doc/javadoc/allclasses-frame.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/allclasses-noframe.html" afterPath="$PROJECT_DIR$/doc/javadoc/allclasses-noframe.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/constant-values.html" afterPath="$PROJECT_DIR$/doc/javadoc/constant-values.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/ArithmeticBlock.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/ArithmeticBlock.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/Block.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/Block.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/BlockType.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/BlockType.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/GoniometricBlock.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/GoniometricBlock.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/IArithmeticOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/IArithmeticOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/IBlock.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/IBlock.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/IGoniometricOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/IGoniometricOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/IUnaryOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/IUnaryOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/OperationResult.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/OperationResult.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/UnaryBlock.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/UnaryBlock.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/AddOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/AddOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/DivisionOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/DivisionOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/MultiplyOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/MultiplyOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/PowOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/PowOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/SubtractionOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/SubtractionOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/package-frame.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/package-frame.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/package-summary.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/package-summary.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/package-tree.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/arithmetic/package-tree.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/ArcsinusOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/ArcsinusOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/CosinusOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/CosinusOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/CotangensOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/CotangensOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/SinusOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/SinusOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/TangensOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/TangensOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/package-frame.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/package-frame.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/package-summary.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/package-summary.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/package-tree.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/goniometric/package-tree.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/package-frame.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/package-frame.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/package-summary.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/package-summary.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/package-tree.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/package-tree.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/CubeRootOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/CubeRootOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/DecrementOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/DecrementOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/IncrementOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/IncrementOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/SquareOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/SquareOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/SquareRootOperation.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/SquareRootOperation.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/package-frame.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/package-frame.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/package-summary.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/package-summary.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/package-tree.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/block/unary/package-tree.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/InputPort.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/InputPort.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/OutputPort.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/OutputPort.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/Port.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/Port.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/PortType.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/PortType.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/package-frame.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/package-frame.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/package-summary.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/package-summary.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/package-tree.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/port/package-tree.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/ISchema.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/ISchema.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/ISchemaLoader.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/ISchemaLoader.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/ISchemaSaver.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/ISchemaSaver.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/Schema.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/Schema.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/SchemaXmlLoader.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/SchemaXmlLoader.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/SchemaXmlSaver.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/SchemaXmlSaver.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/package-frame.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/package-frame.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/package-summary.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/package-summary.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/package-tree.html" afterPath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/backend/schema/package-tree.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/block/ArithmeticBlockTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/block/GoniometricBlockTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/block/UnaryBlockTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/block/package-frame.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/block/package-summary.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/block/package-tree.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/port/InputPortTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/port/OutputPortTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/port/package-frame.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/port/package-summary.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/port/package-tree.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/schema/SchemaTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/schema/package-frame.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/schema/package-summary.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/backend/schema/package-tree.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/block/ArithmeticBlockTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/block/GoniometricBlockTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/block/UnaryBlockTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/block/package-frame.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/block/package-summary.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/block/package-tree.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/port/InputPortTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/port/OutputPortTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/port/package-frame.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/port/package-summary.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/port/package-tree.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/schema/SchemaTest.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/schema/package-frame.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/schema/package-summary.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/cz/blocksolver/tests/schema/package-tree.html" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/deprecated-list.html" afterPath="$PROJECT_DIR$/doc/javadoc/deprecated-list.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/help-doc.html" afterPath="$PROJECT_DIR$/doc/javadoc/help-doc.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index-all.html" afterPath="$PROJECT_DIR$/doc/javadoc/index-all.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/index.html" afterPath="$PROJECT_DIR$/doc/javadoc/index.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-frame.html" afterPath="$PROJECT_DIR$/doc/javadoc/overview-frame.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-summary.html" afterPath="$PROJECT_DIR$/doc/javadoc/overview-summary.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" afterPath="$PROJECT_DIR$/doc/javadoc/overview-tree.html" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/package-list" afterPath="$PROJECT_DIR$/doc/javadoc/package-list" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/script.js" afterPath="$PROJECT_DIR$/doc/javadoc/script.js" />
+      <change beforePath="$PROJECT_DIR$/doc/javadoc/stylesheet.css" afterPath="$PROJECT_DIR$/doc/javadoc/stylesheet.css" />
+      <change beforePath="$PROJECT_DIR$/lib/hamcrest-core-1.3.jar" afterPath="" />
+      <change beforePath="$PROJECT_DIR$/lib/junit-4.12.jar" afterPath="" />
+    </list>
+    <ignored path="$PROJECT_DIR$/bin/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="TRACKING_ENABLED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file leaf-file-name="build.xml" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/build.xml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="504">
+              <caret line="42" column="66" lean-forward="false" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Enum" />
+        <option value="Interface" />
+        <option value="JUnit4 Test Class" />
+        <option value="JavaFXApplication" />
+        <option value="Class" />
+        <option value="FxmlFile" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>javac</find>
+      <find>result</find>
+      <find>tests</find>
+      <find>jar</find>
+      <find>bin</find>
+      <find>run</find>
+    </findStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="develop" />
+      </map>
+    </option>
+  </component>
+  <component name="GradleLocalSettings">
+    <option name="externalProjectsViewState">
+      <projects_view />
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/hello.java" />
+        <option value="$PROJECT_DIR$/src/Calculator.java" />
+        <option value="$PROJECT_DIR$/src/Test.java" />
+        <option value="$PROJECT_DIR$/src/test/Calculator.java" />
+        <option value="$PROJECT_DIR$/src/test/Test.java" />
+        <option value="$PROJECT_DIR$/src/pack1/Calculator.java" />
+        <option value="$PROJECT_DIR$/tests/CalculatorTest.java" />
+        <option value="$PROJECT_DIR$/src/pack1/Main.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/frontend/port/Port.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/block/port/Port.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/port/PortType.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/port/Port.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/port/InputPort.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/port/OutputPort.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/schema/ISchemaLoader.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/schema/ISchemaSaver.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/schema/SchemaXmlLoader.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/schema/SchemaXmlSaver.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/schema/ISchema.java" />
+        <option value="$PROJECT_DIR$/tests/cz/blocksolver/backend/port/InputPortTest2.java" />
+        <option value="$PROJECT_DIR$/tests/cz/blocksolver/backend/port/InputPortTest.java" />
+        <option value="$PROJECT_DIR$/tests/cz/blocksolver/backend/port/OutputPortTest.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/block/Block.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/block/ArithmeticBlock.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/block/UnaryBlock.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/block/GoniometricBlock.java" />
+        <option value="$PROJECT_DIR$/tests/cz/blocksolver/backend/block/GoniometricBlockTest.java" />
+        <option value="$PROJECT_DIR$/tests/cz/blocksolver/backend/block/UnaryBlockTest.java" />
+        <option value="$PROJECT_DIR$/tests/cz/blocksolver/backend/schema/SchemaTest.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/tests/ArithmeticBlockTest.java" />
+        <option value="$PROJECT_DIR$/tests/cz/blocksolver/tests/block/ArithmeticBlockTest.java" />
+        <option value="$PROJECT_DIR$/tests/cz/blocksolver/backend/block/ArithmeticBlockTest.java" />
+        <option value="$PROJECT_DIR$/readme.txt" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/backend/schema/Schema.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/port/InputPortTest.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/frontend/testclass.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/frontend/View.fxml" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/frontend/Main.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/frontend/resources/View.fxml" />
+        <option value="$PROJECT_DIR$/build.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
+  <component name="JsGulpfileManager">
+    <detection-done>true</detection-done>
+    <sorting>DEFINITION_ORDER</sorting>
+  </component>
+  <component name="PhpWorkspaceProjectConfiguration" backward_compatibility_performed="true" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="114" />
+    <option name="y" value="-14" />
+    <option name="width" value="1546" />
+    <option name="height" value="828" />
+  </component>
+  <component name="ProjectView">
+    <navigator currentView="ProjectPane" proportions="" version="1">
+      <flattenPackages />
+      <showMembers />
+      <showModules />
+      <showLibraryContents />
+      <hideEmptyPackages />
+      <abbreviatePackageNames />
+      <autoscrollToSource />
+      <autoscrollFromSource />
+      <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="PackagesPane" />
+      <pane id="Scratches" />
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="BlockSolver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BlockSolver" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BlockSolver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BlockSolver" type="462c0819:PsiDirectoryNode" />
+              <item name="dest-client" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="BlockSolver" type="b2602c69:ProjectViewProjectNode" />
+              <item name="BlockSolver" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="AndroidView" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="settings.editor.selected.configurable" value="preferences.externalDependencies" />
+    <property name="project.structure.last.edited" value="Project" />
+    <property name="project.structure.proportion" value="0.15" />
+    <property name="project.structure.side.proportion" value="0.0" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary" value="JUnit4" />
+    <property name="last_directory_selection" value="$PROJECT_DIR$/src" />
+    <property name="com.intellij.testIntegration.createTest.CreateTestDialog.includeInheritedMembers" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="cz.blocksolver.backend.schema" />
+      <recent name="cz.blocksolver.backend.port" />
+      <recent name="" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\rykk0\Desktop\BlockSolver\resources" />
+      <recent name="C:\Users\rykk0\Desktop\BlockSolver\lib" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\BlockSolver\src\cz\blocksolver\frontend" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager" selected="Application.Main (1)">
+    <configuration default="true" type="Applet" factoryName="Applet">
+      <option name="HTML_USED" value="false" />
+      <option name="WIDTH" value="400" />
+      <option name="HEIGHT" value="300" />
+      <option name="POLICY_FILE" value="$APPLICATION_HOME_DIR$/bin/appletviewer.policy" />
+      <module />
+    </configuration>
+    <configuration name="Main (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cz.blocksolver.frontend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="cz.blocksolver.frontend.Main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="BlockSolver" />
+      <envs />
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="pack1.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="pack1.Main" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="BlockSolver" />
+      <envs />
+    </configuration>
+    <configuration default="true" type="Application" factoryName="Application">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="" />
+      <envs />
+    </configuration>
+    <configuration name="testclass" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cz.blocksolver.frontend.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="MAIN_CLASS_NAME" value="cz.blocksolver.frontend.testclass" />
+      <option name="VM_PARAMETERS" />
+      <option name="PROGRAM_PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="ENABLE_SWING_INSPECTOR" value="false" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <module name="BlockSolver" />
+      <envs />
+    </configuration>
+    <configuration name="InputPortTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cz.blocksolver.backend.port.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BlockSolver" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cz.blocksolver.backend.port" />
+      <option name="MAIN_CLASS_NAME" value="cz.blocksolver.backend.port.InputPortTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="InputPortTest2.TestToString" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cz.blocksolver.backend.port.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BlockSolver" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cz.blocksolver.backend.port" />
+      <option name="MAIN_CLASS_NAME" value="cz.blocksolver.backend.port.InputPortTest2" />
+      <option name="METHOD_NAME" value="TestToString" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="JUnit" factoryName="JUnit">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration default="true" type="Remote" factoryName="Remote">
+      <option name="USE_SOCKET_TRANSPORT" value="true" />
+      <option name="SERVER_MODE" value="false" />
+      <option name="SHMEM_ADDRESS" value="javadebug" />
+      <option name="HOST" value="localhost" />
+      <option name="PORT" value="5005" />
+    </configuration>
+    <configuration default="true" type="TestNG" factoryName="TestNG">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
+      <module name="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="SUITE_NAME" />
+      <option name="PACKAGE_NAME" />
+      <option name="MAIN_CLASS_NAME" />
+      <option name="METHOD_NAME" />
+      <option name="GROUP_NAME" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="OUTPUT_DIRECTORY" />
+      <option name="ANNOTATION_TYPE" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <option name="USE_DEFAULT_REPORTERS" value="false" />
+      <option name="PROPERTIES_FILE" />
+      <envs />
+      <properties />
+      <listeners />
+    </configuration>
+    <configuration default="true" type="#org.jetbrains.idea.devkit.run.PluginConfigurationType" factoryName="Plugin">
+      <module name="" />
+      <option name="VM_PARAMETERS" value="-Xmx512m -Xms256m -XX:MaxPermSize=250m -ea" />
+      <option name="PROGRAM_PARAMETERS" />
+      <predefined_log_file id="idea.log" enabled="true" />
+    </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.InputPortTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.InputPortTest2.TestToString" />
+      <item index="3" class="java.lang.String" itemvalue="Application.testclass" />
+      <item index="4" class="java.lang.String" itemvalue="Application.Main (1)" />
+    </list>
+    <recent_temporary>
+      <list size="5">
+        <item index="0" class="java.lang.String" itemvalue="Application.Main (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Application.testclass" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.InputPortTest2.TestToString" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.InputPortTest" />
+        <item index="4" class="java.lang.String" itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="47c3e608-3b35-440b-9c9a-e6ebfe2fb97a" name="Default" comment="" />
+      <created>1520925117636</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1520925117636</updated>
+      <workItem from="1520925121686" duration="856000" />
+      <workItem from="1520926013067" duration="14822000" />
+      <workItem from="1520965509164" duration="9312000" />
+      <workItem from="1520975649471" duration="364000" />
+      <workItem from="1521061390494" duration="1915000" />
+      <workItem from="1521140480303" duration="4024000" />
+      <workItem from="1521145313870" duration="3359000" />
+      <workItem from="1521458525386" duration="9000" />
+      <workItem from="1522749595062" duration="3989000" />
+      <workItem from="1522777883314" duration="1016000" />
+      <workItem from="1522779395605" duration="863000" />
+      <workItem from="1522780310029" duration="2558000" />
+      <workItem from="1523536120290" duration="510000" />
+      <workItem from="1523536658452" duration="456000" />
+      <workItem from="1524083291082" duration="2995000" />
+      <workItem from="1524320325812" duration="892000" />
+      <workItem from="1524342948408" duration="2033000" />
+      <workItem from="1524386343545" duration="4644000" />
+      <workItem from="1524393683641" duration="625000" />
+    </task>
+    <task id="LOCAL-00001" summary="Settings">
+      <created>1520935506789</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1520935506805</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Remove test files">
+      <created>1520936049497</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1520936049497</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Add package hierarchy">
+      <created>1520936648097</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1520936648097</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Add PortType enum">
+      <created>1520938085137</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1520938085137</updated>
+    </task>
+    <task id="LOCAL-00005" summary="Implement Port class">
+      <created>1520938232258</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1520938232258</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Ad InputPort, outputPort">
+      <created>1520939069963</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1520939069963</updated>
+    </task>
+    <task id="LOCAL-00007" summary="Add lib fol">
+      <created>1520939209632</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1520939209632</updated>
+    </task>
+    <task id="LOCAL-00008" summary="Add hashcode, equals">
+      <created>1520939963644</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1520939963644</updated>
+    </task>
+    <task id="LOCAL-00009" summary="Fix hashcodes, equals, add tests">
+      <created>1520970933034</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1520970933034</updated>
+    </task>
+    <task id="LOCAL-00010" summary="Add Schema base classes, interfaces">
+      <created>1520973871892</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1520973871892</updated>
+    </task>
+    <task id="LOCAL-00011" summary="Remove runSchema, debugSchema">
+      <created>1520975509591</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1520975509591</updated>
+    </task>
+    <task id="LOCAL-00012" summary="Some changes">
+      <created>1521140568389</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1521140568390</updated>
+    </task>
+    <task id="LOCAL-00013" summary="Add tests for addBlock, removeBlock, change constructors in blocks class">
+      <created>1521142172823</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1521142172823</updated>
+    </task>
+    <task id="LOCAL-00014" summary="Fix outputs tests">
+      <created>1521143295746</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1521143295746</updated>
+    </task>
+    <task id="LOCAL-00015" summary="Add toString with tests for blocks,schema">
+      <created>1521144163762</created>
+      <option name="number" value="00015" />
+      <option name="presentableId" value="LOCAL-00015" />
+      <option name="project" value="LOCAL" />
+      <updated>1521144163762</updated>
+    </task>
+    <task id="LOCAL-00016" summary="Add tests">
+      <created>1521149547268</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1521149547268</updated>
+    </task>
+    <task id="LOCAL-00017" summary="JavaFX for testing ant">
+      <created>1524347007885</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1524347007885</updated>
+    </task>
+    <task id="LOCAL-00018" summary="JavaFX for testing ant">
+      <created>1524347063419</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1524347063419</updated>
+    </task>
+    <task id="LOCAL-00019" summary="Congigure ant for JavaFX">
+      <created>1524390958786</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1524390958786</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
+    <servers />
+  </component>
+  <component name="TestHistory">
+    <history-entry file="All_in_BlockSolver - 2018.03.15 at 22h 12m 05s.xml">
+      <configuration name="All in BlockSolver" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArithmeticBlockTest_testEquals - 2018.03.15 at 22h 11m 48s.xml">
+      <configuration name="ArithmeticBlockTest.testEquals" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArithmeticBlockTest_testHashCode - 2018.03.15 at 22h 05m 58s.xml">
+      <configuration name="ArithmeticBlockTest.testHashCode" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArithmeticBlockTest_testHashCode - 2018.03.15 at 22h 06m 05s.xml">
+      <configuration name="ArithmeticBlockTest.testHashCode" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArithmeticBlockTest_testHashCode - 2018.03.15 at 22h 10m 08s.xml">
+      <configuration name="ArithmeticBlockTest.testHashCode" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArithmeticBlockTest_testHashCode - 2018.03.15 at 22h 11m 01s.xml">
+      <configuration name="ArithmeticBlockTest.testHashCode" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GoniometricBlockTest - 2018.03.15 at 22h 15m 08s.xml">
+      <configuration name="GoniometricBlockTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GoniometricBlockTest_testHashCode - 2018.03.15 at 22h 14m 51s.xml">
+      <configuration name="GoniometricBlockTest.testHashCode" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="SchemaTest - 2018.03.15 at 22h 31m 52s.xml">
+      <configuration name="SchemaTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UnaryBlockTest - 2018.03.15 at 22h 18m 57s.xml">
+      <configuration name="UnaryBlockTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="56312000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
+    <layout>
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Image Layers" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="true" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4117647" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32711306" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.16458334" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="SciView" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Theme Preview" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="8" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="true" content_ui="tabs" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39956093" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.21232876" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32831737" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsContentAnnotationSettings">
+    <option name="myLimit" value="2678400000" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Settings" />
+    <MESSAGE value="Remove test files" />
+    <MESSAGE value="Add package hierarchy" />
+    <MESSAGE value="Add PortType enum" />
+    <MESSAGE value="Implement Port class" />
+    <MESSAGE value="Ad InputPort, outputPort" />
+    <MESSAGE value="Add lib fol" />
+    <MESSAGE value="Add hashcode, equals" />
+    <MESSAGE value="Fix hashcodes, equals, add tests" />
+    <MESSAGE value="Add Schema base classes, interfaces" />
+    <MESSAGE value="Remove runSchema, debugSchema" />
+    <MESSAGE value="Some changes" />
+    <MESSAGE value="Add tests for addBlock, removeBlock, change constructors in blocks class" />
+    <MESSAGE value="Fix outputs tests" />
+    <MESSAGE value="Add toString with tests for blocks,schema" />
+    <MESSAGE value="Add tests" />
+    <MESSAGE value="JavaFX for testing ant" />
+    <MESSAGE value="Congigure ant for JavaFX" />
+    <option name="LAST_COMMIT_MESSAGE" value="Congigure ant for JavaFX" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <option name="time" value="4" />
+    </breakpoint-manager>
+    <watches-manager />
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+    <buildFile url="file://$PROJECT_DIR$/build.xml">
+      <targetFilters>
+        <filter targetName="init" isVisible="false" />
+        <filter targetName="compile" isVisible="true" />
+        <filter targetName="test-compile" isVisible="false" />
+        <filter targetName="dist" isVisible="true" />
+        <filter targetName="docs" isVisible="true" />
+        <filter targetName="junit" isVisible="false" />
+        <filter targetName="clean" isVisible="true" />
+      </targetFilters>
+      <expanded value="true" />
+    </buildFile>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/tests/CalculatorTest.java" />
+    <entry file="file://$PROJECT_DIR$/src/pack1/Calculator.java" />
+    <entry file="file://$PROJECT_DIR$/.gitignore">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="552">
+          <caret line="23" column="11" lean-forward="true" selection-start-line="23" selection-start-column="11" selection-end-line="23" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/tests/report/TEST-cz.blocksolver.backend.port.InputPortTest.xml" />
+    <entry file="file://$PROJECT_DIR$/tests/report/TEST-cz.blocksolver.backend.port.InputPortTest.txt" />
+    <entry file="file://$PROJECT_DIR$/tests/report/TEST-cz.blocksolver.backend.port.InputPortTest2.txt" />
+    <entry file="jar://$APPLICATION_HOME_DIR$/lib/junit-4.12.jar!/org/junit/internal/runners/model/ReflectiveCallable.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="312">
+          <caret line="16" column="0" lean-forward="false" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://C:/Program Files (x86)/Java/jdk1.8.0_161/src.zip!/java/lang/Object.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="99" column="22" lean-forward="false" selection-start-line="99" selection-start-column="22" selection-end-line="99" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/schema/ISchemaLoader.java" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/schema/SchemaXmlSaver.java" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/schema/SchemaXmlLoader.java" />
+    <entry file="file://$PROJECT_DIR$/tests/cz/blocksolver/backend/port/InputPortTest2.java" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/arithmetic/AddOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="5" column="13" lean-forward="false" selection-start-line="5" selection-start-column="13" selection-end-line="5" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/goniometric/ArcsinusOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-24">
+          <caret line="8" column="13" lean-forward="false" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/OperationResult.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/IArithmeticOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/IBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="456">
+          <caret line="19" column="42" lean-forward="false" selection-start-line="19" selection-start-column="42" selection-end-line="19" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/IUnaryOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="17" lean-forward="false" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/schema/ISchema.java" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/port/OutputPortTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="12" column="11" lean-forward="true" selection-start-line="12" selection-start-column="11" selection-end-line="12" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/UnaryBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="73" column="112" lean-forward="true" selection-start-line="73" selection-start-column="74" selection-end-line="73" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/GoniometricBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="658">
+          <caret line="76" column="112" lean-forward="false" selection-start-line="76" selection-start-column="112" selection-end-line="76" selection-end-column="112" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/GoniometricBlockTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="128" column="3" lean-forward="true" selection-start-line="128" selection-start-column="3" selection-end-line="146" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/UnaryBlockTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="720">
+          <caret line="88" column="49" lean-forward="false" selection-start-line="88" selection-start-column="49" selection-end-line="88" selection-end-column="49" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/ArithmeticBlock.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="18" column="11" lean-forward="false" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/Block.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="192">
+          <caret line="13" column="11" lean-forward="false" selection-start-line="13" selection-start-column="11" selection-end-line="13" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/port/PortType.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/block/IGoniometricOperation.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="0" lean-forward="false" selection-start-line="7" selection-start-column="0" selection-end-line="7" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/schema/ISchemaSaver.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="38" lean-forward="true" selection-start-line="0" selection-start-column="38" selection-end-line="0" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Documents/BlockSolver/build.xml" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/ArithmeticBlockTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/schema/Schema.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="18" column="0" lean-forward="true" selection-start-line="18" selection-start-column="0" selection-end-line="18" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/port/Port.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="380">
+          <caret line="27" column="0" lean-forward="true" selection-start-line="27" selection-start-column="0" selection-end-line="27" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/port/OutputPort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="32" column="0" lean-forward="true" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/port/InputPort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-80">
+          <caret line="4" column="20" lean-forward="false" selection-start-line="4" selection-start-column="20" selection-end-line="4" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/schema/SchemaTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="10" column="13" lean-forward="false" selection-start-line="10" selection-start-column="13" selection-end-line="10" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/port/InputPortTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="20" lean-forward="false" selection-start-line="6" selection-start-column="20" selection-end-line="6" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="11" column="68" lean-forward="false" selection-start-line="11" selection-start-column="68" selection-end-line="11" selection-end-column="68" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/sample.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/frontend.iml" />
+    <entry file="jar://C:/Program Files/Java/jdk1.8.0_161/jre/lib/rt.jar!/sun/reflect/NativeMethodAccessorImpl.class">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="268">
+          <caret line="26" column="0" lean-forward="false" selection-start-line="26" selection-start-column="0" selection-end-line="26" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/.idea/ant.xml" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/.idea/modules.xml" />
+    <entry file="file://$PROJECT_DIR$/rozdeleni.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/Controller.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="23" lean-forward="false" selection-start-line="2" selection-start-column="23" selection-end-line="2" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/View.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="9" column="0" lean-forward="true" selection-start-line="9" selection-start-column="0" selection-end-line="9" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/resources/View.fxml" />
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/resources/View.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder">
+        <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="96">
+          <caret line="13" column="65" lean-forward="false" selection-start-line="13" selection-start-column="65" selection-end-line="13" selection-end-column="65" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/readme.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="48">
+          <caret line="2" column="33" lean-forward="false" selection-start-line="2" selection-start-column="33" selection-end-line="2" selection-end-column="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="504">
+          <caret line="42" column="66" lean-forward="false" selection-start-line="42" selection-start-column="66" selection-end-line="42" selection-end-column="66" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Python 3.6 (IPP-Intepret-projekt) interpreter library</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>Python 3.6 (IPP-Intepret-projekt)</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>BlockSolver</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

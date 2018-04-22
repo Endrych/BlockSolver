@@ -1,0 +1,16 @@
+Testsuite: cz.blocksolver.tests.block.GoniometricBlockTest
+Tests run: 12, Failures: 0, Errors: 0, Skipped: 1, Time elapsed: 0.195 sec
+
+Testcase: testToString took 0.01 sec
+Testcase: testTangensOperationDegree took 0.004 sec
+Testcase: testCosinusOperationDegree took 0 sec
+Testcase: testTangensOperationRadian took 0 sec
+Testcase: testCosinusOperationRadian took 0 sec
+Testcase: testSinusOperationDegree took 0 sec
+Testcase: testSinusOperationRadian took 0 sec
+Testcase: testChangeOperationToAsin took 0 sec
+	SKIPPED
+Testcase: testHashCode took 0 sec
+Testcase: testEquals took 0.001 sec
+Testcase: testCotangensOperationDegree took 0.001 sec
+Testcase: testCotangensOperationRadian took 0.001 sec
