@@ -4,16 +4,27 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("resources/View.fxml"));
-        primaryStage.setTitle("Block Solver");
-        primaryStage.setScene(new Scene(root, 1280, 720));
-        primaryStage.show();
+        BorderPane root = new BorderPane();
+
+        try{
+
+            Scene scene = new Scene(root, 1280, 720);
+            primaryStage.setScene(scene);
+            primaryStage.show();
+        }catch(Exception e){
+            e.printStackTrace();
+        }
+
+        root.setTop(new MenuLayout());
+        root.setCenter(new MainDisplay());
+
     }
 
 
