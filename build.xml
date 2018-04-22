@@ -26,8 +26,6 @@
             description="compile the source">
         <mkdir dir="${main.build.dir}" />
         <javac includeantruntime="false" srcdir="${src}" destdir="${main.build.dir}">
-            <classpath location="lib/junit-4.12.jar" />
-            <classpath location="lib/hamcrest-core-1.3.jar" />
             <classpath location="${main.build.dir}" />
         </javac>
     </target>
