@@ -1,5 +1,7 @@
 package cz.blocksolver.frontend;
 
+import cz.blocksolver.backend.block.Block;
+import cz.blocksolver.backend.schema.Schema;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
@@ -13,10 +15,16 @@ import javafx.scene.input.DragEvent;
 import javafx.scene.input.TransferMode;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.shape.Line;
 
 import java.io.IOException;
+import java.lang.reflect.Array;
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainDisplay extends AnchorPane {
+
+    public Schema schema = new Schema("Untitled");
 
     @FXML SplitPane base_pane;
     @FXML AnchorPane main_display;
@@ -48,6 +56,8 @@ public class MainDisplay extends AnchorPane {
     private void initialize() {
         dragOverBlock = new DragBlock();
 //
+        Line line = new Line(500, 10, 10, 110);
+        main_display.getChildren().add(line);
         dragOverBlock.setVisible(false);
         dragOverBlock.setOpacity(0.65);
         getChildren().add(dragOverBlock);
@@ -60,59 +70,91 @@ public class MainDisplay extends AnchorPane {
         addDragDetection(block);
 
         block_chooser.getChildren().add(arithmeticLabel);
-        block.setName("Scitani");
+        block.setName("x+y");
         block.setType("arithmetic");
         block.setOperation("add");
         block_chooser.getChildren().add(block);
         block = new DragBlock("a");
         addDragDetection(block);
-        block.setName("Odcitani");
+        block.setName("x-y");
         block.setType("arithmetic");
         block.setOperation("sub");
         block_chooser.getChildren().add(block);
         block = new DragBlock("a");
         addDragDetection(block);
-        block.setName("Nasobeni");
+        block.setName("x*y");
         block.setType("arithmetic");
         block.setOperation("mult");
         block_chooser.getChildren().add(block);
         block = new DragBlock("a");
         addDragDetection(block);
-        block.setName("Deleni");
+        block.setName("x/y");
         block.setType("arithmetic");
         block.setOperation("div");
         block_chooser.getChildren().add(block);
         block = new DragBlock("a");
         addDragDetection(block);
-        block.setName("Umocneni");
+        block.setName("x^y");
         block.setType("arithmetic");
         block.setOperation("pow");
         block_chooser.getChildren().add(block);
         block_chooser.getChildren().add(goniometricLabel);
         block = new DragBlock("g");
         addDragDetection(block);
-        block.setName("Sinus");
+        block.setName("sin(x)");
         block.setType("goniometric");
         block.setOperation("sin");
         block_chooser.getChildren().add(block);
         block = new DragBlock("g");
         addDragDetection(block);
-        block.setName("Cosinus");
+        block.setName("cos(x)");
         block.setType("goniometric");
         block.setOperation("cos");
         block_chooser.getChildren().add(block);
         block = new DragBlock("g");
         addDragDetection(block);
-        block.setName("Tangens");
+        block.setName("tang(x)");
         block.setType("goniometric");
         block.setOperation("tang");
         block_chooser.getChildren().add(block);
         block = new DragBlock("g");
         addDragDetection(block);
-        block.setName("Cotangens");
+        block.setName("cotg(x)");
         block.setType("goniometric");
         block.setOperation("cotg");
         block_chooser.getChildren().add(block);
+        block_chooser.getChildren().add(unaryLabel);
+        block = new DragBlock("u");
+        addDragDetection(block);
+        block.setName("x^2");
+        block.setType("unary");
+        block.setOperation("pot");
+        block_chooser.getChildren().add(block);
+        block = new DragBlock("u");
+        addDragDetection(block);
+        block.setName("x^1/2");
+        block.setType("unary");
+        block.setOperation("sqr");
+        block_chooser.getChildren().add(block);
+        block = new DragBlock("u");
+        addDragDetection(block);
+        block.setName("x^1/3");
+        block.setType("unary");
+        block.setOperation("cro");
+        block_chooser.getChildren().add(block);
+        block = new DragBlock("u");
+        addDragDetection(block);
+        block.setName("x--");
+        block.setType("unary");
+        block.setOperation("dec");
+        block_chooser.getChildren().add(block);
+        block = new DragBlock("u");
+        addDragDetection(block);
+        block.setName("x++");
+        block.setType("unary");
+        block.setOperation("inc");
+        block_chooser.getChildren().add(block);
+
 
 //        for (int i = 0; i < 7; i++) {
 //
@@ -204,9 +246,14 @@ public class MainDisplay extends AnchorPane {
                         droppedBlock.relocateToPoint(new Point2D(cursorPoint.getX()-32,cursorPoint.getY()-32));
                         droppedBlock.setType(container.getValue("type"));
                         droppedBlock.setOperation(container.getValue("operation"));
+                        droppedBlock.setCoordinates(cursorPoint.getX(), cursorPoint.getY()-32);
                         droppedBlock.activateEvents();
                         System.out.println (container.getData().toString());
-
+                        schema.addBlock(droppedBlock.dragBlock);
+                        int blnum = schema.getBlocks().size();
+                        List<Block> list = schema.getBlocks();
+                        System.out.println(list.get(0).getX());
+//                        System.out.println(list.get(0).getY());
                     }
                 }
 

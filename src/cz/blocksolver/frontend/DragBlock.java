@@ -1,16 +1,13 @@
 package cz.blocksolver.frontend;
 
-import cz.blocksolver.backend.block.ArithmeticBlock;
-import cz.blocksolver.backend.block.Block;
-import cz.blocksolver.backend.block.GoniometricBlock;
-import cz.blocksolver.backend.block.IBlock;
+import cz.blocksolver.backend.block.*;
 import cz.blocksolver.backend.block.arithmetic.*;
 import cz.blocksolver.backend.block.goniometric.CosinusOperation;
 import cz.blocksolver.backend.block.goniometric.CotangensOperation;
 import cz.blocksolver.backend.block.goniometric.SinusOperation;
 import cz.blocksolver.backend.block.goniometric.TangensOperation;
+import cz.blocksolver.backend.block.unary.*;
 import cz.blocksolver.backend.port.PortType;
-import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -19,8 +16,11 @@ import javafx.scene.control.Label;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.shape.Circle;
+import javafx.scene.shape.Line;
 
 import java.io.IOException;
+
+import static sun.security.krb5.Confounder.intValue;
 
 public class DragBlock extends AnchorPane{
 
@@ -34,12 +34,13 @@ public class DragBlock extends AnchorPane{
     private EventHandler handle_input2 = null;
     private EventHandler handle_output = null;
 
-
+    public Integer XCoord;
+    public Integer YCoord;
     public String Index;
     public String Type;
     public String Operation;
 //    public Boolean eventsActive = false;
-    public IBlock dragBlock =  new ArithmeticBlock("Unknown", 0, 0, 64, 64, AddOperation.getInstance());
+    public Block dragBlock =  new ArithmeticBlock("Unknown", 0, 0, 64, 64, AddOperation.getInstance());
 
     public DragBlock(){
         FXMLLoader loader = new FXMLLoader();
@@ -69,6 +70,8 @@ public class DragBlock extends AnchorPane{
 
         if(type.equals("g")){
             input_2.setVisible(false);
+        }else if(type.equals("u")){
+            input_2.setVisible(false);
         }
 
     }
@@ -88,7 +91,7 @@ public class DragBlock extends AnchorPane{
                 @Override
                 public void handle(MouseEvent event) {
                     System.out.println(dragBlock.getType());
-                    String val = ChangeInput.display("first", dragBlock.getInputPort(1).getValue());
+                    String val = ChangeInputArithmetic.display("first", dragBlock.getInputPort(1).getValue());
                     if(val.equals("canceled")){
                         System.out.println(val);
                     }else{
@@ -100,7 +103,7 @@ public class DragBlock extends AnchorPane{
             handle_input2 = new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
-                    String val = ChangeInput.display("second", dragBlock.getInputPort(2).getValue());
+                    String val = ChangeInputArithmetic.display("second", dragBlock.getInputPort(2).getValue());
                     if(val.equals("canceled")){
                         System.out.println(val);
                     }else{
@@ -116,14 +119,62 @@ public class DragBlock extends AnchorPane{
                     System.out.println(dragBlock.getOutputPort().getValue());
                 }
             };
+            input_1.setOnMouseClicked(handle_input1);
+            input_2.setOnMouseClicked(handle_input2);
+            output.setOnMouseEntered(handle_output);
         }else if(Type.equals("goniometric")){
             input_2.setVisible(false);
+            handle_input1 = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    System.out.println(dragBlock.getType());
+                    GoniometricInput val = ChangeInputGoniometric.display("first", dragBlock.getInputPort(1).getValue(), dragBlock.getInputPort(1).getType());
+                    if(val.getValue().equals("canceled")){
+                        System.out.println(val.getValue());
+                    }else{
+                        System.out.println("Change " + val.getType());
+                        System.out.println("Change " + val.getValue());
+                        dragBlock.getInputPort(1).setValue(Double.parseDouble(val.getValue()));
+                        dragBlock.getInputPort(1).setType(val.getType());
+                    }
+                }
+            };
+            handle_output = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    dragBlock.executeBlock();
+                    System.out.println(dragBlock.getOutputPort().getValue());
+                }
+            };
+            input_1.setOnMouseClicked(handle_input1);
+            output.setOnMouseEntered(handle_output);
+        }else if(Type.equals("unary")){
+            input_2.setVisible(false);
+            handle_input1 = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    System.out.println(dragBlock.getType());
+                    String val = ChangeInputUnary.display("first", dragBlock.getInputPort(1).getValue());
+                    if(val.equals("canceled")){
+                        System.out.println(val);
+                    }else{
+                        System.out.println("Change " + val);
+                        dragBlock.getInputPort(1).setValue(Double.parseDouble(val));
+                    }
+                }
+            };
+
+            handle_output = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    dragBlock.executeBlock();
+                    System.out.println(dragBlock.getOutputPort().getValue());
+                }
+            };
+            input_1.setOnMouseClicked(handle_input1);
+            output.setOnMouseEntered(handle_output);
         }
 
-
-        input_1.setOnMouseClicked(handle_input1);
-        input_2.setOnMouseClicked(handle_input2);
-        output.setOnMouseEntered(handle_output);
     }
 
 
@@ -166,26 +217,41 @@ public class DragBlock extends AnchorPane{
     public void chooseBlock(){
         if (Type.equals("arithmetic")){
             if(Operation.equals("add")){
-                dragBlock =  new ArithmeticBlock("Unknown", 0, 0, 64, 64, AddOperation.getInstance());
+                dragBlock =  new ArithmeticBlock("Unknown", XCoord, YCoord, 64, 64, AddOperation.getInstance());
             }else if(Operation.equals("sub")){
-                dragBlock =  new ArithmeticBlock("Unknown", 0, 0, 64, 64, SubtractionOperation.getInstance());
+                dragBlock =  new ArithmeticBlock("Unknown", XCoord, YCoord, 64, 64, SubtractionOperation.getInstance());
             }else if(Operation.equals("mult")){
-                dragBlock =  new ArithmeticBlock("Unknown", 0, 0, 64, 64, MultiplyOperation.getInstance());
+                dragBlock =  new ArithmeticBlock("Unknown", XCoord, YCoord, 64, 64, MultiplyOperation.getInstance());
             }else if(Operation.equals("div")){
-                dragBlock =  new ArithmeticBlock("Unknown", 0, 0, 64, 64, DivisionOperation.getInstance());
+                dragBlock =  new ArithmeticBlock("Unknown", XCoord, YCoord, 64, 64, DivisionOperation.getInstance());
             }else if(Operation.equals("pow")){
-                dragBlock =  new ArithmeticBlock("Unknown", 0, 0, 64, 64, PowOperation.getInstance());
+                dragBlock =  new ArithmeticBlock("Unknown", XCoord, YCoord, 64, 64, PowOperation.getInstance());
             }
         }else if(Type.equals("goniometric")){
             if(Operation.equals("sin")){
-                dragBlock = new GoniometricBlock("Gon", 0, 0, 64, 64, SinusOperation.getInstance());
+                dragBlock = new GoniometricBlock("Gon", XCoord, YCoord, 64, 64, SinusOperation.getInstance());
                 dragBlock.getInputPort(1).setType(PortType.DEGREE);
             }else if(Operation.equals("cos")){
-                dragBlock = new GoniometricBlock("Gon", 0, 0, 64, 64, CosinusOperation.getInstance());
+                dragBlock = new GoniometricBlock("Gon", XCoord, YCoord, 64, 64, CosinusOperation.getInstance());
+                dragBlock.getInputPort(1).setType(PortType.DEGREE);
             }else if(Operation.equals("tang")){
-                dragBlock = new GoniometricBlock("Gon", 0, 0, 64, 64, TangensOperation.getInstance());
+                dragBlock = new GoniometricBlock("Gon", XCoord, YCoord, 64, 64, TangensOperation.getInstance());
+                dragBlock.getInputPort(1).setType(PortType.DEGREE);
             }else if(Operation.equals("cotg")){
-                dragBlock = new GoniometricBlock("Gon", 0, 0, 64, 64, CotangensOperation.getInstance());
+                dragBlock = new GoniometricBlock("Gon", XCoord, YCoord, 64, 64, CotangensOperation.getInstance());
+                dragBlock.getInputPort(1).setType(PortType.DEGREE);
+            }
+        }else if(Type.equals("unary")){
+            if(Operation.equals("cro")){
+                dragBlock = new UnaryBlock("Unary", XCoord, YCoord, 64, 64, CubeRootOperation.getInstance());
+            }else if(Operation.equals("pot")){
+                dragBlock = new UnaryBlock("Unary", XCoord, YCoord, 64, 64, SquareOperation.getInstance());
+            }else if(Operation.equals("sqr")){
+                dragBlock = new UnaryBlock("Unary", XCoord, YCoord, 64, 64, SquareRootOperation.getInstance());
+            }else if(Operation.equals("dec")){
+                dragBlock = new UnaryBlock("Unary", XCoord, YCoord, 64, 64, DecrementOperation.getInstance());
+            }else if(Operation.equals("inc")){
+                dragBlock = new UnaryBlock("Unary", XCoord, YCoord, 64, 64, IncrementOperation.getInstance());
             }
         }
     }
@@ -193,7 +259,16 @@ public class DragBlock extends AnchorPane{
     public void displayBlock(){
         if(Type.equals("goniometric")){
             input_2.setVisible(false);
+        }else if(Type.equals("unary")){
+            input_2.setVisible(false);
         }
+    }
+
+    public void setCoordinates(double x, double y) {
+        Double dx = new Double(x);
+        Double dy = new Double(y);
+        XCoord = dx.intValue();
+        YCoord = dy.intValue();
     }
     //    public void setType(String type){
 //        System.out.println("HERE");
