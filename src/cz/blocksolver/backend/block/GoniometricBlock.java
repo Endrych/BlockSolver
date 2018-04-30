@@ -38,11 +38,12 @@ public class GoniometricBlock extends Block {
         this.operation = operation;
     }
 
-    public void executeBlock(){
+    public Boolean executeBlock(Double one){
         //TODO kontrola zda uspel execute
-        result = operation.executeOperation(inputPort);
+        result = operation.executeOperation(one, inputPort.getType());
         outputPort.setValue(result.getResult());
         outputPort.setType(result.getPortType());
+        return true;
     }
 
     public InputPort getInputPort(Integer index){

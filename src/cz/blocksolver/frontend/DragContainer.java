@@ -14,9 +14,9 @@ public class DragContainer implements Serializable{
 
     private final List<Pair<String, Object>> dataPairs = new ArrayList<>();
 
-    public static final DataFormat Binding = new DataFormat("com.buddyware.treefrog.filesystem.view.FileSystemBinding");
+    public static final DataFormat Binding = new DataFormat("cz.blocksolver.frontend.view.FileSystemBinding");
 
-    public static final DataFormat Node = new DataFormat("com.buddyware.treefrog.filesystem.view.FileSystemNode");
+    public static final DataFormat Node = new DataFormat("cz.blocksolver.frontend.view.FileSystemNode");
 
     public DragContainer(){}
 

@@ -5,10 +5,30 @@ import java.util.Objects;
 public class InputPort extends Port {
     private OutputPort outputPort;
     private Integer index;
+    private Boolean valueSet;
+    private Boolean connectedToOutputPort;
 
     public InputPort(PortType type, Double value, Integer index) {
         super(type, value);
         this.index = index;
+        this.valueSet = false;
+        this.connectedToOutputPort = false;
+    }
+
+    public Boolean getValueSet() {
+        return valueSet;
+    }
+
+    public void setValueSet(Boolean valueSet) {
+        this.valueSet = valueSet;
+    }
+
+    public Boolean getConnectedToOutputPort() {
+        return connectedToOutputPort;
+    }
+
+    public void setConnectedToOutputPort(Boolean connectedToOutputPort) {
+        this.connectedToOutputPort = connectedToOutputPort;
     }
 
     public Integer getIndex() {

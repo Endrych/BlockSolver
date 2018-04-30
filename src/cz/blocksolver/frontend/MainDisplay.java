@@ -1,26 +1,35 @@
 package cz.blocksolver.frontend;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import cz.blocksolver.backend.block.Block;
+import cz.blocksolver.backend.block.BlockType;
+import cz.blocksolver.backend.port.InputPort;
+import cz.blocksolver.backend.port.OutputPort;
+import cz.blocksolver.backend.port.Port;
 import cz.blocksolver.backend.schema.Schema;
+import javafx.application.Platform;
+import javafx.event.ActionEvent;
 import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Point2D;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
-import javafx.scene.input.ClipboardContent;
-import javafx.scene.input.DataFormat;
-import javafx.scene.input.DragEvent;
-import javafx.scene.input.TransferMode;
+import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
+import jdk.internal.util.xml.impl.Input;
 
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
+import java.util.TreeMap;
+import java.util.concurrent.TimeUnit;
 
 public class MainDisplay extends AnchorPane {
 
@@ -30,12 +39,43 @@ public class MainDisplay extends AnchorPane {
     @FXML AnchorPane main_display;
     @FXML VBox block_chooser;
 
+
+    private MainDisplay self;
     private DragBlock dragOverBlock = null;
     private EventHandler blockDragOverRoot = null;
     private EventHandler blockDragDropped = null;
     private EventHandler blockDragOverMainDisplay = null;
+    private EventHandler connectBlocks = null;
+    private List<DragBlock> dragBlockList = new ArrayList<>();
 
-    private int Index = 1;
+
+    private Boolean outputActive = false;
+    private Map<String, Integer> outputCoords = new TreeMap<>();
+    public OutputPort outputPort;
+    public InputPort inputPort;
+    public Integer outputIndex;
+    public Integer inputIndex;
+    public Integer _index = 1;
+
+    public Boolean getOutputActive() {
+        return outputActive;
+    }
+
+    public void setOutputActive(Boolean outputActive) {
+        this.outputActive = outputActive;
+    }
+
+    public Map<String, Integer> getOutputCoords() {
+        return outputCoords;
+    }
+
+    public void setOutputCoords(Integer x,Integer y) {
+        System.out.println(x + " " + y);
+        outputCoords.put("x" , x);
+        outputCoords.put("y", y);
+    }
+
+    private Integer Index = 1;
 
     public MainDisplay(){
 
@@ -47,15 +87,55 @@ public class MainDisplay extends AnchorPane {
 
         try {
             loader.load();
-        }catch (IOException exception){
+        }catch (IOException exception) {
             throw new RuntimeException(exception);
         }
     }
 
     @FXML
     private void initialize() {
-        dragOverBlock = new DragBlock();
 //
+
+        Button btnStartExecuteChema = new Button("Start");
+        btnStartExecuteChema.setLayoutX(500);
+        btnStartExecuteChema.setLayoutY(50);
+
+        btnStartExecuteChema.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    executeSchema();
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        Button btnStartDebugChema = new Button("Debug");
+        btnStartDebugChema.setLayoutX(550);
+        btnStartDebugChema.setLayoutY(50);
+
+        btnStartDebugChema.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    debugSchema();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        main_display.getChildren().add(btnStartExecuteChema);
+        main_display.getChildren().add(btnStartDebugChema);
+
+
+
+        System.out.println("THIS " + this);
+        self = this;
+        System.out.println("Self " + self);
+        dragOverBlock = new DragBlock();
+
         Line line = new Line(500, 10, 10, 110);
         main_display.getChildren().add(line);
         dragOverBlock.setVisible(false);
@@ -66,89 +146,88 @@ public class MainDisplay extends AnchorPane {
         Label goniometricLabel = new Label("Goniometricke bloky");
         Label unaryLabel = new Label("Unarni bloky");
 
-        DragBlock block = new DragBlock();
+        DragBlock block = new DragBlock(self);
         addDragDetection(block);
-
         block_chooser.getChildren().add(arithmeticLabel);
         block.setName("x+y");
         block.setType("arithmetic");
         block.setOperation("add");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("a");
+        block = new DragBlock("a", self);
         addDragDetection(block);
         block.setName("x-y");
         block.setType("arithmetic");
         block.setOperation("sub");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("a");
+        block = new DragBlock("a",  self);
         addDragDetection(block);
         block.setName("x*y");
         block.setType("arithmetic");
         block.setOperation("mult");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("a");
+        block = new DragBlock("a", self);
         addDragDetection(block);
         block.setName("x/y");
         block.setType("arithmetic");
         block.setOperation("div");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("a");
+        block = new DragBlock("a", self);
         addDragDetection(block);
         block.setName("x^y");
         block.setType("arithmetic");
         block.setOperation("pow");
         block_chooser.getChildren().add(block);
         block_chooser.getChildren().add(goniometricLabel);
-        block = new DragBlock("g");
+        block = new DragBlock("g", self);
         addDragDetection(block);
         block.setName("sin(x)");
         block.setType("goniometric");
         block.setOperation("sin");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("g");
+        block = new DragBlock("g", self);
         addDragDetection(block);
         block.setName("cos(x)");
         block.setType("goniometric");
         block.setOperation("cos");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("g");
+        block = new DragBlock("g",  self);
         addDragDetection(block);
         block.setName("tang(x)");
         block.setType("goniometric");
         block.setOperation("tang");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("g");
+        block = new DragBlock("g", self);
         addDragDetection(block);
         block.setName("cotg(x)");
         block.setType("goniometric");
         block.setOperation("cotg");
         block_chooser.getChildren().add(block);
         block_chooser.getChildren().add(unaryLabel);
-        block = new DragBlock("u");
+        block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x^2");
         block.setType("unary");
         block.setOperation("pot");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("u");
+        block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x^1/2");
         block.setType("unary");
         block.setOperation("sqr");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("u");
+        block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x^1/3");
         block.setType("unary");
         block.setOperation("cro");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("u");
+        block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x--");
         block.setType("unary");
         block.setOperation("dec");
         block_chooser.getChildren().add(block);
-        block = new DragBlock("u");
+        block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x++");
         block.setType("unary");
@@ -165,8 +244,38 @@ public class MainDisplay extends AnchorPane {
 //            block.setName("Block " + i);
 //            block_chooser.getChildren().add(block);
 //        }
-
+        main_display.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent mouseEvent) {
+                System.out.println("mouse click detected! " + mouseEvent.getSource());
+//                outputActive = false;
+            }
+        });
         buildDragHandlers();
+    }
+
+    public Line ConnectBlocks(Integer x, Integer y, String type, Integer portNum){
+        Line line = new Line();
+
+        if(type.equals("a")){
+            if(portNum == 1){
+                line = new Line(outputCoords.get("x")-210, outputCoords.get("y")-27, x-270, y-34);
+            }else{
+                line = new Line(outputCoords.get("x")-210, outputCoords.get("y")-27, x-270, y-14);
+            }
+            main_display.getChildren().add(line);
+            return line;
+        }else if(type.equals("u")){
+            line = new Line(outputCoords.get("x")-210, outputCoords.get("y")-27, x-270, y-34);
+            main_display.getChildren().add(line);
+            return line;
+        }else if(type.equals("g")){
+            line = new Line(outputCoords.get("x")-210, outputCoords.get("y")-27, x-270, y-34);
+            main_display.getChildren().add(line);
+            return line;
+        }
+
+        return line;
     }
 
     private void buildDragHandlers(){
@@ -236,7 +345,7 @@ public class MainDisplay extends AnchorPane {
 
                 if(container != null){
                     if(container.getValue("scene_coords") != null){
-                        DragBlock droppedBlock = new DragBlock();
+                        DragBlock droppedBlock = new DragBlock(self);
 
                         droppedBlock.setName(container.getValue("name"));
                         main_display.getChildren().add(droppedBlock);
@@ -246,10 +355,15 @@ public class MainDisplay extends AnchorPane {
                         droppedBlock.relocateToPoint(new Point2D(cursorPoint.getX()-32,cursorPoint.getY()-32));
                         droppedBlock.setType(container.getValue("type"));
                         droppedBlock.setOperation(container.getValue("operation"));
+//                        droppedBlock.setDisplay(self);
                         droppedBlock.setCoordinates(cursorPoint.getX(), cursorPoint.getY()-32);
+//                        droppedBlock.XCoord
+                        droppedBlock.setIndex(Index);
+                        Index++;
                         droppedBlock.activateEvents();
                         System.out.println (container.getData().toString());
                         schema.addBlock(droppedBlock.dragBlock);
+                        dragBlockList.add(droppedBlock);
                         int blnum = schema.getBlocks().size();
                         List<Block> list = schema.getBlocks();
                         System.out.println(list.get(0).getX());
@@ -283,10 +397,11 @@ public class MainDisplay extends AnchorPane {
             DragContainer container = new DragContainer();
 
             container.addData("name", dragOverBlock.getName());
-            container.addData("position", Index);
-            Index++;
+//            container.addData("position", Index);
+//            Index++;
             container.addData("type", dragOverBlock.getType());
             container.addData("operation", dragOverBlock.getOperation());
+//            container.addData("display", );
             content.put(DragContainer.AddNode, container);
 
             dragOverBlock.startDragAndDrop(TransferMode.ANY).setContent(content);
@@ -298,4 +413,199 @@ public class MainDisplay extends AnchorPane {
 
         });
     }
+
+    public boolean checkPortsIndex() {
+        if(outputIndex == inputIndex){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
+    private Double getPortValue(InputPort port){
+        if(port.getConnectedToOutputPort()){
+            return port.getOutputPort().getValue();
+        }else if(port.getValueSet()){
+            return port.getValue();
+        }else{
+            return 0.0;
+        }
+    }
+
+    private Boolean hasSetValue(InputPort port){
+        if(port.getConnectedToOutputPort()){
+            if(port.getOutputPort().getContainsResult()){
+                return true;
+            }
+            return false;
+    }else if(port.getValueSet()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+
+    public void fillBlocks(){
+
+    }
+
+    public void executeSchema() throws InterruptedException {
+        System.out.println("SCHEMA EXXECUTING");
+        for(int i = 0; i < schema.getBlocks().size(); i++) {
+            schema.getBlocks().get(i).setExecuted(false);
+            schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
+        }
+
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                Boolean executedSome = false;
+                _index = 1;
+
+                do{
+                    executedSome = executeBlock(executedSome);
+                }while(executedSome);
+            }
+        }).start();
+
+    }
+
+    public void debugSchema(){
+        System.out.println("SCHEMA Debugging");
+        for(int i = 0; i < schema.getBlocks().size(); i++) {
+            schema.getBlocks().get(i).setExecuted(false);
+            schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
+        }
+
+        Boolean executedSome = false;
+        _index = 1;
+        Button btnDebugStep = new Button("Step");
+        btnDebugStep.setLayoutX(625);
+        btnDebugStep.setLayoutY(50);
+
+        btnDebugStep.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                try {
+                    executeBlock(true);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        main_display.getChildren().add(btnDebugStep);
+    }
+
+    public Boolean executeBlock(Boolean executedSome){
+        for(int i = 0; i < schema.getBlocks().size(); i++){
+            if(executedSome){
+                dragBlockList.get(_index).removeHiglight();
+            }
+            executedSome = false;
+            System.out.println(schema.getBlocks().get(i));
+            if(schema.getBlocks().get(i).getType() == BlockType.ARITHMETIC){
+                System.out.println("Je aritmeticky");
+                if(hasSetValue(schema.getBlocks().get(i).getInputPort(1)) && hasSetValue(schema.getBlocks().get(i).getInputPort(2))){
+                    System.out.println("Hodnoty nastaveny");
+                    if(!schema.getBlocks().get(i).getExecuted()){
+                        if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)), getPortValue(schema.getBlocks().get(i).getInputPort(2)))){
+                            System.out.println("Value in executed block " + schema.getBlocks().get(i).getOutputPort().getValue());
+                            executedSome = true;
+                            schema.getBlocks().get(i).setExecuted(true);
+                            schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
+                            new Thread(new Runnable() {
+                                private int myParam;
+                                public Runnable init(int myParam) {
+                                    this.myParam = myParam;
+                                    return this;
+                                }
+                                @Override
+                                public void run() {
+                                    dragBlockList.get(myParam).higlight();
+                                }
+                            }.init(i)).start();
+
+                            _index = i;
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            return true;
+                        }
+                    }
+                }
+            }else if(schema.getBlocks().get(i).getType() == BlockType.UNARY){
+                System.out.println("Je Unarni");
+                if(hasSetValue(schema.getBlocks().get(i).getInputPort(1))){
+                    System.out.println("Hodnoty nastaveny");
+                    if(!schema.getBlocks().get(i).getExecuted()){
+                        if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)))){
+                            System.out.println("Value in executed block " + schema.getBlocks().get(i).getOutputPort().getValue());
+                            executedSome = true;
+                            schema.getBlocks().get(i).setExecuted(true);
+                            schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
+                            new Thread(new Runnable() {
+                                private int myParam;
+                                public Runnable init(int myParam) {
+                                    this.myParam = myParam;
+                                    return this;
+                                }
+                                @Override
+                                public void run() {
+                                    dragBlockList.get(myParam).higlight();
+                                }
+                            }.init(i)).start();
+
+                            _index = i;
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            return true;
+                        }
+                    }
+                }
+            }else if(schema.getBlocks().get(i).getType() == BlockType.GONIOMETRIC){
+                System.out.println("Je Goniometricky");
+                if(hasSetValue(schema.getBlocks().get(i).getInputPort(1))){
+                    System.out.println("Hodnoty nastaveny");
+                    if(!schema.getBlocks().get(i).getExecuted()){
+                        if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)))){
+                            System.out.println("Value in executed block " + schema.getBlocks().get(i).getOutputPort().getValue());
+                            executedSome = true;
+                            schema.getBlocks().get(i).setExecuted(true);
+                            schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
+                            new Thread(new Runnable() {
+                                private int myParam;
+                                public Runnable init(int myParam) {
+                                    this.myParam = myParam;
+                                    return this;
+                                }
+                                @Override
+                                public void run() {
+                                    dragBlockList.get(myParam).higlight();
+                                }
+                            }.init(i)).start();
+
+                            _index = i;
+                            try {
+                                Thread.sleep(500);
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                            return true;
+                        }
+                    }
+                }
+
+            }
+
+        }
+        return false;
+    }
+
 }

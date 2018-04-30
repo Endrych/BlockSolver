@@ -17,21 +17,21 @@ public class TangensOperation implements IGoniometricOperation {
     private TangensOperation() {
     }
 
-    public static IGoniometricOperation getInstance(){
-        if(instance == null){
+    public static IGoniometricOperation getInstance() {
+        if (instance == null) {
             instance = new TangensOperation();
         }
 
         return instance;
     }
 
+    
     @Override
-    public OperationResult executeOperation(InputPort input) {
-        PortType type = input.getType();
+    public OperationResult executeOperation(Double val,PortType type) {
         if(type == PortType.RADIAN){
-            result = tangensFromRadian(input.getValue());
+            result = tangensFromRadian(val);
         }else if(type == PortType.DEGREE){
-            result = tangensFromDegree(input.getValue());
+            result = tangensFromDegree(val);
         }else{
 //            TODO: CHYBA
         }

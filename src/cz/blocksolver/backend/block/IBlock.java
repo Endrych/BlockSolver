@@ -4,7 +4,7 @@ import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 
 public interface IBlock {
-    void executeBlock();
+//    Boolean executeBlock(Double one, Double two);
     BlockType getType();
     String getName();
     void setName(String name);

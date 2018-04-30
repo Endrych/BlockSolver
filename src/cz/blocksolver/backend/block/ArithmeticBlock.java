@@ -37,18 +37,21 @@ public class ArithmeticBlock extends Block implements IBlock {
         this.operation = operation;
     }
 
-    @Override
-    public void executeBlock(){
+    public Boolean executeBlock(Double one, Double two){
         if(compareTypes()) {
-            this.result = operation.executeOperation(inputPorts[0].getValue(), inputPorts[1].getValue());
+            this.result = operation.executeOperation(one,two);
             if(this.result.getStatus()){
                 outputPort.setValue(result.getResult());
+                return true;
             }else{
             }
         }else{
 //            TODO:
         }
+
+        return false;
     }
+
 
     private Boolean compareTypes(){
         return inputPorts[0].getType() == inputPorts[1].getType();

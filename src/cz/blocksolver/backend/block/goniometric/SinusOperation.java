@@ -27,13 +27,14 @@ public class SinusOperation implements IGoniometricOperation {
         return instance;
     }
 
+
+
     @Override
-    public OperationResult executeOperation(InputPort input) {
-        PortType type = input.getType();
+    public OperationResult executeOperation(Double val,PortType type) {
         if(type == PortType.RADIAN){
-            result = sinusFromRadian(input.getValue());
+            result = sinusFromRadian(val);
         }else if(type == PortType.DEGREE){
-            result = sinusFromDegree(input.getValue());
+            result = sinusFromDegree(val);
         }else{
 //            TODO: CHYBA
         }

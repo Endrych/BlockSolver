@@ -32,10 +32,10 @@ public class UnaryBlock extends Block{
         listOfOperations.add(CubeRootOperation.getInstance());
     }
 
-    @Override
-    public void executeBlock() {
-        result = this.operation.executeOperation(inputPort.getValue());
+    public Boolean executeBlock(Double one) {
+        result = this.operation.executeOperation(one);
         outputPort.setValue(result.getResult());
+        return true;
     }
 
     public InputPort getInputPort(Integer index){

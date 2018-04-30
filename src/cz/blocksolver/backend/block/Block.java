@@ -10,6 +10,8 @@ public abstract class Block implements IBlock {
     protected Integer x, y, width, height;
     protected OutputPort outputPort;
     protected BlockType type;
+    protected Boolean executed;
+
 
     public Block(String name, Integer x, Integer y, Integer width, Integer height, BlockType type) {
         this.name = name;
@@ -19,14 +21,36 @@ public abstract class Block implements IBlock {
         this.height = height;
         this.outputPort = new OutputPort(PortType.NUMBER, 0.0);
         this.type = type;
+        this.executed = false;
+    }
+
+    public void setOutputPort(OutputPort outputPort) {
+        this.outputPort = outputPort;
+    }
+
+    public void setType(BlockType type) {
+        this.type = type;
+    }
+
+    public Boolean getExecuted() {
+        return executed;
+    }
+
+    public void setExecuted(Boolean executed) {
+        this.executed = executed;
     }
 
     public BlockType getType() {
         return type;
     }
 
-    @Override
-    public abstract void executeBlock();
+    public Boolean executeBlock(Double one, Double two) {
+        return null;
+    }
+
+    public Boolean executeBlock(Double one) {
+        return null;
+    }
 
     @Override
     public abstract InputPort getInputPort(Integer index);

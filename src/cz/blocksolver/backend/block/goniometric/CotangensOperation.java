@@ -25,13 +25,13 @@ public class CotangensOperation implements IGoniometricOperation {
         return instance;
     }
 
+
     @Override
-    public OperationResult executeOperation(InputPort input) {
-        PortType type = input.getType();
+    public OperationResult executeOperation(Double val,PortType type) {
         if(type == PortType.RADIAN){
-            result = cotangensFromRadian(input.getValue());
+            result = cotangensFromRadian(val);
         }else if(type == PortType.DEGREE){
-            result = cotangensFromDegree(input.getValue());
+            result = cotangensFromDegree(val);
         }else{
 //            TODO: CHYBA
         }
