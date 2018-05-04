@@ -4,10 +4,19 @@ public abstract class Port {
     protected String name;
     protected PortType type;
     protected Double value;
+    protected Integer blockIndex;
 
     public Port(PortType type, Double value){
         this.type = type;
         this.value = value;
+    }
+
+    public Integer getBlockIndex() {
+        return blockIndex;
+    }
+
+    public void setBlockIndex(Integer blockIndex) {
+        this.blockIndex = blockIndex;
     }
 
     public String getName() {

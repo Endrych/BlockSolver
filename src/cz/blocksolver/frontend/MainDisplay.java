@@ -22,7 +22,9 @@ import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import jdk.internal.util.xml.impl.Input;
+import org.xml.sax.SAXException;
 
+import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
@@ -46,7 +48,7 @@ public class MainDisplay extends AnchorPane {
     private EventHandler blockDragDropped = null;
     private EventHandler blockDragOverMainDisplay = null;
     private EventHandler connectBlocks = null;
-    private List<DragBlock> dragBlockList = new ArrayList<>();
+    private ArrayList<DragBlock> dragBlockList = new ArrayList<>();
 
 
     private Boolean outputActive = false;
@@ -99,6 +101,12 @@ public class MainDisplay extends AnchorPane {
         Button btnStartExecuteChema = new Button("Start");
         btnStartExecuteChema.setLayoutX(500);
         btnStartExecuteChema.setLayoutY(50);
+        Button btnLoadSchema = new Button("Load");
+        btnLoadSchema.setLayoutX(450);
+        btnLoadSchema.setLayoutY(50);
+        Button btnSaveSchema = new Button("Save");
+        btnSaveSchema.setLayoutX(400);
+        btnSaveSchema.setLayoutY(50);
 
         btnStartExecuteChema.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -107,7 +115,27 @@ public class MainDisplay extends AnchorPane {
                     executeSchema();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
+                } catch (SAXException e) {
+                    e.printStackTrace();
+                } catch (ParserConfigurationException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
                 }
+            }
+        });
+
+        btnLoadSchema.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                loadSchema();
+            }
+        });
+
+        btnSaveSchema.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent event) {
+                saveSchema();
             }
         });
 
@@ -128,6 +156,8 @@ public class MainDisplay extends AnchorPane {
 
         main_display.getChildren().add(btnStartExecuteChema);
         main_display.getChildren().add(btnStartDebugChema);
+        main_display.getChildren().add(btnLoadSchema);
+        main_display.getChildren().add(btnSaveSchema);
 
 
 
@@ -254,23 +284,78 @@ public class MainDisplay extends AnchorPane {
         buildDragHandlers();
     }
 
+    public Integer getIndex() {
+        return Index;
+    }
+
+    public void setIndex(Integer index) {
+        Index = index;
+    }
+
     public Line ConnectBlocks(Integer x, Integer y, String type, Integer portNum){
         Line line = new Line();
 
         if(type.equals("a")){
             if(portNum == 1){
-                line = new Line(outputCoords.get("x")-210, outputCoords.get("y")-27, x-270, y-34);
+                line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-34);
             }else{
-                line = new Line(outputCoords.get("x")-210, outputCoords.get("y")-27, x-270, y-14);
+                line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-14);
             }
             main_display.getChildren().add(line);
             return line;
         }else if(type.equals("u")){
-            line = new Line(outputCoords.get("x")-210, outputCoords.get("y")-27, x-270, y-34);
+            line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-34);
             main_display.getChildren().add(line);
             return line;
         }else if(type.equals("g")){
-            line = new Line(outputCoords.get("x")-210, outputCoords.get("y")-27, x-270, y-34);
+            line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-34);
+            main_display.getChildren().add(line);
+            return line;
+        }
+
+        return line;
+    }
+
+    public void loadSchema(){
+        LoadSchema sch = new LoadSchema();
+        try {
+            sch.execute(this, schema, dragBlockList);
+        } catch (ParserConfigurationException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (SAXException e) {
+            e.printStackTrace();
+        }
+        for(int i=0; i < dragBlockList.size(); i++){
+            dragBlockList.get(i).activateEvents(true);
+        }
+    }
+
+    public void saveSchema(){
+        SaveSchema sch = new SaveSchema();
+        sch.execute(schema, dragBlockList);
+        System.out.println("SCHEMA Debugging");
+    }
+
+    public Line LoadLines(Integer out_x, Integer out_y, Integer in_x, Integer in_y, String type, Integer portNum){
+        Line line = new Line();
+        out_x += 32;
+        in_x += 32;
+        if(type.equals("a")){
+            if(portNum == 1){
+                line = new Line(out_x-210, out_y-27, in_x-270, in_y-34);
+            }else{
+                line = new Line(out_x-210, out_y-27, in_x-270, in_y-14);
+            }
+            main_display.getChildren().add(line);
+            return line;
+        }else if(type.equals("u")){
+            line = new Line(out_x-210, out_y-27, in_x-270, in_y-34);
+            main_display.getChildren().add(line);
+            return line;
+        }else if(type.equals("g")){
+            line = new Line(out_x-210, out_y-27, in_x-270, in_y-34);
             main_display.getChildren().add(line);
             return line;
         }
@@ -356,18 +441,20 @@ public class MainDisplay extends AnchorPane {
                         droppedBlock.setType(container.getValue("type"));
                         droppedBlock.setOperation(container.getValue("operation"));
 //                        droppedBlock.setDisplay(self);
-                        droppedBlock.setCoordinates(cursorPoint.getX(), cursorPoint.getY()-32);
+                        droppedBlock.setCoordinates(cursorPoint.getX()-32, cursorPoint.getY()-32);
 //                        droppedBlock.XCoord
                         droppedBlock.setIndex(Index);
+                        droppedBlock.dragBlock.getInputPort(1).setBlockIndex(Index);
+                        if(droppedBlock.dragBlock.getType() == BlockType.ARITHMETIC){
+                            droppedBlock.dragBlock.getInputPort(2).setBlockIndex(Index);
+                        }
+                        droppedBlock.dragBlock.getOutputPort().setBlockIndex(Index);
                         Index++;
-                        droppedBlock.activateEvents();
+                        droppedBlock.activateEvents(false);
                         System.out.println (container.getData().toString());
                         schema.addBlock(droppedBlock.dragBlock);
                         dragBlockList.add(droppedBlock);
-                        int blnum = schema.getBlocks().size();
-                        List<Block> list = schema.getBlocks();
-                        System.out.println(list.get(0).getX());
-//                        System.out.println(list.get(0).getY());
+
                     }
                 }
 
@@ -446,11 +533,41 @@ public class MainDisplay extends AnchorPane {
     }
 
     public void fillBlocks(){
+        for(int i = 0; i < schema.getBlocks().size(); i++) {
+            if(!schema.getBlocks().get(i).getInputPort(1).getValueSet() &&
+                    !schema.getBlocks().get(i).getInputPort(1).getConnectedToOutputPort()){
+                dragBlockList.get(i).higlight();
+                dragBlockList.get(i).demandInputValue(1);
+                dragBlockList.get(i).removeHiglight();
+            }
+            if(schema.getBlocks().get(i).getType() == BlockType.ARITHMETIC){
+                if(!schema.getBlocks().get(i).getInputPort(2).getValueSet() &&
+                        !schema.getBlocks().get(i).getInputPort(2).getConnectedToOutputPort()){
+                    dragBlockList.get(i).higlight();
+                    dragBlockList.get(i).demandInputValue(2);
+                    dragBlockList.get(i).removeHiglight();
+                }
+            }
 
+        }
     }
 
-    public void executeSchema() throws InterruptedException {
+    public void checkForCycles(){
+        List inputIndex = new ArrayList();
+        for(int i = 0; i < schema.getBlocks().size(); i++) {
+            if (schema.getBlocks().get(i).getInputPort(1).getConnectedToOutputPort()) {
+
+            }
+        }
+    }
+
+    public void executeSchema() throws InterruptedException, IOException, SAXException, ParserConfigurationException {
+
+        System.out.println(schema.getBlocks().get(1).getX());
         System.out.println("SCHEMA EXXECUTING");
+////
+        fillBlocks();
+
         for(int i = 0; i < schema.getBlocks().size(); i++) {
             schema.getBlocks().get(i).setExecuted(false);
             schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
@@ -472,7 +589,9 @@ public class MainDisplay extends AnchorPane {
     }
 
     public void debugSchema(){
-        System.out.println("SCHEMA Debugging");
+
+        fillBlocks();
+
         for(int i = 0; i < schema.getBlocks().size(); i++) {
             schema.getBlocks().get(i).setExecuted(false);
             schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
