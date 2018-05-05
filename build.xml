@@ -61,7 +61,7 @@
 
 
     <target name="doc" description="Generate documentation">
-        <javadoc packagenames = "cz.blocksolver.backend.*" sourcepath = "${src}"
+        <javadoc packagenames = "cz.blocksolver.frontend.*,cz.blocksolver.backend.*" sourcepath = "${src}"
                  destdir = "doc/javadoc" version = "true" windowtitle = "BlockSolver">
 
             <doctitle><![CDATA[= BlockSolver =]]></doctitle>
