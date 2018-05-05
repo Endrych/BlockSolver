@@ -24,6 +24,7 @@ import java.util.ArrayList;
 
 public class LoadSchema {
     public void execute(MainDisplay display, Schema schema, ArrayList<DragBlock> dragBlocks) throws ParserConfigurationException, IOException, SAXException {
+
         Integer Index = 1;
         String filePath = "C:\\savedFile\\cars.xml";
         File xmlFile = new File(filePath);
@@ -223,7 +224,8 @@ public class LoadSchema {
                                         Integer.parseInt(eElement.getElementsByTagName("in_x").item(0).getTextContent()),
                                         Integer.parseInt(eElement.getElementsByTagName("in_y").item(0).getTextContent()) ,
                                         eElement.getElementsByTagName("type").item(0).getTextContent(),
-                                        1
+                                        1,
+                                        myOut
                                 )
                         ));
                     }
@@ -251,7 +253,8 @@ public class LoadSchema {
                                         Integer.parseInt(eElement.getElementsByTagName("in_x2").item(0).getTextContent()),
                                         Integer.parseInt(eElement.getElementsByTagName("in_y2").item(0).getTextContent()) ,
                                         eElement.getElementsByTagName("type2").item(0).getTextContent(),
-                                        2
+                                        2,
+                                        myOut
                                 )
                         ));
                     }

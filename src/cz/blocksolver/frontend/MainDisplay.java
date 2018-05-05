@@ -50,6 +50,7 @@ public class MainDisplay extends AnchorPane {
     private EventHandler connectBlocks = null;
     private ArrayList<DragBlock> dragBlockList = new ArrayList<>();
 
+    private EventHandler handle_line_hover = null;
 
     private Boolean outputActive = false;
     private Map<String, Integer> outputCoords = new TreeMap<>();
@@ -166,8 +167,6 @@ public class MainDisplay extends AnchorPane {
         System.out.println("Self " + self);
         dragOverBlock = new DragBlock();
 
-        Line line = new Line(500, 10, 10, 110);
-        main_display.getChildren().add(line);
         dragOverBlock.setVisible(false);
         dragOverBlock.setOpacity(0.65);
         getChildren().add(dragOverBlock);
@@ -264,16 +263,6 @@ public class MainDisplay extends AnchorPane {
         block.setOperation("inc");
         block_chooser.getChildren().add(block);
 
-
-//        for (int i = 0; i < 7; i++) {
-//
-//            DragBlock block = new DragBlock();
-//
-//            addDragDetection(block);
-//
-//            block.setName("Block " + i);
-//            block_chooser.getChildren().add(block);
-//        }
         main_display.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
@@ -317,6 +306,14 @@ public class MainDisplay extends AnchorPane {
     }
 
     public void loadSchema(){
+        for(int i = 0; i < dragBlockList.size(); i++){
+            dragBlockList.get(i).setVisible(false);
+        }
+        for(int i = dragBlockList.size()-1; i >= 0; i--){
+            dragBlockList.remove(i);
+        }
+
+        schema = new Schema(schema.getName());
         LoadSchema sch = new LoadSchema();
         try {
             sch.execute(this, schema, dragBlockList);
@@ -338,7 +335,7 @@ public class MainDisplay extends AnchorPane {
         System.out.println("SCHEMA Debugging");
     }
 
-    public Line LoadLines(Integer out_x, Integer out_y, Integer in_x, Integer in_y, String type, Integer portNum){
+    public Line LoadLines(Integer out_x, Integer out_y, Integer in_x, Integer in_y, String type, Integer portNum, OutputPort outPort){
         Line line = new Line();
         out_x += 32;
         in_x += 32;
@@ -349,16 +346,32 @@ public class MainDisplay extends AnchorPane {
                 line = new Line(out_x-210, out_y-27, in_x-270, in_y-14);
             }
             main_display.getChildren().add(line);
-            return line;
         }else if(type.equals("u")){
             line = new Line(out_x-210, out_y-27, in_x-270, in_y-34);
             main_display.getChildren().add(line);
-            return line;
         }else if(type.equals("g")){
             line = new Line(out_x-210, out_y-27, in_x-270, in_y-34);
             main_display.getChildren().add(line);
-            return line;
         }
+
+        handle_line_hover =  new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(outPort.getContainsResult()){
+                    //vlakna
+                    System.out.println(outPort.getValue());
+                    Label tempLabel = new Label();
+                    tempLabel.setText(outPort.getValue().toString());
+                    main_display.getChildren().add(tempLabel);
+                }else{
+                    System.out.println("Block not executed");
+                    Label tempLabel = new Label();
+                    tempLabel.setText("Block not executed");
+                    main_display.getChildren().add(tempLabel);
+                }
+            }
+        };
+        line.setOnMouseEntered(handle_line_hover);
 
         return line;
     }
@@ -552,69 +565,102 @@ public class MainDisplay extends AnchorPane {
         }
     }
 
-    public void checkForCycles(){
+    public Boolean checkForCycles(){
         List inputIndex = new ArrayList();
+        Boolean hasCycle = false;
         for(int i = 0; i < schema.getBlocks().size(); i++) {
-            if (schema.getBlocks().get(i).getInputPort(1).getConnectedToOutputPort()) {
+            schema.getBlocks().get(i).setExecuted(false);
+            schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
+        }
+                Boolean executedSome = false;
+                do{
+                    executedSome = cycleChecker();
+                }while(executedSome);
 
+
+        for(int i = 0; i < schema.getBlocks().size();i++){
+            if(!hasSetValue(schema.getBlocks().get(i).getInputPort(1))){
+                dragBlockList.get(i).higlight();
+                hasCycle = true;
+            }
+            else if(schema.getBlocks().get(i).getType() == BlockType.ARITHMETIC){
+                if(!hasSetValue(schema.getBlocks().get(i).getInputPort(2))){
+                    dragBlockList.get(i).higlight();
+                    hasCycle = true;
+                }else{
+                    dragBlockList.get(i).removeHiglight();
+                }
+            }
+            else{
+                dragBlockList.get(i).removeHiglight();
             }
         }
-    }
-
-    public void executeSchema() throws InterruptedException, IOException, SAXException, ParserConfigurationException {
-
-        System.out.println(schema.getBlocks().get(1).getX());
-        System.out.println("SCHEMA EXXECUTING");
-////
-        fillBlocks();
 
         for(int i = 0; i < schema.getBlocks().size(); i++) {
             schema.getBlocks().get(i).setExecuted(false);
             schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
         }
+        System.out.println(hasCycle.toString());
+        return hasCycle;
+    }
 
+    public void executeSchema() throws InterruptedException, IOException, SAXException, ParserConfigurationException {
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                Boolean executedSome = false;
-                _index = 1;
+        System.out.println("SCHEMA EXXECUTING");
+////
+        fillBlocks();
 
-                do{
-                    executedSome = executeBlock(executedSome);
-                }while(executedSome);
+        if(!checkForCycles()){
+            for(int i = 0; i < schema.getBlocks().size(); i++) {
+                schema.getBlocks().get(i).setExecuted(false);
+                schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
             }
-        }).start();
 
+
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Boolean executedSome = false;
+                    _index = 1;
+
+                    do{
+                        executedSome = executeBlock(executedSome);
+                    }while(executedSome);
+                }
+            }).start();
+        }
     }
 
     public void debugSchema(){
 
         fillBlocks();
 
-        for(int i = 0; i < schema.getBlocks().size(); i++) {
-            schema.getBlocks().get(i).setExecuted(false);
-            schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
+        if(!checkForCycles()){
+            for(int i = 0; i < schema.getBlocks().size(); i++) {
+                schema.getBlocks().get(i).setExecuted(false);
+                schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
+            }
+
+            Boolean executedSome = false;
+            _index = 1;
+            Button btnDebugStep = new Button("Step");
+            btnDebugStep.setLayoutX(625);
+            btnDebugStep.setLayoutY(50);
+
+            btnDebugStep.setOnAction(new EventHandler<ActionEvent>() {
+                @Override
+                public void handle(ActionEvent event) {
+                    try {
+                        executeBlock(true);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+
+            main_display.getChildren().add(btnDebugStep);
         }
 
-        Boolean executedSome = false;
-        _index = 1;
-        Button btnDebugStep = new Button("Step");
-        btnDebugStep.setLayoutX(625);
-        btnDebugStep.setLayoutY(50);
-
-        btnDebugStep.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                try {
-                    executeBlock(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-
-        main_display.getChildren().add(btnDebugStep);
     }
 
     public Boolean executeBlock(Boolean executedSome){
@@ -716,6 +762,52 @@ public class MainDisplay extends AnchorPane {
                             } catch (InterruptedException e) {
                                 e.printStackTrace();
                             }
+                            return true;
+                        }
+                    }
+                }
+
+            }
+
+        }
+        return false;
+    }
+
+    public Boolean cycleChecker(){
+        for(int i = 0; i < schema.getBlocks().size(); i++){
+            System.out.println(schema.getBlocks().get(i));
+            if(schema.getBlocks().get(i).getType() == BlockType.ARITHMETIC){
+                if(hasSetValue(schema.getBlocks().get(i).getInputPort(1)) && hasSetValue(schema.getBlocks().get(i).getInputPort(2))){
+                    if(!schema.getBlocks().get(i).getExecuted()){
+                        if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)), getPortValue(schema.getBlocks().get(i).getInputPort(2)))){
+                            schema.getBlocks().get(i).setExecuted(true);
+                            schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
+                            schema.getBlocks().get(i).getOutputPort().setValue(0.0);
+                            return true;
+                        }
+                    }
+                }
+            }else if(schema.getBlocks().get(i).getType() == BlockType.UNARY){
+                if(hasSetValue(schema.getBlocks().get(i).getInputPort(1))){
+                    if(!schema.getBlocks().get(i).getExecuted()){
+                        if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)))){
+                            schema.getBlocks().get(i).setExecuted(true);
+                            schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
+                            schema.getBlocks().get(i).getOutputPort().setValue(0.0);
+                            return true;
+                        }
+                    }
+                }
+            }else if(schema.getBlocks().get(i).getType() == BlockType.GONIOMETRIC){
+                System.out.println("Je Goniometricky");
+                if(hasSetValue(schema.getBlocks().get(i).getInputPort(1))){
+                    System.out.println("Hodnoty nastaveny");
+                    if(!schema.getBlocks().get(i).getExecuted()){
+                        if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)))){
+                            System.out.println("Value in executed block " + schema.getBlocks().get(i).getOutputPort().getValue());
+                            schema.getBlocks().get(i).setExecuted(true);
+                            schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
+                            schema.getBlocks().get(i).getOutputPort().setValue(0.0);
                             return true;
                         }
                     }

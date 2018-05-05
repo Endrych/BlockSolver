@@ -153,6 +153,8 @@ public class DragBlock extends AnchorPane{
                         if(display.checkPortsIndex()){
                             if(inputPortLine1.getLine() != null){
                                 inputPortLine1.getLine().setVisible(false);
+                                inputPortLine1.setLine(null);
+
                             }
                             inputPortLine1 = new ConnectingLine(display.outputPort,display.getOutputCoords().get("x"), display.getOutputCoords().get("y"),
                                     XCoord, YCoord, 1 , "a", display.ConnectBlocks(XCoord, YCoord, "a" ,1));
@@ -174,6 +176,11 @@ public class DragBlock extends AnchorPane{
                         }else{
                             System.out.println("Change " + val);
                             dragBlock.getInputPort(1).setValueSet(true);
+                            if(inputPortLine1.getLine() != null){
+                                inputPortLine1.getLine().setVisible(false);
+                                inputPortLine1.setLine(null);
+                                dragBlock.getInputPort(1).setConnectedToOutputPort(false);
+                            }
                             dragBlock.getInputPort(1).setValue(Double.parseDouble(val));
                         }
                     }
@@ -189,6 +196,7 @@ public class DragBlock extends AnchorPane{
                         if(display.checkPortsIndex()){
                             if(inputPortLine2.getLine() != null){
                                 inputPortLine2.getLine().setVisible(false);
+                                inputPortLine2.setLine(null);
                             }
                             inputPortLine2 = new ConnectingLine(display.outputPort,display.getOutputCoords().get("x"), display.getOutputCoords().get("y"),
                                     XCoord, YCoord, 2 , "a", display.ConnectBlocks(XCoord, YCoord, "a", 2));
@@ -200,15 +208,21 @@ public class DragBlock extends AnchorPane{
                         System.out.println(dragBlock.getType());
                         String val;
                         if(dragBlock.getInputPort(2).getOutputPort() != null){
-                            val = ChangeInputArithmetic.display("first", dragBlock.getInputPort(2).getOutputPort().getValue());
+                            val = ChangeInputArithmetic.display("second", dragBlock.getInputPort(2).getOutputPort().getValue());
                             System.out.println(dragBlock.getInputPort(2).getOutputPort());
                         }else{
-                            val = ChangeInputArithmetic.display("first", dragBlock.getInputPort(2).getValue());
+                            val = ChangeInputArithmetic.display("second", dragBlock.getInputPort(2).getValue());
                         }
                         if(val.equals("canceled")){
                             System.out.println(val);
                         }else{
                             System.out.println("Change " + val);
+                            if(inputPortLine2.getLine() != null){
+                                inputPortLine2.getLine().setVisible(false);
+                                inputPortLine2.setLine(null);
+
+                                dragBlock.getInputPort(2).setConnectedToOutputPort(false);
+                            }
                             dragBlock.getInputPort(2).setValueSet(true);
                             dragBlock.getInputPort(2).setValue(Double.parseDouble(val));
                         }
@@ -274,6 +288,8 @@ public class DragBlock extends AnchorPane{
                         if(display.checkPortsIndex()){
                             if(inputPortLine1.getLine() != null){
                                 inputPortLine1.getLine().setVisible(false);
+                                inputPortLine1.setLine(null);
+
                             }
                             inputPortLine1 = new ConnectingLine(display.outputPort,display.getOutputCoords().get("x"), display.getOutputCoords().get("y"),
                                     XCoord, YCoord, 1 , "g", display.ConnectBlocks(XCoord, YCoord, "g" ,1));
@@ -298,6 +314,12 @@ public class DragBlock extends AnchorPane{
                             if(Double.parseDouble(val.getValue()) == dragBlock.getInputPort(1).getValue()){
                                 dragBlock.getInputPort(1).setType(val.getType());
                             }else{
+                                if(inputPortLine1.getLine() != null){
+                                    inputPortLine1.getLine().setVisible(false);
+                                    inputPortLine1.setLine(null);
+
+                                    dragBlock.getInputPort(1).setConnectedToOutputPort(false);
+                                }
                                 dragBlock.getInputPort(1).setValue(Double.parseDouble(val.getValue()));
                                 dragBlock.getInputPort(1).setType(val.getType());
                                 dragBlock.getInputPort(1).setValueSet(true);
@@ -342,6 +364,8 @@ public class DragBlock extends AnchorPane{
                         if(display.checkPortsIndex()){
                             if(inputPortLine1.getLine() != null){
                                 inputPortLine1.getLine().setVisible(false);
+                                inputPortLine1.setLine(null);
+
                             }
                             inputPortLine1 = new ConnectingLine(display.outputPort,display.getOutputCoords().get("x"), display.getOutputCoords().get("y"),
                                     XCoord, YCoord, 1 , "u", display.ConnectBlocks(XCoord, YCoord, "u" ,1));
@@ -362,6 +386,12 @@ public class DragBlock extends AnchorPane{
                         }else{
                             System.out.println("Change " + val);
                             dragBlock.getInputPort(1).setValueSet(true);
+                            if(inputPortLine1.getLine() != null){
+                                inputPortLine1.getLine().setVisible(false);
+
+                                inputPortLine1.setLine(null);
+                                dragBlock.getInputPort(1).setConnectedToOutputPort(false);
+                            }
                             dragBlock.getInputPort(1).setValue(Double.parseDouble(val));
                         }
                     }
