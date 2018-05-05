@@ -10,34 +10,63 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+/**
+ * Trida reprezentujici schema
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
+ */
 public class Schema implements ISchema {
 
     private String name;
 
     private List<Block> blocks;
 
+    /**
+     * Konstruktor
+     * @param name Nazev schematu
+     */
     public Schema(String name){
         this.name = name;
         blocks = new ArrayList<>();
     }
 
+    /**
+     * Getter pro bloky ve schematu
+     * @return seznam bloku ktere nalezi schematu
+     */
     public List<Block> getBlocks() {
         return blocks;
     }
 
+    /**
+     * Getter pro nazev schematu
+     * @return nazev schematu
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     * Setter pro nazev schematu
+     * @param name novy nazev schematu
+     */
     public void setName(String name) {
         this.name = name;
     }
 
+    /**
+     * Metoda prida blok do schematu
+     * @param block blok ktery se ma pridat do schematu
+     */
     @Override
     public void addBlock(Block block) {
         blocks.add(block);
     }
 
+    /**
+     * Metoda odstrani blok ze schematu
+     * @param block blok ktery se ma odstranit ze schematu
+     */
     @Override
     public void removeBlock(Block block) {
         if(blocks.contains(block)){
@@ -60,66 +89,7 @@ public class Schema implements ISchema {
     }
 
     @Override
-    public void checkForCycles() {
-        throw new java.lang.UnsupportedOperationException();
-    }
-
-    @Override
     public String toString() {
         return this.name;
     }
-
-//
-//    private Double getPortValue(InputPort port){
-//        if(port.getConnectedToOutputPort()){
-//            return port.getOutputPort().getValue();
-//        }else if(port.getValueSet()){
-//            return port.getValue();
-//        }else{
-//            return 0.0;
-//        }
-//    }
-//
-//    private Boolean hasSetValue(InputPort port){
-//        if(port.getConnectedToOutputPort()){
-//            return true;
-//        }else if(port.getValueSet()){
-//            return true;
-//        }else{
-//            return false;
-//        }
-//    }
-//
-//    @Override
-//    public void executeSchema() {
-//        Boolean executedSome = false;
-//        System.out.println("SCHEMA EXXECUTING");
-//        for(int i = 0; i < blocks.size(); i++) {
-//            blocks.get(i).setExecuted(false);
-//        }
-//
-//        do{
-//            for(int i = 0; i < blocks.size(); i++){
-//                executedSome = false;
-//                System.out.println(blocks.get(i));
-//                if(blocks.get(i).getType() == BlockType.ARITHMETIC){
-//                    System.out.println("Je aritmeticky");
-//                    if(hasSetValue(blocks.get(i).getInputPort(1)) && hasSetValue(blocks.get(i).getInputPort(2))){
-//                        System.out.println("Hodnoty nastaveny");
-//                        if(!blocks.get(i).getExecuted()){
-//                            if(blocks.get(i).executeBlock(getPortValue(blocks.get(i).getInputPort(1)), getPortValue(blocks.get(i).getInputPort(2)))){
-//                                System.out.println("Value in executed block " + blocks.get(i).getOutputPort().getValue());
-//                                executedSome = true;
-//                                blocks.get(i).setExecuted(true);
-//                                break;
-//                            }
-//                        }
-//                    }
-//                }
-//
-//            }
-//        }while(executedSome);
-//
-//        blocks.size();
-//    }
 }

@@ -9,6 +9,11 @@ import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * Trida reprezentujici aritmeticky blok
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
+ */
 public class ArithmeticBlock extends Block implements IBlock {
 
     private Collection<IArithmeticOperation> listOfOperations;
@@ -16,6 +21,15 @@ public class ArithmeticBlock extends Block implements IBlock {
     private InputPort[] inputPorts = new InputPort[2];
     private OperationResult result;
 
+    /**
+     * Konstruktor
+     * @param name nazev bloku
+     * @param x x-oova pozice
+     * @param y y-nova pozice
+     * @param width sirka
+     * @param height vyska
+     * @param operation Operace bloku
+     */
     public ArithmeticBlock(String name, Integer x, Integer y, Integer width, Integer height, IArithmeticOperation operation) {
         super(name, x, y, width, height, BlockType.ARITHMETIC);
         this.operation = operation;
@@ -25,6 +39,9 @@ public class ArithmeticBlock extends Block implements IBlock {
         initializeListOfOperations();
     }
 
+    /**
+     * Metoda inicializuje seznam operaci
+     */
     private void initializeListOfOperations() {
         this.listOfOperations.add(AddOperation.getInstance());
         this.listOfOperations.add(SubtractionOperation.getInstance());
@@ -33,10 +50,20 @@ public class ArithmeticBlock extends Block implements IBlock {
         this.listOfOperations.add(PowOperation.getInstance());
     }
 
+    /**
+     * Metoda meni operaci na bloku
+     * @param operation nova operace
+     */
     public void changeOperation(IArithmeticOperation operation){
         this.operation = operation;
     }
 
+    /**
+     * Metoda provadi operaci
+     * @param one prvni hodnota
+     * @param two druha hodnota
+     * @return uspesnost operace
+     */
     public Boolean executeBlock(Double one, Double two){
         if(compareTypes()) {
             this.result = operation.executeOperation(one,two);
@@ -53,10 +80,20 @@ public class ArithmeticBlock extends Block implements IBlock {
     }
 
 
+    /**
+     * Metoda kontroluje typy portu
+     * @return true pokud jsou typy shodne jinak false
+     */
     private Boolean compareTypes(){
         return inputPorts[0].getType() == inputPorts[1].getType();
     }
 
+    /**
+     * Metoda vraci vstupni port podle indexu
+     * @param index Index portu ktery chceme ziskat
+     * @throws IndexOutOfBoundsException V pripade spatneho indexu
+     * @return vstupni port
+     */
     public InputPort getInputPort(Integer index){
         if(index == 1){
             return inputPorts[0];

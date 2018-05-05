@@ -9,6 +9,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * Trida reprezentujici unarni blok
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
+ */
 public class UnaryBlock extends Block{
 
     private IUnaryOperation operation;
@@ -16,6 +21,15 @@ public class UnaryBlock extends Block{
     private InputPort inputPort;
     private OperationResult result;
 
+    /**
+     * Konstruktor
+     * @param name nazev bloku
+     * @param x x-oova pozice
+     * @param y y-nova pozice
+     * @param width sirka
+     * @param height vyska
+     * @param operation Operace bloku
+     */
     public UnaryBlock(String name, Integer x, Integer y, Integer width, Integer height, IUnaryOperation operation) {
         super(name, x, y, width, height, BlockType.UNARY);
         this.operation = operation;
@@ -24,6 +38,9 @@ public class UnaryBlock extends Block{
         initializeListOfOperations();
     }
 
+    /**
+     * Metoda inicializuje seznam operaci
+     */
     private void initializeListOfOperations() {
         listOfOperations.add(IncrementOperation.getInstance());
         listOfOperations.add(DecrementOperation.getInstance());
@@ -32,12 +49,23 @@ public class UnaryBlock extends Block{
         listOfOperations.add(CubeRootOperation.getInstance());
     }
 
+    /**
+     * Metoda provadi operaci
+     * @param one prvni hodnota
+     * @return uspesnost operace
+     */
     public Boolean executeBlock(Double one) {
         result = this.operation.executeOperation(one);
         outputPort.setValue(result.getResult());
         return true;
     }
 
+    /**
+     * Metoda vraci vstupni port podle indexu
+     * @param index Index portu ktery chceme ziskat
+     * @throws IndexOutOfBoundsException V pripade spatneho indexu
+     * @return vstupni port
+     */
     public InputPort getInputPort(Integer index){
         if(index == 1){
             return inputPort;
@@ -46,6 +74,10 @@ public class UnaryBlock extends Block{
         }
     }
 
+    /**
+     * Metoda meni operaci na bloku
+     * @param operation nova operace
+     */
     public void changeOperation(IUnaryOperation operation){
         this.operation = operation;
     }

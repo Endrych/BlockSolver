@@ -11,6 +11,11 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Objects;
 
+/**
+ * Trida reprezentujici goniometricky blok
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
+ */
 public class GoniometricBlock extends Block {
 
     private Collection<IGoniometricOperation> listOfOperations;
@@ -19,6 +24,15 @@ public class GoniometricBlock extends Block {
     private OperationResult result;
 
 
+    /**
+     * Konstruktor
+     * @param name nazev bloku
+     * @param x x-oova pozice
+     * @param y y-nova pozice
+     * @param width sirka
+     * @param height vyska
+     * @param operation Operace bloku
+     */
     public GoniometricBlock(String name, Integer x, Integer y, Integer width, Integer height, IGoniometricOperation operation) {
         super(name, x, y, width, height, BlockType.GONIOMETRIC);
         this.operation = operation;
@@ -27,6 +41,9 @@ public class GoniometricBlock extends Block {
         initializeListOfOperations();
     }
 
+    /**
+     * Metoda inicializuje seznam operaci
+     */
     private void initializeListOfOperations() {
         listOfOperations.add(SinusOperation.getInstance());
         listOfOperations.add(CosinusOperation.getInstance());
@@ -34,10 +51,19 @@ public class GoniometricBlock extends Block {
         listOfOperations.add(CotangensOperation.getInstance());
     }
 
+    /**
+     * Metoda meni operaci na bloku
+     * @param operation nova operace
+     */
     public void changeOperation(IGoniometricOperation operation){
         this.operation = operation;
     }
 
+    /**
+     * Metoda provadi operaci
+     * @param one prvni hodnota
+     * @return uspesnost operace
+     */
     public Boolean executeBlock(Double one){
         //TODO kontrola zda uspel execute
         result = operation.executeOperation(one, inputPort.getType());
@@ -46,6 +72,12 @@ public class GoniometricBlock extends Block {
         return true;
     }
 
+    /**
+     * Metoda vraci vstupni port podle indexu
+     * @param index Index portu ktery chceme ziskat
+     * @throws IndexOutOfBoundsException V pripade spatneho indexu
+     * @return vstupni port
+     */
     public InputPort getInputPort(Integer index){
         if(index == 1){
             return inputPort;
