@@ -23,6 +23,7 @@ public class SquareOperation implements IUnaryOperation {
     public OperationResult executeOperation(Double input) {
         result = Math.pow(input, 2.0);
         output = new OperationResult(result);
+
         return output;
     }
 }

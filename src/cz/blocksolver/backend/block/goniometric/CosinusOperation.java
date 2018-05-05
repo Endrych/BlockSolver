@@ -26,12 +26,11 @@ public class CosinusOperation implements IGoniometricOperation{
     }
 
     @Override
-    public OperationResult executeOperation(InputPort input) {
-        PortType type = input.getType();
+    public OperationResult executeOperation(Double val,PortType type) {
         if(type == PortType.RADIAN){
-            result = cosinusFromRadian(input.getValue());
+            result = cosinusFromRadian(val);
         }else if(type == PortType.DEGREE){
-            result = cosinusFromDegree(input.getValue());
+            result = cosinusFromDegree(val);
         }else{
 //            TODO: CHYBA
         }

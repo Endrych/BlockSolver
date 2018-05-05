@@ -1,7 +1,11 @@
 package cz.blocksolver.backend.schema;
 
 import cz.blocksolver.backend.block.Block;
+import cz.blocksolver.backend.block.BlockType;
+import cz.blocksolver.backend.port.InputPort;
+import cz.blocksolver.frontend.DragBlock;
 
+import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
@@ -64,4 +68,58 @@ public class Schema implements ISchema {
     public String toString() {
         return this.name;
     }
+
+//
+//    private Double getPortValue(InputPort port){
+//        if(port.getConnectedToOutputPort()){
+//            return port.getOutputPort().getValue();
+//        }else if(port.getValueSet()){
+//            return port.getValue();
+//        }else{
+//            return 0.0;
+//        }
+//    }
+//
+//    private Boolean hasSetValue(InputPort port){
+//        if(port.getConnectedToOutputPort()){
+//            return true;
+//        }else if(port.getValueSet()){
+//            return true;
+//        }else{
+//            return false;
+//        }
+//    }
+//
+//    @Override
+//    public void executeSchema() {
+//        Boolean executedSome = false;
+//        System.out.println("SCHEMA EXXECUTING");
+//        for(int i = 0; i < blocks.size(); i++) {
+//            blocks.get(i).setExecuted(false);
+//        }
+//
+//        do{
+//            for(int i = 0; i < blocks.size(); i++){
+//                executedSome = false;
+//                System.out.println(blocks.get(i));
+//                if(blocks.get(i).getType() == BlockType.ARITHMETIC){
+//                    System.out.println("Je aritmeticky");
+//                    if(hasSetValue(blocks.get(i).getInputPort(1)) && hasSetValue(blocks.get(i).getInputPort(2))){
+//                        System.out.println("Hodnoty nastaveny");
+//                        if(!blocks.get(i).getExecuted()){
+//                            if(blocks.get(i).executeBlock(getPortValue(blocks.get(i).getInputPort(1)), getPortValue(blocks.get(i).getInputPort(2)))){
+//                                System.out.println("Value in executed block " + blocks.get(i).getOutputPort().getValue());
+//                                executedSome = true;
+//                                blocks.get(i).setExecuted(true);
+//                                break;
+//                            }
+//                        }
+//                    }
+//                }
+//
+//            }
+//        }while(executedSome);
+//
+//        blocks.size();
+//    }
 }

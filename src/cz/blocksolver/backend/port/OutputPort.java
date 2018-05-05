@@ -4,9 +4,19 @@ import java.util.Objects;
 
 public class OutputPort extends Port {
     private InputPort inputPort;
+    private Boolean containsResult;
 
     public OutputPort(PortType type, Double value) {
         super(type, value);
+        this.containsResult = false;
+    }
+
+    public Boolean getContainsResult() {
+        return containsResult;
+    }
+
+    public void setContainsResult(Boolean containsResult) {
+        this.containsResult = containsResult;
     }
 
     public InputPort getInputPort() {

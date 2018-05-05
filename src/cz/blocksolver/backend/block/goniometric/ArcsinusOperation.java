@@ -24,11 +24,11 @@ public class ArcsinusOperation implements IGoniometricOperation {
         return instance;
     }
 
+
     @Override
-    public OperationResult executeOperation(InputPort input) {
-        PortType type = input.getType();
+    public OperationResult executeOperation(Double val,PortType type) {
         if(type == PortType.NUMBER){
-            result = sinRadianFromNumber(input.getValue());
+            result = sinRadianFromNumber(val);
         }else{
 //            TODO: CHYBA
         }
