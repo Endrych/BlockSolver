@@ -22,8 +22,10 @@ public class Main extends Application {
             e.printStackTrace();
         }
 
-        root.setTop(new MenuLayout());
-        root.setCenter(new MainDisplay());
+        MainDisplay display = new MainDisplay(primaryStage);
+
+        root.setTop(new MenuLayout(display, primaryStage));
+        root.setCenter(display);
 
     }
 

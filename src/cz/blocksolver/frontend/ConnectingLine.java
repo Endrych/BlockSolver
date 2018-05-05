@@ -12,6 +12,7 @@ public class ConnectingLine {
     Integer portNum;
     String type;
     Line line;
+    Boolean showed = false;
 
     public ConnectingLine() {
         this.line = null;
@@ -26,6 +27,25 @@ public class ConnectingLine {
         this.portNum = portNum;
         this.type = type;
         this.line = line;
+    }
+
+    public ConnectingLine(OutputPort outputPort, Integer outX, Integer outY, Integer inX, Integer inY, Integer portNum, String type) {
+        this.outputPort = outputPort;
+        this.outX = outX;
+        this.outY = outY;
+        this.inX = inX;
+        this.inY = inY;
+        this.portNum = portNum;
+        this.type = type;
+    }
+
+
+    public Boolean getShowed() {
+        return showed;
+    }
+
+    public void setShowed(Boolean showed) {
+        this.showed = showed;
     }
 
     public Line getLine() {

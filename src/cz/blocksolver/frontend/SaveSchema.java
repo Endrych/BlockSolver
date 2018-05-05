@@ -11,6 +11,8 @@ import cz.blocksolver.backend.block.ArithmeticBlock;
 import cz.blocksolver.backend.block.Block;
 import cz.blocksolver.backend.block.BlockType;
 import cz.blocksolver.backend.schema.Schema;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.w3c.dom.Attr;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -20,7 +22,7 @@ import java.util.List;
 
 public class SaveSchema {
 
-    public void execute(Schema schema, ArrayList<DragBlock> dragBlocks) {
+    public void execute(Schema schema, ArrayList<DragBlock> dragBlocks, Stage primaryStage) {
 
 
         try {
@@ -246,7 +248,11 @@ public class SaveSchema {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
-            StreamResult result = new StreamResult(new File("C:\\savedFile\\cars.xml"));
+            FileChooser fileChooser = new FileChooser();
+            fileChooser.setTitle("Save Schema");
+            fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XML", "*.xml"));
+            File file = fileChooser.showSaveDialog(primaryStage);
+            StreamResult result = new StreamResult(file);
             System.out.println("CREATED FILE?");
             transformer.transform(source, result);
 //

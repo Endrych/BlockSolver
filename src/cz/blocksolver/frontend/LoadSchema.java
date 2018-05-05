@@ -2,16 +2,14 @@ package cz.blocksolver.frontend;
 
 import cz.blocksolver.backend.block.*;
 import cz.blocksolver.backend.block.arithmetic.*;
-import cz.blocksolver.backend.block.goniometric.CosinusOperation;
-import cz.blocksolver.backend.block.goniometric.CotangensOperation;
-import cz.blocksolver.backend.block.goniometric.SinusOperation;
-import cz.blocksolver.backend.block.goniometric.TangensOperation;
+import cz.blocksolver.backend.block.goniometric.*;
 import cz.blocksolver.backend.block.unary.*;
 import cz.blocksolver.backend.port.OutputPort;
 import cz.blocksolver.backend.port.PortType;
 import cz.blocksolver.backend.schema.Schema;
 import javafx.geometry.Point2D;
-import javafx.scene.shape.Line;
+import javafx.stage.FileChooser;
+import javafx.stage.Stage;
 import org.w3c.dom.*;
 import org.xml.sax.SAXException;
 
@@ -23,11 +21,15 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class LoadSchema {
-    public void execute(MainDisplay display, Schema schema, ArrayList<DragBlock> dragBlocks) throws ParserConfigurationException, IOException, SAXException {
+    public void execute(MainDisplay display, Schema schema, ArrayList<DragBlock> dragBlocks, Stage primaryStage) throws ParserConfigurationException, IOException, SAXException {
 
         Integer Index = 1;
-        String filePath = "C:\\savedFile\\cars.xml";
-        File xmlFile = new File(filePath);
+
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XML","*.xml"));
+        File xmlFile = fileChooser.showOpenDialog(primaryStage);
+
         DocumentBuilderFactory dbFactory = DocumentBuilderFactory.newInstance();
         DocumentBuilder dBuilder;
         try {
@@ -100,7 +102,9 @@ public class LoadSchema {
                                 Integer.parseInt(eElement.getElementsByTagName("height").item(0).getTextContent()),
                                 op_type
                         );
+
                         newBlock.dragBlock.getInputPort(1).setType(PortType.DEGREE);
+
                         newBlock.setType("goniometric");
 
                     }else if(eElement.getElementsByTagName("block_type").item(0).getTextContent().equals("UNARY")){
@@ -116,6 +120,10 @@ public class LoadSchema {
                             op_type = DecrementOperation.getInstance();
                         }else if(eElement.getElementsByTagName("operation_type").item(0).getTextContent().equals("inc")){
                             op_type =IncrementOperation.getInstance();
+                        }else if(eElement.getElementsByTagName("operation_type").item(0).getTextContent().equals("rad")){
+                            op_type = NumToRad.getInstance();
+                        }else if(eElement.getElementsByTagName("operation_type").item(0).getTextContent().equals("deg")){
+                            op_type = NumToDeg.getInstance();
                         }
 
                         newBlock.dragBlock = new UnaryBlock(
@@ -126,6 +134,13 @@ public class LoadSchema {
                                 Integer.parseInt(eElement.getElementsByTagName("height").item(0).getTextContent()),
                                 op_type
                         );
+
+                        if(eElement.getElementsByTagName("operation_type").item(0).getTextContent().equals("deg")){
+                            newBlock.dragBlock.getOutputPort().setType(PortType.DEGREE);
+                        }else if(eElement.getElementsByTagName("operation_type").item(0).getTextContent().equals("rad")){
+                            newBlock.dragBlock.getOutputPort().setType(PortType.RADIAN);
+                        }
+
                         newBlock.setType("unary");
                     }
 
@@ -217,16 +232,18 @@ public class LoadSchema {
                                 Integer.parseInt(eElement.getElementsByTagName("in_x").item(0).getTextContent()),
                                 Integer.parseInt(eElement.getElementsByTagName("in_y").item(0).getTextContent()) ,
                                 1,
+                                eElement.getElementsByTagName("type").item(0).getTextContent()
+                        ));
+
+                        dragBlocks.get(temp).getInputPortLine1().setLine(display.LoadLines(
+                                Integer.parseInt(eElement.getElementsByTagName("out_x").item(0).getTextContent()),
+                                Integer.parseInt(eElement.getElementsByTagName("out_y").item(0).getTextContent()),
+                                Integer.parseInt(eElement.getElementsByTagName("in_x").item(0).getTextContent()),
+                                Integer.parseInt(eElement.getElementsByTagName("in_y").item(0).getTextContent()) ,
                                 eElement.getElementsByTagName("type").item(0).getTextContent(),
-                                display.LoadLines(
-                                        Integer.parseInt(eElement.getElementsByTagName("out_x").item(0).getTextContent()),
-                                        Integer.parseInt(eElement.getElementsByTagName("out_y").item(0).getTextContent()),
-                                        Integer.parseInt(eElement.getElementsByTagName("in_x").item(0).getTextContent()),
-                                        Integer.parseInt(eElement.getElementsByTagName("in_y").item(0).getTextContent()) ,
-                                        eElement.getElementsByTagName("type").item(0).getTextContent(),
-                                        1,
-                                        myOut
-                                )
+                                1,
+                                myOut,
+                                dragBlocks.get(temp).getInputPortLine1()
                         ));
                     }
 
@@ -246,16 +263,17 @@ public class LoadSchema {
                                 Integer.parseInt(eElement.getElementsByTagName("in_x2").item(0).getTextContent()),
                                 Integer.parseInt(eElement.getElementsByTagName("in_y2").item(0).getTextContent()) ,
                                 2,
+                                eElement.getElementsByTagName("type2").item(0).getTextContent()
+                        ));
+                        dragBlocks.get(temp).getInputPortLine2().setLine(display.LoadLines(
+                                Integer.parseInt(eElement.getElementsByTagName("out_x2").item(0).getTextContent()),
+                                Integer.parseInt(eElement.getElementsByTagName("out_y2").item(0).getTextContent()),
+                                Integer.parseInt(eElement.getElementsByTagName("in_x2").item(0).getTextContent()),
+                                Integer.parseInt(eElement.getElementsByTagName("in_y2").item(0).getTextContent()) ,
                                 eElement.getElementsByTagName("type2").item(0).getTextContent(),
-                                display.LoadLines(
-                                        Integer.parseInt(eElement.getElementsByTagName("out_x2").item(0).getTextContent()),
-                                        Integer.parseInt(eElement.getElementsByTagName("out_y2").item(0).getTextContent()),
-                                        Integer.parseInt(eElement.getElementsByTagName("in_x2").item(0).getTextContent()),
-                                        Integer.parseInt(eElement.getElementsByTagName("in_y2").item(0).getTextContent()) ,
-                                        eElement.getElementsByTagName("type2").item(0).getTextContent(),
-                                        2,
-                                        myOut
-                                )
+                                2,
+                                myOut,
+                                dragBlocks.get(temp).getInputPortLine2()
                         ));
                     }
                     display.getChildren().add(dragBlocks.get(temp));

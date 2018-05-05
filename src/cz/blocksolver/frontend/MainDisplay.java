@@ -6,6 +6,7 @@ import cz.blocksolver.backend.block.BlockType;
 import cz.blocksolver.backend.port.InputPort;
 import cz.blocksolver.backend.port.OutputPort;
 import cz.blocksolver.backend.port.Port;
+import cz.blocksolver.backend.port.PortType;
 import cz.blocksolver.backend.schema.Schema;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -21,34 +22,33 @@ import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
+import javafx.stage.Stage;
 import jdk.internal.util.xml.impl.Input;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
 import java.io.IOException;
 import java.lang.reflect.Array;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.TreeMap;
+import java.time.Duration;
+import java.util.*;
 import java.util.concurrent.TimeUnit;
 
 public class MainDisplay extends AnchorPane {
 
-    public Schema schema = new Schema("Untitled");
 
     @FXML SplitPane base_pane;
     @FXML AnchorPane main_display;
     @FXML VBox block_chooser;
 
 
-    private MainDisplay self;
+    private MainDisplay self = this;
     private DragBlock dragOverBlock = null;
     private EventHandler blockDragOverRoot = null;
     private EventHandler blockDragDropped = null;
     private EventHandler blockDragOverMainDisplay = null;
     private EventHandler connectBlocks = null;
     private ArrayList<DragBlock> dragBlockList = new ArrayList<>();
+    public Schema schema = new Schema("Untitled");
 
     private EventHandler handle_line_hover = null;
 
@@ -59,6 +59,10 @@ public class MainDisplay extends AnchorPane {
     public Integer outputIndex;
     public Integer inputIndex;
     public Integer _index = 1;
+
+    public ArrayList<DragBlock> getDragBlockList() {
+        return dragBlockList;
+    }
 
     public Boolean getOutputActive() {
         return outputActive;
@@ -80,7 +84,7 @@ public class MainDisplay extends AnchorPane {
 
     private Integer Index = 1;
 
-    public MainDisplay(){
+    public MainDisplay(Stage primaryStage){
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation((getClass().getResource("/cz/blocksolver/frontend/resources/MainDisplay.fxml")));
@@ -99,17 +103,12 @@ public class MainDisplay extends AnchorPane {
     private void initialize() {
 //
 
-        Button btnStartExecuteChema = new Button("Start");
-        btnStartExecuteChema.setLayoutX(500);
-        btnStartExecuteChema.setLayoutY(50);
-        Button btnLoadSchema = new Button("Load");
-        btnLoadSchema.setLayoutX(450);
-        btnLoadSchema.setLayoutY(50);
-        Button btnSaveSchema = new Button("Save");
-        btnSaveSchema.setLayoutX(400);
-        btnSaveSchema.setLayoutY(50);
+        Button btnStartExecuteSchema = new Button("Start");
+        btnStartExecuteSchema.setLayoutX(400);
+        btnStartExecuteSchema.setLayoutY(0);
 
-        btnStartExecuteChema.setOnAction(new EventHandler<ActionEvent>() {
+
+        btnStartExecuteSchema.setOnAction(new EventHandler<ActionEvent>() {
             @Override
             public void handle(ActionEvent event) {
                 try {
@@ -126,23 +125,9 @@ public class MainDisplay extends AnchorPane {
             }
         });
 
-        btnLoadSchema.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                loadSchema();
-            }
-        });
-
-        btnSaveSchema.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent event) {
-                saveSchema();
-            }
-        });
-
         Button btnStartDebugChema = new Button("Debug");
-        btnStartDebugChema.setLayoutX(550);
-        btnStartDebugChema.setLayoutY(50);
+        btnStartDebugChema.setLayoutX(450);
+        btnStartDebugChema.setLayoutY(0);
 
         btnStartDebugChema.setOnAction(new EventHandler<ActionEvent>() {
             @Override
@@ -155,10 +140,8 @@ public class MainDisplay extends AnchorPane {
             }
         });
 
-        main_display.getChildren().add(btnStartExecuteChema);
+        main_display.getChildren().add(btnStartExecuteSchema);
         main_display.getChildren().add(btnStartDebugChema);
-        main_display.getChildren().add(btnLoadSchema);
-        main_display.getChildren().add(btnSaveSchema);
 
 
 
@@ -262,6 +245,18 @@ public class MainDisplay extends AnchorPane {
         block.setType("unary");
         block.setOperation("inc");
         block_chooser.getChildren().add(block);
+        block = new DragBlock("u", self);
+        addDragDetection(block);
+        block.setName("rad(x)");
+        block.setType("unary");
+        block.setOperation("rad");
+        block_chooser.getChildren().add(block);
+        block = new DragBlock("u", self);
+        addDragDetection(block);
+        block.setName("deg(x)");
+        block.setType("unary");
+        block.setOperation("deg");
+        block_chooser.getChildren().add(block);
 
         main_display.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
@@ -281,7 +276,7 @@ public class MainDisplay extends AnchorPane {
         Index = index;
     }
 
-    public Line ConnectBlocks(Integer x, Integer y, String type, Integer portNum){
+    public Line ConnectBlocks(Integer x, Integer y, String type, Integer portNum, OutputPort outPort, ConnectingLine conLine){
         Line line = new Line();
 
         if(type.equals("a")){
@@ -291,51 +286,76 @@ public class MainDisplay extends AnchorPane {
                 line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-14);
             }
             main_display.getChildren().add(line);
-            return line;
         }else if(type.equals("u")){
             line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-34);
             main_display.getChildren().add(line);
-            return line;
         }else if(type.equals("g")){
             line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-34);
             main_display.getChildren().add(line);
-            return line;
         }
+
+        handle_line_hover =  new EventHandler<MouseEvent>() {
+            @Override
+            public void handle(MouseEvent event) {
+                if(!conLine.getShowed()){
+                    conLine.setShowed(true);
+                    if(outPort.getContainsResult()){
+                        //vlakna
+                        System.out.println(outPort.getValue());
+                        Label tempLabel = new Label();
+                        tempLabel.setText(outPort.getValue().toString());
+                        tempLabel.setLayoutX(event.getX());
+                        tempLabel.setLayoutY(event.getY());
+                        main_display.getChildren().add(tempLabel);
+                        Timer timer = new java.util.Timer();
+
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                Platform.runLater(new Runnable() {
+                                    public void run() {
+                                        System.out.println("SDS");
+                                        removeLineLabel(tempLabel);
+                                        conLine.setShowed(false);
+                                    }
+                                });
+                            }
+                        }, 2000);
+
+//                    main_display.getChildren().remove(tempLabel);
+                    }else{
+                        System.out.println("Block not executed");
+                        Label tempLabel = new Label();
+                        tempLabel.setText("Block not executed");
+                        tempLabel.setLayoutX(event.getX());
+                        tempLabel.setLayoutY(event.getY());
+                        main_display.getChildren().add(tempLabel);
+
+                        Timer timer = new java.util.Timer();
+
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                Platform.runLater(new Runnable() {
+                                    public void run() {
+                                        System.out.println("SDS");
+                                        removeLineLabel(tempLabel);
+                                        conLine.setShowed(false);
+                                    }
+                                });
+                            }
+                        }, 2000);
+
+                    }
+                }
+
+
+            }
+        };
+        line.setOnMouseEntered(handle_line_hover);
 
         return line;
     }
 
-    public void loadSchema(){
-        for(int i = 0; i < dragBlockList.size(); i++){
-            dragBlockList.get(i).setVisible(false);
-        }
-        for(int i = dragBlockList.size()-1; i >= 0; i--){
-            dragBlockList.remove(i);
-        }
-
-        schema = new Schema(schema.getName());
-        LoadSchema sch = new LoadSchema();
-        try {
-            sch.execute(this, schema, dragBlockList);
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
-        for(int i=0; i < dragBlockList.size(); i++){
-            dragBlockList.get(i).activateEvents(true);
-        }
-    }
-
-    public void saveSchema(){
-        SaveSchema sch = new SaveSchema();
-        sch.execute(schema, dragBlockList);
-        System.out.println("SCHEMA Debugging");
-    }
-
-    public Line LoadLines(Integer out_x, Integer out_y, Integer in_x, Integer in_y, String type, Integer portNum, OutputPort outPort){
+    public Line LoadLines(Integer out_x, Integer out_y, Integer in_x, Integer in_y, String type, Integer portNum, OutputPort outPort, ConnectingLine conLine){
         Line line = new Line();
         out_x += 32;
         in_x += 32;
@@ -357,23 +377,64 @@ public class MainDisplay extends AnchorPane {
         handle_line_hover =  new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(outPort.getContainsResult()){
-                    //vlakna
-                    System.out.println(outPort.getValue());
-                    Label tempLabel = new Label();
-                    tempLabel.setText(outPort.getValue().toString());
-                    main_display.getChildren().add(tempLabel);
-                }else{
-                    System.out.println("Block not executed");
-                    Label tempLabel = new Label();
-                    tempLabel.setText("Block not executed");
-                    main_display.getChildren().add(tempLabel);
+                if(!conLine.getShowed()){
+                    conLine.setShowed(true);
+                    if(outPort.getContainsResult()){
+                        //vlakna
+                        System.out.println(outPort.getValue());
+                        Label tempLabel = new Label();
+                        tempLabel.setText(outPort.getValue().toString());
+                        tempLabel.setLayoutX(event.getX());
+                        tempLabel.setLayoutY(event.getY());
+                        main_display.getChildren().add(tempLabel);
+                        Timer timer = new java.util.Timer();
+
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                Platform.runLater(new Runnable() {
+                                    public void run() {
+                                        System.out.println("SDS");
+                                        removeLineLabel(tempLabel);
+                                        conLine.setShowed(false);
+                                    }
+                                });
+                            }
+                        }, 2000);
+
+//                    main_display.getChildren().remove(tempLabel);
+                    }else{
+                        System.out.println("Block not executed");
+                        Label tempLabel = new Label();
+                        tempLabel.setText("Block not executed");
+                        tempLabel.setLayoutX(event.getX());
+                        tempLabel.setLayoutY(event.getY());
+                        main_display.getChildren().add(tempLabel);
+
+                        Timer timer = new java.util.Timer();
+
+                        timer.schedule(new TimerTask() {
+                            public void run() {
+                                Platform.runLater(new Runnable() {
+                                    public void run() {
+                                        System.out.println("SDS");
+                                        removeLineLabel(tempLabel);
+                                        conLine.setShowed(false);
+                                    }
+                                });
+                            }
+                        }, 2000);
+
+                    }
                 }
             }
         };
         line.setOnMouseEntered(handle_line_hover);
 
         return line;
+    }
+
+    public void removeLineLabel(Label label){
+        main_display.getChildren().remove(label);
     }
 
     private void buildDragHandlers(){
@@ -398,6 +459,7 @@ public class MainDisplay extends AnchorPane {
             @Override
             public void handle(DragEvent event) {
                 event.acceptTransferModes(TransferMode.ANY);
+                event.acceptTransferModes(TransferMode.ANY);
 
                 dragOverBlock.relocateToPoint(new Point2D(event.getSceneX(),event.getSceneY()));
 
@@ -418,14 +480,6 @@ public class MainDisplay extends AnchorPane {
 
                 event.getDragboard().setContent(content);
                 event.setDropCompleted(true);
-
-//                main_display.removeEventHandler(DragEvent.DRAG_OVER, blockDragOverMainDisplay);
-//                main_display.removeEventHandler(DragEvent.DRAG_DROPPED, blockDragDropped);
-//                base_pane.removeEventHandler(DragEvent.DRAG_OVER, blockDragOverRoot);
-//
-//                dragOverBlock.setVisible(false);
-//
-//                event.consume();
             }
         };
 
@@ -497,11 +551,8 @@ public class MainDisplay extends AnchorPane {
             DragContainer container = new DragContainer();
 
             container.addData("name", dragOverBlock.getName());
-//            container.addData("position", Index);
-//            Index++;
             container.addData("type", dragOverBlock.getType());
             container.addData("operation", dragOverBlock.getOperation());
-//            container.addData("display", );
             content.put(DragContainer.AddNode, container);
 
             dragOverBlock.startDragAndDrop(TransferMode.ANY).setContent(content);
@@ -604,63 +655,136 @@ public class MainDisplay extends AnchorPane {
         return hasCycle;
     }
 
+    public Boolean checkPortTypes(){
+        Boolean found = false;
+        for(int i = 0; i < schema.getBlocks().size(); i++) {
+            if(schema.getBlocks().get(i).getType() == BlockType.GONIOMETRIC){
+                if(schema.getBlocks().get(i).getInputPort(1).getType() == PortType.NUMBER){
+                    dragBlockList.get(i).higlight();
+                    found = true;
+                }else{
+                    dragBlockList.get(i).removeHiglight();
+                }
+            }
+        }
+
+        return found;
+    }
+
     public void executeSchema() throws InterruptedException, IOException, SAXException, ParserConfigurationException {
 
-        System.out.println("SCHEMA EXXECUTING");
-////
         fillBlocks();
-
-        if(!checkForCycles()){
-            for(int i = 0; i < schema.getBlocks().size(); i++) {
-                schema.getBlocks().get(i).setExecuted(false);
-                schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
-            }
-
-
-            new Thread(new Runnable() {
-                @Override
-                public void run() {
-                    Boolean executedSome = false;
-                    _index = 1;
-
-                    do{
-                        executedSome = executeBlock(executedSome);
-                    }while(executedSome);
+        if(!checkPortTypes()){
+            if(!checkForCycles()){
+                for(int i = 0; i < schema.getBlocks().size(); i++) {
+                    schema.getBlocks().get(i).setExecuted(false);
+                    schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
                 }
-            }).start();
+
+                new Thread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Boolean executedSome = false;
+                        _index = 1;
+
+                        do{
+                            executedSome = executeBlock(executedSome);
+                        }while(executedSome);
+                    }
+                }).start();
+            }
         }
+
     }
 
     public void debugSchema(){
 
         fillBlocks();
 
-        if(!checkForCycles()){
-            for(int i = 0; i < schema.getBlocks().size(); i++) {
-                schema.getBlocks().get(i).setExecuted(false);
-                schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
-            }
-
-            Boolean executedSome = false;
-            _index = 1;
-            Button btnDebugStep = new Button("Step");
-            btnDebugStep.setLayoutX(625);
-            btnDebugStep.setLayoutY(50);
-
-            btnDebugStep.setOnAction(new EventHandler<ActionEvent>() {
-                @Override
-                public void handle(ActionEvent event) {
-                    try {
-                        executeBlock(true);
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
+        if(!checkPortTypes()) {
+            if (!checkForCycles()) {
+                for (int i = 0; i < schema.getBlocks().size(); i++) {
+                    schema.getBlocks().get(i).setExecuted(false);
+                    schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
                 }
-            });
 
-            main_display.getChildren().add(btnDebugStep);
+                Boolean executedSome = false;
+                _index = 1;
+                Button btnDebugStep = new Button("Step");
+                Button btnDebugFinish = new Button("Finish");
+                Button btsDebugStop = new Button("Stop");
+
+
+                btnDebugStep.setLayoutX(550);
+                btnDebugStep.setLayoutY(0);
+
+                btnDebugFinish.setLayoutX(600);
+                btnDebugFinish.setLayoutY(0);
+
+                btsDebugStop.setLayoutX(658);
+                btsDebugStop.setLayoutY(0);
+
+                btnDebugStep.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            Boolean exec = executeBlock(true);
+                            if(!exec){
+                                main_display.getChildren().remove(btnDebugStep);
+                                main_display.getChildren().remove(btnDebugFinish);
+                                main_display.getChildren().remove(btsDebugStop);
+                            }
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                btnDebugFinish.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            Boolean exec = true;
+                            do{
+                                exec = executeBlock(exec);
+                            }while(exec);
+
+                                main_display.getChildren().remove(btnDebugStep);
+                                main_display.getChildren().remove(btnDebugFinish);
+                                main_display.getChildren().remove(btsDebugStop);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                btsDebugStop.setOnAction(new EventHandler<ActionEvent>() {
+                    @Override
+                    public void handle(ActionEvent event) {
+                        try {
+                            for(int i = 0; i < dragBlockList.size(); i++){
+                                if(dragBlockList.get(i).getHiglighted()){
+                                    dragBlockList.get(i).removeHiglight();
+                                }
+                            }
+
+                            main_display.getChildren().remove(btnDebugStep);
+                            main_display.getChildren().remove(btnDebugFinish);
+                            main_display.getChildren().remove(btsDebugStop);
+
+                        } catch (Exception e) {
+                            e.printStackTrace();
+                        }
+                    }
+                });
+
+                main_display.getChildren().add(btnDebugStep);
+                main_display.getChildren().add(btnDebugFinish);
+                main_display.getChildren().add(btsDebugStop);
+
+            }
         }
-
     }
 
     public Boolean executeBlock(Boolean executedSome){

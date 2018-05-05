@@ -14,18 +14,29 @@
                     <menus>
                         <Menu mnemonicParsing="false" text="File">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Save" />
-                                <MenuItem mnemonicParsing="false" text="Load" />
+                                <MenuItem fx:id="save" mnemonicParsing="false" text="Save" />
+                                <MenuItem fx:id="load" mnemonicParsing="false" text="Load" />
                             </items>
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="Rename Schema" />
+                                <MenuItem fx:id="rename_schema" mnemonicParsing="false" text="New Schema" />
                             </items>
                         </Menu>
+                  <Menu mnemonicParsing="false" text="Display">
+                     <items>
+                        <CheckMenuItem mnemonicParsing="false" text="Block value" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Run">
+                    <items>
+                      <MenuItem fx:id="run" mnemonicParsing="false" text="Run" />
+                        <MenuItem fx:id="debug" mnemonicParsing="false" text="Debug" />
+                    </items>
+                  </Menu>
                         <Menu mnemonicParsing="false" text="Help">
                             <items>
-                                <MenuItem mnemonicParsing="false" text="About" />
+                                <MenuItem fx:id="about" mnemonicParsing="false" text="About" />
                             </items>
                         </Menu>
                     </menus>
