@@ -20,48 +20,48 @@ public class UnaryBlockTest {
         a.setValue(10.0);
     }
 
-//    @Test
-//    public void testIncrementOperation(){
-//        uBlock.executeBlock();
-//        OutputPort b = uBlock.getOutputPort();
-//        Assert.assertEquals(new Double(11.0), b.getValue());
-//    }
-//
-//    @Test
-//    public void testDecrementOperation(){
-//        uBlock.changeOperation(DecrementOperation.getInstance());
-//        uBlock.executeBlock();
-//        OutputPort b = uBlock.getOutputPort();
-//        Assert.assertEquals(new Double(9.0), b.getValue());
-//    }
-//
-//    @Test
-//    public void testSquareOperation(){
-//        uBlock.changeOperation(SquareOperation.getInstance());
-//        uBlock.executeBlock();
-//        OutputPort b = uBlock.getOutputPort();
-//        Assert.assertEquals(new Double(100.0), b.getValue());
-//    }
-//
-//    @Test
-//    public void testSquareRootOperation(){
-//        uBlock.changeOperation(SquareRootOperation.getInstance());
-//        InputPort a = uBlock.getInputPort(1);
-//        a.setValue(16.0);
-//        uBlock.executeBlock();
-//        OutputPort b = uBlock.getOutputPort();
-//        Assert.assertEquals(new Double(4.0), b.getValue());
-//    }
-//
-//    @Test
-//    public void testCubeRootOperation(){
-//        uBlock.changeOperation(CubeRootOperation.getInstance());
-//        InputPort a = uBlock.getInputPort(1);
-//        a.setValue(512.0);
-//        uBlock.executeBlock();
-//        OutputPort b = uBlock.getOutputPort();
-//        Assert.assertEquals(new Double(8.0), b.getValue());
-//    }
+    @Test
+    public void testIncrementOperation(){
+        uBlock.executeBlock(10.0);
+        OutputPort b = uBlock.getOutputPort();
+        Assert.assertEquals(new Double(11.0), b.getValue());
+    }
+
+    @Test
+    public void testDecrementOperation(){
+        uBlock.changeOperation(DecrementOperation.getInstance());
+        uBlock.executeBlock(10.0);
+        OutputPort b = uBlock.getOutputPort();
+        Assert.assertEquals(new Double(9.0), b.getValue());
+    }
+
+    @Test
+    public void testSquareOperation(){
+        uBlock.changeOperation(SquareOperation.getInstance());
+        uBlock.executeBlock(10.0);
+        OutputPort b = uBlock.getOutputPort();
+        Assert.assertEquals(new Double(100.0), b.getValue());
+    }
+
+    @Test
+    public void testSquareRootOperation(){
+        uBlock.changeOperation(SquareRootOperation.getInstance());
+        InputPort a = uBlock.getInputPort(1);
+        a.setValue(16.0);
+        uBlock.executeBlock(16.0);
+        OutputPort b = uBlock.getOutputPort();
+        Assert.assertEquals(new Double(4.0), b.getValue());
+    }
+
+    @Test
+    public void testCubeRootOperation(){
+        uBlock.changeOperation(CubeRootOperation.getInstance());
+        InputPort a = uBlock.getInputPort(1);
+        a.setValue(512.0);
+        uBlock.executeBlock(512.0);
+        OutputPort b = uBlock.getOutputPort();
+        Assert.assertEquals(new Double(8.0), b.getValue());
+    }
 
     @Test
     public void testToString(){

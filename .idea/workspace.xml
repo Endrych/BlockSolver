@@ -2,19 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="856d413f-d1b6-4e37-8d67-a89d6274e2c5" name="Default" comment="">
-      <change beforePath="" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/AlertBox.java" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change beforePath="$PROJECT_DIR$/bin/cz/blocksolver/frontend/resources/DragBlock.fxml" afterPath="$PROJECT_DIR$/bin/cz/blocksolver/frontend/resources/DragBlock.fxml" />
-      <change beforePath="$PROJECT_DIR$/bin/cz/blocksolver/frontend/resources/MenuLayout.fxml" afterPath="$PROJECT_DIR$/bin/cz/blocksolver/frontend/resources/MenuLayout.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/BlockDetail.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/BlockDetail.java" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/Controller.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/About.java" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/DragBlock.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/DragBlock.java" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/LoadSchema.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/LoadSchema.java" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/MainDisplay.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/MainDisplay.java" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/MenuLayout.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/MenuLayout.java" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/SaveSchema.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/SaveSchema.java" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/resources/DragBlock.fxml" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/resources/DragBlock.fxml" />
-      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/frontend/resources/MenuLayout.fxml" afterPath="$PROJECT_DIR$/src/cz/blocksolver/frontend/resources/MenuLayout.fxml" />
+      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/ArithmeticBlockTest.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/ArithmeticBlockTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/GoniometricBlockTest.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/GoniometricBlockTest.java" />
+      <change beforePath="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/UnaryBlockTest.java" afterPath="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/UnaryBlockTest.java" />
     </list>
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -32,7 +22,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="DragBlock.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="DragBlock.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/DragBlock.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
@@ -66,6 +56,36 @@
                 <element signature="e#26043#26044#0" expanded="true" />
                 <element signature="e#26080#26081#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="ArithmeticBlockTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/ArithmeticBlockTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="605">
+              <caret line="116" column="9" lean-forward="true" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UnaryBlockTest.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/UnaryBlockTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="1491">
+              <caret line="81" column="9" lean-forward="true" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="GoniometricBlockTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/GoniometricBlockTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="2331">
+              <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -119,31 +139,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/Main.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="353">
-              <caret line="26" column="22" lean-forward="false" selection-start-line="26" selection-start-column="22" selection-end-line="26" selection-end-column="22" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="MenuLayout.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/MenuLayout.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-515">
               <caret line="76" column="75" lean-forward="false" selection-start-line="76" selection-start-column="58" selection-end-line="76" selection-end-column="75" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="GoniometricInput.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/GoniometricInput.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="294">
-              <caret line="20" column="15" lean-forward="false" selection-start-line="20" selection-start-column="15" selection-end-line="20" selection-end-column="15" />
               <folding />
             </state>
           </provider>
@@ -166,16 +166,6 @@
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-620">
               <caret line="73" column="88" lean-forward="false" selection-start-line="73" selection-start-column="88" selection-end-line="73" selection-end-column="88" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ConnectingLine.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/frontend/ConnectingLine.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-428">
-              <caret line="35" column="23" lean-forward="false" selection-start-line="35" selection-start-column="23" selection-end-line="35" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -240,6 +230,9 @@
         <option value="$PROJECT_DIR$/src/cz/blocksolver/frontend/BlockDetail.java" />
         <option value="$PROJECT_DIR$/src/cz/blocksolver/frontend/MainDisplay.java" />
         <option value="$PROJECT_DIR$/src/cz/blocksolver/frontend/DragBlock.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/ArithmeticBlockTest.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/UnaryBlockTest.java" />
+        <option value="$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/GoniometricBlockTest.java" />
       </list>
     </option>
   </component>
@@ -295,36 +288,6 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="blocksolver" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="BlockSolver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BlockSolver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blocksolver" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BlockSolver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BlockSolver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blocksolver" type="462c0819:PsiDirectoryNode" />
-              <item name="backend" type="462c0819:PsiDirectoryNode" />
-              <item name="block" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BlockSolver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BlockSolver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blocksolver" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="BlockSolver" type="b2602c69:ProjectViewProjectNode" />
-              <item name="BlockSolver" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="blocksolver" type="462c0819:PsiDirectoryNode" />
-              <item name="frontend" type="462c0819:PsiDirectoryNode" />
-              <item name="resources" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -348,7 +311,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Application.Main">
     <configuration default="true" type="Applet" factoryName="Applet">
       <option name="HTML_USED" value="false" />
       <option name="WIDTH" value="400" />
@@ -388,6 +351,106 @@
       <option name="PASS_PARENT_ENVS" value="true" />
       <module name="" />
       <envs />
+    </configuration>
+    <configuration name="ArithmeticBlockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cz.blocksolver.tests.backend.block.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BlockSolver" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cz.blocksolver.tests.backend.block" />
+      <option name="MAIN_CLASS_NAME" value="cz.blocksolver.tests.backend.block.ArithmeticBlockTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="ArithmeticBlockTest.testChangeToPowOperation" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cz.blocksolver.tests.backend.block.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BlockSolver" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cz.blocksolver.tests.backend.block" />
+      <option name="MAIN_CLASS_NAME" value="cz.blocksolver.tests.backend.block.ArithmeticBlockTest" />
+      <option name="METHOD_NAME" value="testChangeToPowOperation" />
+      <option name="TEST_OBJECT" value="method" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="GoniometricBlockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cz.blocksolver.tests.backend.block.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BlockSolver" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cz.blocksolver.tests.backend.block" />
+      <option name="MAIN_CLASS_NAME" value="cz.blocksolver.tests.backend.block.GoniometricBlockTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
+    </configuration>
+    <configuration name="UnaryBlockTest" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea">
+        <pattern>
+          <option name="PATTERN" value="cz.blocksolver.tests.backend.block.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <module name="BlockSolver" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PACKAGE_NAME" value="cz.blocksolver.tests.backend.block" />
+      <option name="MAIN_CLASS_NAME" value="cz.blocksolver.tests.backend.block.UnaryBlockTest" />
+      <option name="METHOD_NAME" />
+      <option name="TEST_OBJECT" value="class" />
+      <option name="VM_PARAMETERS" value="-ea" />
+      <option name="PARAMETERS" />
+      <option name="WORKING_DIRECTORY" value="%MODULE_WORKING_DIR%" />
+      <option name="ENV_VARIABLES" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="TEST_SEARCH_SCOPE">
+        <value defaultName="singleModule" />
+      </option>
+      <envs />
+      <patterns />
     </configuration>
     <configuration default="true" type="JUnit" factoryName="JUnit">
       <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
@@ -449,9 +512,20 @@
       <option name="PROGRAM_PARAMETERS" />
       <predefined_log_file id="idea.log" enabled="true" />
     </configuration>
+    <list size="5">
+      <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+      <item index="1" class="java.lang.String" itemvalue="JUnit.ArithmeticBlockTest" />
+      <item index="2" class="java.lang.String" itemvalue="JUnit.ArithmeticBlockTest.testChangeToPowOperation" />
+      <item index="3" class="java.lang.String" itemvalue="JUnit.UnaryBlockTest" />
+      <item index="4" class="java.lang.String" itemvalue="JUnit.GoniometricBlockTest" />
+    </list>
     <recent_temporary>
-      <list size="1">
+      <list size="5">
         <item index="0" class="java.lang.String" itemvalue="Application.Main" />
+        <item index="1" class="java.lang.String" itemvalue="JUnit.GoniometricBlockTest" />
+        <item index="2" class="java.lang.String" itemvalue="JUnit.UnaryBlockTest" />
+        <item index="3" class="java.lang.String" itemvalue="JUnit.ArithmeticBlockTest.testChangeToPowOperation" />
+        <item index="4" class="java.lang.String" itemvalue="JUnit.ArithmeticBlockTest" />
       </list>
     </recent_temporary>
   </component>
@@ -464,12 +538,25 @@
   <component name="TaskManager">
     <servers />
   </component>
+  <component name="TestHistory">
+    <history-entry file="ArithmeticBlockTest - 2018.05.06 at 03h 33m 34s.xml">
+      <configuration name="ArithmeticBlockTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="ArithmeticBlockTest_testChangeToPowOperation - 2018.05.06 at 03h 34m 12s.xml">
+      <configuration name="ArithmeticBlockTest.testChangeToPowOperation" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="GoniometricBlockTest - 2018.05.06 at 03h 36m 53s.xml">
+      <configuration name="GoniometricBlockTest" configurationId="JUnit" />
+    </history-entry>
+    <history-entry file="UnaryBlockTest - 2018.05.06 at 03h 35m 10s.xml">
+      <configuration name="UnaryBlockTest" configurationId="JUnit" />
+    </history-entry>
+  </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="19501000" />
+    <option name="totallyTimeSpent" value="19996000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-9" y="-9" width="1938" height="1048" extended-state="7" />
-    <editor active="true" />
+    <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
     <layout>
       <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -480,7 +567,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32611173" sideWeight="0.5021482" order="8" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4117647" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22805017" sideWeight="0.49785176" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22805017" sideWeight="0.49785176" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Coverage" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32975295" sideWeight="0.5" order="10" side_tool="true" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
@@ -561,20 +648,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/UnaryBlockTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="62" column="61" lean-forward="true" selection-start-line="62" selection-start-column="61" selection-end-line="62" selection-end-column="61" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/ArithmeticBlockTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="119" column="16" lean-forward="false" selection-start-line="119" selection-start-column="16" selection-end-line="119" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/backend/schema/ISchema.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="189">
@@ -617,13 +690,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
           <caret line="27" column="4" lean-forward="false" selection-start-line="27" selection-start-column="4" selection-end-line="27" selection-end-column="4" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/GoniometricBlockTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1816">
-          <caret line="123" column="9" lean-forward="true" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
         </state>
       </provider>
     </entry>
@@ -1016,6 +1082,30 @@
             <element signature="e#26043#26044#0" expanded="true" />
             <element signature="e#26080#26081#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/ArithmeticBlockTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="605">
+          <caret line="116" column="9" lean-forward="true" selection-start-line="116" selection-start-column="9" selection-end-line="116" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/UnaryBlockTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1491">
+          <caret line="81" column="9" lean-forward="true" selection-start-line="81" selection-start-column="9" selection-end-line="81" selection-end-column="9" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/cz/blocksolver/tests/backend/block/GoniometricBlockTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2331">
+          <caret line="122" column="0" lean-forward="true" selection-start-line="122" selection-start-column="0" selection-end-line="122" selection-end-column="0" />
+          <folding />
         </state>
       </provider>
     </entry>

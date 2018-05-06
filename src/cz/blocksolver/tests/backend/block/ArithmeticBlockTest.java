@@ -85,42 +85,42 @@ public class ArithmeticBlockTest {
         Assert.assertEquals(new Integer(200), aBlock.getHeight());
     }
 
-//    @Test
-//    public void testBasicAddOperation(){
-//        aBlock.executeBlock();
-//        OutputPort b = aBlock.getOutputPort();
-//        Assert.assertEquals(new Double(55), b.getValue());
-//    }
+    @Test
+    public void testBasicAddOperation(){
+        aBlock.executeBlock(5.0, 50.0);
+        OutputPort b = aBlock.getOutputPort();
+        Assert.assertEquals(new Double(55), b.getValue());
+    }
 
-//    @Test
-//    public void testChangeToSubtractionOperation(){
-//        aBlock.changeOperation(SubtractionOperation.getInstance());
-//        aBlock.executeBlock();
-//        OutputPort b = aBlock.getOutputPort();
-//        Assert.assertEquals(new Double(45), b.getValue());
-//    }
-//
-//    @Test
-//    public void testChangeToMultiplyOperation(){
-//        aBlock.changeOperation(MultiplyOperation.getInstance());
-//        aBlock.executeBlock();
-//        OutputPort b = aBlock.getOutputPort();
-//        Assert.assertEquals(new Double(250), b.getValue());
-//    }
-//    @Test
-//    public void testChangeToDivisionOperation(){
-//        aBlock.changeOperation(DivisionOperation.getInstance());
-//        aBlock.executeBlock();
-//        OutputPort b = aBlock.getOutputPort();
-//        Assert.assertEquals(new Double(10), b.getValue());
-//    }
-//    @Test
-//    public void testChangeToPowOperation(){
-//        aBlock.changeOperation(PowOperation.getInstance());
-//        aBlock.executeBlock();
-//        OutputPort b = aBlock.getOutputPort();
-//        Assert.assertEquals(new Double(312500000), b.getValue());
-//    }
+    @Test
+    public void testChangeToSubtractionOperation(){
+        aBlock.changeOperation(SubtractionOperation.getInstance());
+        aBlock.executeBlock(145.0, 100.0);
+        OutputPort b = aBlock.getOutputPort();
+        Assert.assertEquals(new Double(45), b.getValue());
+    }
+
+    @Test
+    public void testChangeToMultiplyOperation(){
+        aBlock.changeOperation(MultiplyOperation.getInstance());
+        aBlock.executeBlock(25.0,10.0);
+        OutputPort b = aBlock.getOutputPort();
+        Assert.assertEquals(new Double(250), b.getValue());
+    }
+    @Test
+    public void testChangeToDivisionOperation(){
+        aBlock.changeOperation(DivisionOperation.getInstance());
+        aBlock.executeBlock(100.0,10.0);
+        OutputPort b = aBlock.getOutputPort();
+        Assert.assertEquals(new Double(10), b.getValue());
+    }
+    @Test
+    public void testChangeToPowOperation(){
+        aBlock.changeOperation(PowOperation.getInstance());
+        aBlock.executeBlock(5.0, 4.0);
+        OutputPort b = aBlock.getOutputPort();
+        Assert.assertEquals(new Double(625), b.getValue());
+    }
 
     @Test
     public void testToString(){
