@@ -56,7 +56,6 @@ public class MenuLayout extends VBox {
         }catch (IOException exception){
             throw new RuntimeException(exception);
         }
-        System.out.println("NEW DISPLAY " + display);
 
         load.setOnAction(e -> loadSchema(display, primaryStage));
         save.setOnAction(e -> saveSchema(display, primaryStage));
@@ -104,7 +103,6 @@ public class MenuLayout extends VBox {
      * @param primaryStage
      */
     public void loadSchema(MainDisplay display, Stage primaryStage){
-        System.out.println("NEW DISPLAY " + display);
 
         FileChooser fileChooser = new FileChooser();
         fileChooser.setTitle("Open Resource File");

@@ -39,7 +39,6 @@ public class SaveSchema {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
 
-            // root element
             Element rootElement = doc.createElement("schema");
             doc.appendChild(rootElement);
 
@@ -49,24 +48,17 @@ public class SaveSchema {
             Element blockCoordYElement;
             Element blockWidthElement;
             Element blockHeightElement;
-            Element blockOutputPortElement;
             Element blockTypeElement;
             Element blockInputPort1Element;
             Element blockInputPort2Element;
             Element blockOperatioTypeElement;
             Element inputOutputPortElement;
             Element input2OutputPortElement;
-            Element inputNameElement;
-            Element inputValueSetElement;
-            Element inputConnectedToOutputPortElement;
             Element inputPortTypeElement;
-            Element input2PortTypeElement;
             Element inputValueElement;
             Element input2ValueElement;
             Element blockIndexElement;
-            Element outputPortBlockIndex;
             Element line1Element;
-            Element line1PortNum;
             Element line1OutX;
             Element line1OutY;
             Element line1InX;
@@ -74,7 +66,6 @@ public class SaveSchema {
             Element line1Type;
             Element line1OutportIndex;
             Element line2Element;
-            Element line2PortNum;
             Element line2OutX;
             Element line2OutY;
             Element line2InX;
@@ -115,8 +106,6 @@ public class SaveSchema {
                 blockHeightElement.setTextContent(currentBlock.getHeight().toString());
                 blockElement.appendChild(blockHeightElement);
 
-//                blockOutputPortElement = doc.createElement("output_port");
-//                blockElement.appendChild(blockOutputPortElement);
                 blockTypeElement = doc.createElement("block_type");
                 blockTypeElement.setTextContent(currentBlock.getType().toString());
                 blockElement.appendChild(blockTypeElement);
@@ -127,7 +116,6 @@ public class SaveSchema {
                 inputOutputPortElement = doc.createElement("in1_output_port");
                 inputValueElement = doc.createElement("in1_value");
 
-                System.out.println(currentBlock.getInputPort(1).getConnectedToOutputPort());
                 if(!currentBlock.getInputPort(1).getConnectedToOutputPort()){
                     if(currentBlock.getInputPort(1).getValueSet()){
                         inputValueElement.setTextContent(currentBlock.getInputPort(1).getValue().toString());
@@ -136,7 +124,6 @@ public class SaveSchema {
                     }
                     blockElement.appendChild(inputValueElement);
                 }else{
-//                    System.out.println("SAD " + currentBlock.getInputPort(1).getOutputPort().getBlockIndex());
                     inputOutputPortElement.setTextContent(currentBlock.getInputPort(1).getOutputPort().getBlockIndex().toString());
                     blockElement.appendChild(inputOutputPortElement);
                 }
@@ -158,7 +145,6 @@ public class SaveSchema {
                         }
                         blockElement.appendChild(input2ValueElement);
                     }else{
-//                    System.out.println("SAD " + currentBlock.getInputPort(1).getOutputPort().getBlockIndex());
                         input2OutputPortElement.setTextContent(currentBlock.getInputPort(2).getOutputPort().getBlockIndex().toString());
                         blockElement.appendChild(input2OutputPortElement);
                     }
@@ -240,8 +226,7 @@ public class SaveSchema {
             if(file != null){
                 StreamResult result = new StreamResult(file);
                 transformer.transform(source, result);
-//
-//            // Output to console for testing
+
                 StreamResult consoleResult = new StreamResult(System.out);
                 transformer.transform(source, consoleResult);
             }

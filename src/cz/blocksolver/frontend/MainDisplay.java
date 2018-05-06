@@ -306,8 +306,6 @@ public class MainDisplay extends AnchorPane {
         main_display.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent mouseEvent) {
-                System.out.println("mouse click detected! " + mouseEvent.getSource());
-//                outputActive = false;
             }
         });
         buildDragHandlers();
@@ -348,7 +346,6 @@ public class MainDisplay extends AnchorPane {
                 if(!conLine.getShowed()){
                     conLine.setShowed(true);
                     if(outPort.getContainsResult()){
-                        //vlakna
                         Label tempLabel = new Label();
                         tempLabel.setText(outPort.getValue().toString());
                         tempLabel.setLayoutX(event.getX());
@@ -360,7 +357,6 @@ public class MainDisplay extends AnchorPane {
                             public void run() {
                                 Platform.runLater(new Runnable() {
                                     public void run() {
-                                        System.out.println("SDS");
                                         removeLineLabel(tempLabel);
                                         conLine.setShowed(false);
                                     }
@@ -368,7 +364,6 @@ public class MainDisplay extends AnchorPane {
                             }
                         }, 2000);
 
-//                    main_display.getChildren().remove(tempLabel);
                     }else{
                         Label tempLabel = new Label();
                         tempLabel.setText("none");
@@ -382,7 +377,6 @@ public class MainDisplay extends AnchorPane {
                             public void run() {
                                 Platform.runLater(new Runnable() {
                                     public void run() {
-                                        System.out.println("SDS");
                                         removeLineLabel(tempLabel);
                                         conLine.setShowed(false);
                                     }
@@ -440,8 +434,6 @@ public class MainDisplay extends AnchorPane {
                 if(!conLine.getShowed()){
                     conLine.setShowed(true);
                     if(outPort.getContainsResult()){
-                        //vlakna
-                        System.out.println(outPort.getValue());
                         Label tempLabel = new Label();
                         tempLabel.setText(outPort.getValue().toString());
                         tempLabel.setLayoutX(event.getX());
@@ -453,7 +445,6 @@ public class MainDisplay extends AnchorPane {
                             public void run() {
                                 Platform.runLater(new Runnable() {
                                     public void run() {
-                                        System.out.println("SDS");
                                         removeLineLabel(tempLabel);
                                         conLine.setShowed(false);
                                     }
@@ -461,9 +452,7 @@ public class MainDisplay extends AnchorPane {
                             }
                         }, 2000);
 
-//                    main_display.getChildren().remove(tempLabel);
                     }else{
-                        System.out.println("none");
                         Label tempLabel = new Label();
                         tempLabel.setText("none");
                         tempLabel.setLayoutX(event.getX());
@@ -476,7 +465,6 @@ public class MainDisplay extends AnchorPane {
                             public void run() {
                                 Platform.runLater(new Runnable() {
                                     public void run() {
-                                        System.out.println("SDS");
                                         removeLineLabel(tempLabel);
                                         conLine.setShowed(false);
                                     }
@@ -581,9 +569,7 @@ public class MainDisplay extends AnchorPane {
                         droppedBlock.relocateToPoint(new Point2D(cursorPoint.getX()-32,cursorPoint.getY()-32));
                         droppedBlock.setType(container.getValue("type"));
                         droppedBlock.setOperation(container.getValue("operation"));
-//                        droppedBlock.setDisplay(self);
                         droppedBlock.setCoordinates(cursorPoint.getX()-32, cursorPoint.getY()-32);
-//                        droppedBlock.XCoord
                         droppedBlock.setIndex(Index);
                         droppedBlock.dragBlock.getInputPort(1).setBlockIndex(Index);
                         if(droppedBlock.dragBlock.getType() == BlockType.ARITHMETIC){
@@ -592,7 +578,6 @@ public class MainDisplay extends AnchorPane {
                         droppedBlock.dragBlock.getOutputPort().setBlockIndex(Index);
                         Index++;
                         droppedBlock.activateEvents(false);
-                        System.out.println (container.getData().toString());
                         schema.addBlock(droppedBlock.dragBlock);
                         dragBlockList.add(droppedBlock);
 
@@ -614,11 +599,8 @@ public class MainDisplay extends AnchorPane {
             main_display.setOnDragOver(blockDragOverMainDisplay);
             main_display.setOnDragDropped(blockDragDropped);
 
-            //reference na kliknuty Block objekt
             DragBlock _block = (DragBlock) event.getSource();
 
-            //tady budu moci ponastavovat vlastnosti jako napriklad typ bloku atd.
-            //zahajuje se tu operace drag
             dragOverBlock.setName(_block.getName());
             dragOverBlock.setType(_block.getType());
             dragOverBlock.setOperation(_block.getOperation());
@@ -754,7 +736,6 @@ public class MainDisplay extends AnchorPane {
             schema.getBlocks().get(i).setExecuted(false);
             schema.getBlocks().get(i).getOutputPort().setContainsResult(false);
         }
-        System.out.println(hasCycle.toString());
         return hasCycle;
     }
 
@@ -963,14 +944,10 @@ public class MainDisplay extends AnchorPane {
                 }
             }
             executedSome = false;
-            System.out.println(schema.getBlocks().get(i));
             if(schema.getBlocks().get(i).getType() == BlockType.ARITHMETIC){
-                System.out.println("Je aritmeticky");
                 if(hasSetValue(schema.getBlocks().get(i).getInputPort(1)) && hasSetValue(schema.getBlocks().get(i).getInputPort(2))){
-                    System.out.println("Hodnoty nastaveny");
                     if(!schema.getBlocks().get(i).getExecuted()){
                         if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)), getPortValue(schema.getBlocks().get(i).getInputPort(2)))){
-                            System.out.println("Value in executed block " + schema.getBlocks().get(i).getOutputPort().getValue());
                             executedSome = true;
                             schema.getBlocks().get(i).setExecuted(true);
                             schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
@@ -997,12 +974,9 @@ public class MainDisplay extends AnchorPane {
                     }
                 }
             }else if(schema.getBlocks().get(i).getType() == BlockType.UNARY){
-                System.out.println("Je Unarni");
                 if(hasSetValue(schema.getBlocks().get(i).getInputPort(1))){
-                    System.out.println("Hodnoty nastaveny");
                     if(!schema.getBlocks().get(i).getExecuted()){
                         if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)))){
-                            System.out.println("Value in executed block " + schema.getBlocks().get(i).getOutputPort().getValue());
                             executedSome = true;
                             schema.getBlocks().get(i).setExecuted(true);
                             schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
@@ -1029,12 +1003,9 @@ public class MainDisplay extends AnchorPane {
                     }
                 }
             }else if(schema.getBlocks().get(i).getType() == BlockType.GONIOMETRIC){
-                System.out.println("Je Goniometricky");
                 if(hasSetValue(schema.getBlocks().get(i).getInputPort(1))){
-                    System.out.println("Hodnoty nastaveny");
                     if(!schema.getBlocks().get(i).getExecuted()){
                         if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)))){
-                            System.out.println("Value in executed block " + schema.getBlocks().get(i).getOutputPort().getValue());
                             executedSome = true;
                             schema.getBlocks().get(i).setExecuted(true);
                             schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
@@ -1073,7 +1044,6 @@ public class MainDisplay extends AnchorPane {
      */
     public Boolean cycleChecker(){
         for(int i = 0; i < schema.getBlocks().size(); i++){
-            System.out.println(schema.getBlocks().get(i));
             if(schema.getBlocks().get(i).getType() == BlockType.ARITHMETIC){
                 if(hasSetValue(schema.getBlocks().get(i).getInputPort(1)) && hasSetValue(schema.getBlocks().get(i).getInputPort(2))){
                     if(!schema.getBlocks().get(i).getExecuted()){
@@ -1129,10 +1099,8 @@ public class MainDisplay extends AnchorPane {
         }
 
         dragBlockList = new ArrayList<>();
-        System.out.println("DELKA " + dragBlockList.size() + " " + schema.getBlocks().size() );
 
         schema = new Schema("Unnamed");
-        System.out.println("DELKA " + dragBlockList.size() + " " + schema.getBlocks().size() );
 
         Index = 1;
 
@@ -1178,7 +1146,6 @@ public class MainDisplay extends AnchorPane {
      * @param y
      */
     public void setOutputCoords(Integer x,Integer y) {
-        System.out.println(x + " " + y);
         outputCoords.put("x" , x);
         outputCoords.put("y", y);
     }
