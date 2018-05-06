@@ -15,6 +15,8 @@ import javafx.stage.Stage;
 /**
  * Slouzi k vytvoreni a zobrazeni boxu, ktery obsahuje
  * detailni informace jednotlivych bloku
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class BlockDetail {
     static String newName;

@@ -9,6 +9,8 @@ import javafx.stage.Stage;
 
 /**
  * Hlavni trida
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class Main extends Application {
 

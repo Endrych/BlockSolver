@@ -12,6 +12,8 @@ import javafx.stage.Stage;
 
 /**
  * Umoznuje rucni zadavani hodnot do jednotlivych Unarnich bloku
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class ChangeInputUnary {
     static String newValue;

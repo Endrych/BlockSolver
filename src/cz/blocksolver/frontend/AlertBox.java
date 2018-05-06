@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 /**
  * Slouzi k vytvoreni a zobrazeni boxu s nejakym varovanim
  * nebo upozornenim
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class AlertBox {
 

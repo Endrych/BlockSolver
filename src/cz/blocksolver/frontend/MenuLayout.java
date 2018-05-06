@@ -26,6 +26,8 @@ import java.util.ArrayList;
 
 /**
  * Vytvori a zobrazi menu
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class MenuLayout extends VBox {
 

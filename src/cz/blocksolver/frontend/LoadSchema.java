@@ -23,6 +23,8 @@ import java.util.ArrayList;
 
 /**
  * Slouzi k nacteni schematu z ulozeneho XML souboru
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class LoadSchema {
     /**

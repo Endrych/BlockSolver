@@ -4,6 +4,8 @@ import cz.blocksolver.backend.port.PortType;
 
 /**
  * Slouzi k uchovani hodnot vstupniho portu Goniometrickeho bloku
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class GoniometricInput {
     public PortType type;

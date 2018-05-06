@@ -14,6 +14,8 @@ import javafx.stage.Stage;
 
 /**
  * Umoznuje rucni zadavani hodnot a typu do jednotlivych Goniometrickych bloku
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class ChangeInputGoniometric {
     static String newValue;

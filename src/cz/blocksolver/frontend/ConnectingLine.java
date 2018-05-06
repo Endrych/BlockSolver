@@ -6,6 +6,8 @@ import javafx.scene.shape.Line;
 /**
  * Slouzi k vytvoreni objektu, ktery reprezentuje spoj mezi
  * dvema bloky
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class ConnectingLine {
     OutputPort outputPort;

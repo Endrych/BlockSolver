@@ -10,6 +10,8 @@ import java.util.List;
 
 /**
  * Slouzi k ulozeni hodnot pri pretahovani bloku
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class DragContainer implements Serializable{
 

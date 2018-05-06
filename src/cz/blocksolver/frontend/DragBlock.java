@@ -32,6 +32,8 @@ import static javafx.scene.paint.Paint.valueOf;
 
 /**
  * Objekt, ktery reprezentuje jednotlive zobrazene bloky
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class DragBlock extends AnchorPane{
 

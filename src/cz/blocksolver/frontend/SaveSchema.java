@@ -22,6 +22,8 @@ import java.util.List;
 
 /**
  * Stara se o ulozeni Schematu do XML souboru
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class SaveSchema {
 

@@ -17,6 +17,8 @@ import javafx.stage.Stage;
 /**
  * Slouzi k vytvoreni zobrazeni boxu se zakladnimi
  * infromacemi k aplikaci
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class About {
 

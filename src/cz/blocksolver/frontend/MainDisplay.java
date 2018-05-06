@@ -35,6 +35,8 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * Reprezentuje hlavni cast obrazovky
+ * @author David Endrych (xendry02)
+ * @author Marek Kukučka (xkukuc04)
  */
 public class MainDisplay extends AnchorPane {
 
