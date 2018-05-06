@@ -7,6 +7,7 @@ import cz.blocksolver.backend.block.unary.*;
 import cz.blocksolver.backend.port.PortType;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,15 +19,16 @@ import javafx.scene.input.ContextMenuEvent;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 
 import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-//import static cz.blocksolver.frontend.MainDisplay.ConnectBlocks;
-//import static cz.blocksolver.frontend.MainDisplay.outputActive;
-//import static cz.blocksolver.frontend.MainDisplay.outputCoords;
+import static com.sun.xml.internal.ws.client.ContentNegotiation.none;
+import static javafx.scene.paint.Color.DODGERBLUE;
+import static javafx.scene.paint.Paint.valueOf;
 
 
 public class DragBlock extends AnchorPane{
@@ -68,6 +70,14 @@ public class DragBlock extends AnchorPane{
         }catch (IOException exception){
             throw new RuntimeException(exception);
         }
+
+        block_pane.setStyle("-fx-border-style: solid;"
+                + "-fx-border-width:1;" + "-fx-background-color: white;"
+                + "-fx-border-radius: 5;" + "-fx-border-color: black;");
+
+        input_1.setStroke(valueOf("white"));
+        input_2.setStroke(valueOf("white"));
+        output.setStroke(valueOf("white"));
     }
 
     public DragBlock(MainDisplay display){
@@ -99,8 +109,23 @@ public class DragBlock extends AnchorPane{
 
         if(type.equals("g")){
             input_2.setVisible(false);
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:1;" + "-fx-background-color: #47a8bd;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: #2e6b79;");
+            input_1.setLayoutX(11.0);
+            input_1.setLayoutY(36.0);
+
         }else if(type.equals("u")){
             input_2.setVisible(false);
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:1;" + "-fx-background-color: #ffb84d;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: #ba7e4d;");
+            input_1.setLayoutX(11.0);
+            input_1.setLayoutY(36.0);
+        }else if(type.equals("a")){
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:1;" + "-fx-background-color: #f5e663;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: #dfd25a;");
         }
 
     }
@@ -144,7 +169,10 @@ public class DragBlock extends AnchorPane{
     public void activateEvents(Boolean load) {
         if(!load){
             chooseBlock();
+        }else{
+            setBlockStyle();
         }
+
         Label label = new Label();
         ContextMenu contextMenu = new ContextMenu();
         MenuItem item1 = new MenuItem("Detail");
@@ -153,8 +181,10 @@ public class DragBlock extends AnchorPane{
             @Override
             public void handle(ActionEvent event) {
                 String name = BlockDetail.display(dragBlock, self);
-                if(!name.equals("")){
-                    dragBlock.setName(name);
+                if(name != null){
+                    if(!name.equals("")){
+                        dragBlock.setName(name);
+                    }
                 }
             }
         });
@@ -203,18 +233,10 @@ public class DragBlock extends AnchorPane{
                                 inputPortLine2.setLine(null);
                             }
                         }
-                        System.out.println(display.getDragBlockList().size() + " s " + display.schema.getBlocks().size());
                         display.getDragBlockList().remove(i);
                         display.schema.removeBlock(dragBlock);
                     }
-
-
-
                 }
-                System.out.println("Remove");
-                System.out.println(display.schema.getBlocks().size());
-                System.out.println(display.getDragBlockList().size());
-
             }
         });
 
@@ -228,6 +250,8 @@ public class DragBlock extends AnchorPane{
             }
         });
 
+        Handle_showResult(display.showBlockValue);
+
         System.out.println(display.schema.getBlocks());
         System.out.println(Type);
         System.out.println("RUN");
@@ -238,6 +262,7 @@ public class DragBlock extends AnchorPane{
                 public void handle(MouseEvent event) {
                     if(display.getOutputActive()){
                         display.setOutputActive(false);
+                        display.outputDragBlock.removeHiglightOutputPort();
                         display.inputPort = dragBlock.getInputPort(1);
                         display.inputIndex = Index;
                         if(display.checkPortsIndex()){
@@ -282,6 +307,7 @@ public class DragBlock extends AnchorPane{
                 public void handle(MouseEvent event) {
                     if(display.getOutputActive()){
                         display.setOutputActive(false);
+                        display.outputDragBlock.removeHiglightOutputPort();
                         display.inputPort = dragBlock.getInputPort(1);
                         display.inputIndex = Index;
                         if(display.checkPortsIndex()){
@@ -322,26 +348,8 @@ public class DragBlock extends AnchorPane{
                     }
                 }
             };
-            handle_output = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    System.out.println(display);
-                    display.outputIndex = Index;
-//                    Line line = new Line(200, 200, 10, 110);
-//                    display.main_display.getChildren().add(line);//                    display.setOutputActive(true);
-                    display.setOutputCoords(XCoord,  YCoord);
-                    System.out.println(XCoord + " : " + YCoord);
-                    display.setOutputActive(true);
-                    display.outputPort = dragBlock.getOutputPort();
-                    System.out.println("Block index " + dragBlock.getOutputPort().getBlockIndex() + " " + Index);
-                    //                    System.out.println(event.getSceneX());
-//                    display.outputCoords.put("x", event.getSceneX());
-//                    display.outputCoords.put("y", event.getSceneY());
-//                    dragBlock.executeBlock();
-//                    System.out.println(dragBlock.getOutputPort().getValue());
-                }
-            };
-            handle_showResult = getHandle_showResult();
+            handle_output = Handle_output();
+
 
             handle_righClick = new EventHandler<MouseEvent>() {
                 @Override
@@ -357,7 +365,7 @@ public class DragBlock extends AnchorPane{
             input_1.setOnMouseClicked(handle_input1);
             input_2.setOnMouseClicked(handle_input2);
             output.setOnMouseClicked(handle_output);
-            block_pane.setOnMouseEntered(handle_showResult);
+//            block_pane.setOnMouseEntered(handle_showResult);
             block_pane.setOnMouseClicked(handle_righClick);
         }else if(Type.equals("goniometric")){
             input_2.setVisible(false);
@@ -366,6 +374,7 @@ public class DragBlock extends AnchorPane{
                 public void handle(MouseEvent event) {
                     if(display.getOutputActive()){
                         display.setOutputActive(false);
+                        display.outputDragBlock.removeHiglightOutputPort();
                         display.inputPort = dragBlock.getInputPort(1);
                         display.inputIndex = Index;
                         dragBlock.getInputPort(1).setType(PortType.DEGREE);
@@ -427,20 +436,11 @@ public class DragBlock extends AnchorPane{
                     }
                 }
             };
-            handle_output = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    display.outputIndex = Index;
-                    display.setOutputCoords(XCoord,  YCoord);
-                    display.setOutputActive(true);
-                    display.outputPort = dragBlock.getOutputPort();
-                }
-            };
-            handle_showResult = getHandle_showResult();
+            handle_output = Handle_output();
 
             input_1.setOnMouseClicked(handle_input1);
             output.setOnMouseClicked(handle_output);
-            block_pane.setOnMouseEntered(handle_showResult);
+//            block_pane.setOnMouseEntered(handle_showResult);
         }else if(Type.equals("unary")){
             input_2.setVisible(false);
             handle_input1 = new EventHandler<MouseEvent>() {
@@ -448,6 +448,7 @@ public class DragBlock extends AnchorPane{
                 public void handle(MouseEvent event) {
                     if(display.getOutputActive()){
                         display.setOutputActive(false);
+                        display.outputDragBlock.removeHiglightOutputPort();
                         display.inputPort = dragBlock.getInputPort(1);
                         display.inputIndex = Index;
                         if(display.checkPortsIndex()){
@@ -489,20 +490,12 @@ public class DragBlock extends AnchorPane{
                 }
             };
 
-            handle_output = new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    display.outputIndex = Index;
-                    display.setOutputCoords(XCoord,  YCoord);
-                    display.setOutputActive(true);
-                    display.outputPort = dragBlock.getOutputPort();
-                }
-            };
-            handle_showResult = getHandle_showResult();
+            handle_output = Handle_output();
+//            handle_showResult = getHandle_showResult();
 
             input_1.setOnMouseClicked(handle_input1);
             output.setOnMouseClicked(handle_output);
-            block_pane.setOnMouseEntered(handle_showResult);
+//            block_pane.setOnMouseEntered(handle_showResult);
         }
 
     }
@@ -625,14 +618,6 @@ public class DragBlock extends AnchorPane{
         }
     }
 
-    public void displayBlock(){
-        if(Type.equals("goniometric")){
-            input_2.setVisible(false);
-        }else if(Type.equals("unary")){
-            input_2.setVisible(false);
-        }
-    }
-
     public void setCoordinates(double x, double y) {
         Double dx = new Double(x);
         Double dy = new Double(y);
@@ -644,77 +629,129 @@ public class DragBlock extends AnchorPane{
 
     public void higlight() {
         isHiglighted = true;
-        block_pane.setStyle("-fx-border-style: solid;"
-                + "-fx-border-width: 2;" + "-fx-background-color: yellow;"
-                + "-fx-border-radius: 5;" + "-fx-border-color: red;");
+        if(Type.equals("goniometric")){
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:2;" + "-fx-background-color: #47a8bd;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: red;");
+        }else if(Type.equals("unary")){
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:2;" + "-fx-background-color: #ffb84d;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: red;");
+        }else if(Type.equals("arithmetic")){
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:2;" + "-fx-background-color: #f5e663;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: red;");
+        }
     }
 
     public void removeHiglight() {
         isHiglighted = false;
-        block_pane.setStyle("-fx-background-color: yellow;");
+        setBlockStyle();
+
     }
-    //    public void setType(String type){
-//        System.out.println("HERE");
-//        if(type.equals("arithmetic")){
-//            System.out.println("HERE2");
-//            ABlock = new ArithmeticBlock("Unknown", 0, 0, 64, 64, SubtractionOperation.getInstance());
-//            System.out.println(ABlock.getType());
-//        }
-//
-//    }
-//
-//    public void setOperation(String operation) {
-//        if(operation.equals("add")){
-//
-//        }
-//    }
 
+    public void Handle_showResult(Boolean On) {
+        display.showBlockValue = On;
+        if(On){
+            handle_showResult = new EventHandler<MouseEvent>() {
+                @Override
+                public void handle(MouseEvent event) {
+                    if(!showingResult){
+                        showingResult = true;
+                        Label tempLabel = new Label();
+                        tempLabel.setLayoutX(XCoord-232);
+                        tempLabel.setLayoutY(YCoord-84);
+                        Timer timer = new java.util.Timer();
+                        if(dragBlock.getExecuted()){
+                            tempLabel.setText(dragBlock.getOutputPort().getValue().toString());
+                            display.main_display.getChildren().add(tempLabel);
 
-    public EventHandler getHandle_showResult() {
-        EventHandler handle_showResult = new EventHandler<MouseEvent>() {
+                            timer.schedule(new TimerTask() {
+                                public void run() {
+                                    Platform.runLater(new Runnable() {
+                                        public void run() {
+                                            display.main_display.getChildren().remove(tempLabel);
+                                            showingResult = false;
+                                        }
+                                    });
+                                }
+                            }, 2000);
+                        }else{
+                            tempLabel.setText("Block not executed");
+                            display.main_display.getChildren().add(tempLabel);
+
+                            timer.schedule(new TimerTask() {
+                                public void run() {
+                                    Platform.runLater(new Runnable() {
+                                        public void run() {
+                                            display.main_display.getChildren().remove(tempLabel);
+                                            showingResult = false;
+                                        }
+                                    });
+                                }
+                            }, 2000);
+                        }
+                    }
+
+                }
+            };
+
+        }else{
+            handle_showResult = null;
+        }
+
+        block_pane.setOnMouseEntered(handle_showResult);
+    }
+
+    public void setBlockStyle(){
+        if(Type.equals("goniometric")){
+            input_2.setVisible(false);
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:1;" + "-fx-background-color: #47a8bd;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: #2e6b79;");
+            input_1.setLayoutX(11.0);
+            input_1.setLayoutY(36.0);
+        }else if(Type.equals("unary")){
+            input_2.setVisible(false);
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:1;" + "-fx-background-color: #ffb84d;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: #ba7e4d;");
+            input_1.setLayoutX(11.0);
+            input_1.setLayoutY(36.0);
+        }else if(Type.equals("arithmetic")){
+            block_pane.setStyle("-fx-border-style: solid;"
+                    + "-fx-border-width:1;" + "-fx-background-color: #f5e663;"
+                    + "-fx-border-radius: 5;" + "-fx-border-color: #dfd25a;");
+        }
+    }
+
+    public EventHandler Handle_output() {
+        EventHandler ev = handle_output = new EventHandler<MouseEvent>() {
             @Override
             public void handle(MouseEvent event) {
-                if(!showingResult){
-                    showingResult = true;
-                    Label tempLabel = new Label();
-                    tempLabel.setLayoutX(XCoord-232);
-                    tempLabel.setLayoutY(YCoord-84);
-                    Timer timer = new java.util.Timer();
-                    if(dragBlock.getExecuted()){
-                        tempLabel.setText(dragBlock.getOutputPort().getValue().toString());
-                        display.main_display.getChildren().add(tempLabel);
-
-                        timer.schedule(new TimerTask() {
-                            public void run() {
-                                Platform.runLater(new Runnable() {
-                                    public void run() {
-                                        display.main_display.getChildren().remove(tempLabel);
-                                        showingResult = false;
-                                    }
-                                });
-                            }
-                        }, 2000);
-                    }else{
-                        tempLabel.setText("Block not executed");
-                        display.main_display.getChildren().add(tempLabel);
-
-                        timer.schedule(new TimerTask() {
-                            public void run() {
-                                Platform.runLater(new Runnable() {
-                                    public void run() {
-                                        display.main_display.getChildren().remove(tempLabel);
-                                        showingResult = false;
-                                    }
-                                });
-                            }
-                        }, 2000);
-                    }
+                if (!display.getOutputActive()) {
+                    display.outputIndex = Index;
+                    display.setOutputCoords(XCoord, YCoord);
+                    display.setOutputActive(true);
+                    display.outputPort = dragBlock.getOutputPort();
+                    display.outputDragBlock = self;
+                    higlightOutputPort();
+                } else {
+                    display.setOutputActive(false);
+                    removeHiglightOutputPort();
                 }
-
             }
         };
+        return ev;
+    }
 
-        return handle_showResult;
+    public void higlightOutputPort(){
+        output.setFill(valueOf("#eda2a2"));
+        output.setStroke(valueOf("#d00000"));
+    }
+
+    public void removeHiglightOutputPort(){
+        output.setFill(valueOf("white"));
+        output.setStroke(valueOf("black"));
     }
 }
-

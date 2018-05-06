@@ -1,21 +1,26 @@
 package cz.blocksolver.frontend;
 
 import cz.blocksolver.backend.schema.Schema;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.control.CheckMenuItem;
 import javafx.scene.control.MenuItem;
 import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
@@ -25,6 +30,9 @@ public class MenuLayout extends VBox {
     @FXML public MenuItem load;
     @FXML public MenuItem run;
     @FXML public MenuItem debug;
+    @FXML public CheckMenuItem block_value;
+    @FXML public MenuItem new_schema;
+    @FXML public MenuItem about;
 
     public MenuLayout(MainDisplay display, Stage primaryStage){
 
@@ -57,6 +65,24 @@ public class MenuLayout extends VBox {
             }
         });
         debug.setOnAction(e -> display.debugSchema());
+
+        block_value.selectedProperty().addListener(new ChangeListener<Boolean>() {
+            public void changed(ObservableValue<? extends Boolean> ov, Boolean old_val, Boolean new_val) {
+                if(block_value.isSelected()){
+                    for(int i = 0; i < display.getDragBlockList().size(); i++){
+                        display.getDragBlockList().get(i).Handle_showResult(true);
+                    }
+                }else{
+                    for(int i = 0; i < display.getDragBlockList().size(); i++){
+                        display.getDragBlockList().get(i).Handle_showResult(false);
+                    }
+                }
+            }
+        });
+
+        about.setOnAction(e -> About.display());
+
+        new_schema.setOnAction(e -> display.wipeSchema());
     }
 
     @FXML
@@ -65,27 +91,27 @@ public class MenuLayout extends VBox {
     public void loadSchema(MainDisplay display, Stage primaryStage){
         System.out.println("NEW DISPLAY " + display);
 
-        for(int i = 0; i < display.getDragBlockList().size(); i++){
-            display.getDragBlockList().get(i).setVisible(false);
-        }
-        for(int i = display.getDragBlockList().size()-1; i >= 0; i--){
-            display.getDragBlockList().remove(i);
+        FileChooser fileChooser = new FileChooser();
+        fileChooser.setTitle("Open Resource File");
+        fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XML", "*.xml"));
+        File xmlFile = fileChooser.showOpenDialog(primaryStage);
+        if(xmlFile != null){
+            display.wipeSchema();
+            LoadSchema sch = new LoadSchema();
+            try {
+                sch.execute(display, display.schema, display.getDragBlockList(), xmlFile);
+            } catch (ParserConfigurationException e) {
+                e.printStackTrace();
+            } catch (IOException e) {
+                e.printStackTrace();
+            } catch (SAXException e) {
+                e.printStackTrace();
+            }
+            for(int i=0; i < display.getDragBlockList().size(); i++){
+                display.getDragBlockList().get(i).activateEvents(true);
+            }
         }
 
-        display.schema = new Schema(display.schema.getName());
-        LoadSchema sch = new LoadSchema();
-        try {
-            sch.execute(display, display.schema, display.getDragBlockList(), primaryStage);
-        } catch (ParserConfigurationException e) {
-            e.printStackTrace();
-        } catch (IOException e) {
-            e.printStackTrace();
-        } catch (SAXException e) {
-            e.printStackTrace();
-        }
-        for(int i=0; i < display.getDragBlockList().size(); i++){
-            display.getDragBlockList().get(i).activateEvents(true);
-        }
     }
 
     public void saveSchema(MainDisplay display, Stage primaryStage){

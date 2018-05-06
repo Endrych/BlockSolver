@@ -14,12 +14,14 @@ import javafx.event.Event;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
+import javafx.geometry.Insets;
 import javafx.geometry.Point2D;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.SplitPane;
 import javafx.scene.input.*;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
@@ -59,6 +61,8 @@ public class MainDisplay extends AnchorPane {
     public Integer outputIndex;
     public Integer inputIndex;
     public Integer _index = 1;
+    public Boolean showBlockValue = false;
+    public DragBlock outputDragBlock;
 
     public ArrayList<DragBlock> getDragBlockList() {
         return dragBlockList;
@@ -145,118 +149,170 @@ public class MainDisplay extends AnchorPane {
 
 
 
-        System.out.println("THIS " + this);
         self = this;
-        System.out.println("Self " + self);
         dragOverBlock = new DragBlock();
 
         dragOverBlock.setVisible(false);
         dragOverBlock.setOpacity(0.65);
         getChildren().add(dragOverBlock);
 
-        Label arithmeticLabel = new Label("Aritmeticke bloky");
+        Label arithmeticLabel = new Label("Aritmetické bloky");
+        arithmeticLabel.setPrefWidth(180);
+        arithmeticLabel.setPadding(new Insets(10,0,0,35));
         Label goniometricLabel = new Label("Goniometricke bloky");
-        Label unaryLabel = new Label("Unarni bloky");
-
-        DragBlock block = new DragBlock(self);
+        goniometricLabel.setPrefWidth(180);
+        goniometricLabel.setPadding(new Insets(10,0,0,25));
+        Label unaryLabel = new Label("Unární bloky");
+        unaryLabel.setPrefWidth(180);
+        unaryLabel.setPadding(new Insets(10,0,0,50));
+        HBox twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
+        DragBlock block = new DragBlock("a", self);
         addDragDetection(block);
         block_chooser.getChildren().add(arithmeticLabel);
         block.setName("x+y");
         block.setType("arithmetic");
         block.setOperation("add");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
         block = new DragBlock("a", self);
         addDragDetection(block);
         block.setName("x-y");
         block.setType("arithmetic");
         block.setOperation("sub");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+        twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
         block = new DragBlock("a",  self);
         addDragDetection(block);
         block.setName("x*y");
         block.setType("arithmetic");
         block.setOperation("mult");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
         block = new DragBlock("a", self);
         addDragDetection(block);
         block.setName("x/y");
         block.setType("arithmetic");
         block.setOperation("div");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+        twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
         block = new DragBlock("a", self);
         addDragDetection(block);
         block.setName("x^y");
         block.setType("arithmetic");
         block.setOperation("pow");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+        twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
+        block = new DragBlock("a",  self);
+
         block_chooser.getChildren().add(goniometricLabel);
         block = new DragBlock("g", self);
         addDragDetection(block);
         block.setName("sin(x)");
         block.setType("goniometric");
         block.setOperation("sin");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
         block = new DragBlock("g", self);
         addDragDetection(block);
         block.setName("cos(x)");
         block.setType("goniometric");
         block.setOperation("cos");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+        twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
         block = new DragBlock("g",  self);
         addDragDetection(block);
         block.setName("tang(x)");
         block.setType("goniometric");
         block.setOperation("tang");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
         block = new DragBlock("g", self);
         addDragDetection(block);
         block.setName("cotg(x)");
         block.setType("goniometric");
         block.setOperation("cotg");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+        twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
+
         block_chooser.getChildren().add(unaryLabel);
         block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x^2");
         block.setType("unary");
         block.setOperation("pot");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
         block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x^1/2");
         block.setType("unary");
         block.setOperation("sqr");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+        twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
         block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x^1/3");
         block.setType("unary");
         block.setOperation("cro");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
         block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x--");
         block.setType("unary");
         block.setOperation("dec");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+        twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
         block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("x++");
         block.setType("unary");
         block.setOperation("inc");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
         block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("rad(x)");
         block.setType("unary");
         block.setOperation("rad");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+        twoHbox = new HBox();
+        twoHbox.setMinWidth(180.0);
+        twoHbox.setSpacing(20);
+        twoHbox.setPadding(new Insets(5,0,0,15));
         block = new DragBlock("u", self);
         addDragDetection(block);
         block.setName("deg(x)");
         block.setType("unary");
         block.setOperation("deg");
-        block_chooser.getChildren().add(block);
+        twoHbox.getChildren().add(block);
+        block_chooser.getChildren().add(twoHbox);
+
 
         main_display.addEventFilter(MouseEvent.MOUSE_PRESSED, new EventHandler<MouseEvent>() {
             @Override
@@ -281,16 +337,16 @@ public class MainDisplay extends AnchorPane {
 
         if(type.equals("a")){
             if(portNum == 1){
-                line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-34);
+                line = new Line(outputCoords.get("x")-178, outputCoords.get("y")-23, x-238, y-34);
             }else{
-                line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-14);
+                line = new Line(outputCoords.get("x")-178, outputCoords.get("y")-23, x-238, y-14);
             }
             main_display.getChildren().add(line);
         }else if(type.equals("u")){
-            line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-34);
+            line = new Line(outputCoords.get("x")-178, outputCoords.get("y")-23, x-240, y-20);
             main_display.getChildren().add(line);
         }else if(type.equals("g")){
-            line = new Line(outputCoords.get("x")-186, outputCoords.get("y")-27, x-238, y-34);
+            line = new Line(outputCoords.get("x")-178, outputCoords.get("y")-23, x-240, y-20);
             main_display.getChildren().add(line);
         }
 
@@ -323,9 +379,9 @@ public class MainDisplay extends AnchorPane {
 
 //                    main_display.getChildren().remove(tempLabel);
                     }else{
-                        System.out.println("Block not executed");
+                        System.out.println("none");
                         Label tempLabel = new Label();
-                        tempLabel.setText("Block not executed");
+                        tempLabel.setText("none");
                         tempLabel.setLayoutX(event.getX());
                         tempLabel.setLayoutY(event.getY());
                         main_display.getChildren().add(tempLabel);
@@ -403,9 +459,9 @@ public class MainDisplay extends AnchorPane {
 
 //                    main_display.getChildren().remove(tempLabel);
                     }else{
-                        System.out.println("Block not executed");
+                        System.out.println("none");
                         Label tempLabel = new Label();
-                        tempLabel.setText("Block not executed");
+                        tempLabel.setText("none");
                         tempLabel.setLayoutX(event.getX());
                         tempLabel.setLayoutY(event.getY());
                         main_display.getChildren().add(tempLabel);
@@ -497,8 +553,16 @@ public class MainDisplay extends AnchorPane {
 
                 if(container != null){
                     if(container.getValue("scene_coords") != null){
-                        DragBlock droppedBlock = new DragBlock(self);
+                        DragBlock droppedBlock;
+                        if(container.getValue("type").equals("goniometric")){
+                            droppedBlock = new DragBlock("g", self);
 
+                        }else if(container.getValue("type").equals("unary")){
+                            droppedBlock = new DragBlock("u", self);
+
+                        }else{
+                            droppedBlock = new DragBlock("a" ,self);
+                        }
                         droppedBlock.setName(container.getValue("name"));
                         main_display.getChildren().add(droppedBlock);
 
@@ -544,7 +608,6 @@ public class MainDisplay extends AnchorPane {
             dragOverBlock.setName(_block.getName());
             dragOverBlock.setType(_block.getType());
             dragOverBlock.setOperation(_block.getOperation());
-            dragOverBlock.displayBlock();
             dragOverBlock.relocateToPoint(new Point2D(event.getSceneX(), event.getSceneY()));
 
             ClipboardContent content = new ClipboardContent();
@@ -665,6 +728,26 @@ public class MainDisplay extends AnchorPane {
                 }else{
                     dragBlockList.get(i).removeHiglight();
                 }
+            }else{
+                if(!dragBlockList.get(i).getOperation().equals("rad") && !dragBlockList.get(i).getOperation().equals("deg"))
+                    if(schema.getBlocks().get(i).getInputPort(1).getConnectedToOutputPort()) {
+                        if (schema.getBlocks().get(i).getInputPort(1).getOutputPort().getType() != PortType.NUMBER) {
+                            dragBlockList.get(i).higlight();
+                            found = true;
+                        } else {
+                            dragBlockList.get(i).removeHiglight();
+                        }
+                    }
+                    if(schema.getBlocks().get(i).getType() == BlockType.ARITHMETIC){
+                        if(schema.getBlocks().get(i).getInputPort(2).getConnectedToOutputPort()) {
+                            if (schema.getBlocks().get(i).getInputPort(2).getOutputPort().getType() != PortType.NUMBER) {
+                                dragBlockList.get(i).higlight();
+                                found = true;
+                            } else {
+                                dragBlockList.get(i).removeHiglight();
+                            }
+                        }
+                    }
             }
         }
 
@@ -692,7 +775,17 @@ public class MainDisplay extends AnchorPane {
                         }while(executedSome);
                     }
                 }).start();
+            }else{
+                AlertBox.display("Ve vašem schématu se vyskytuje cyklus,\n" +
+                        "prosím proveďte jeho odstranění.\n\n" +
+                        "Bloky které tvoří cyklus jsou \n" +
+                        "zvýrazněny červeně\n", "Nalezen cyklus");
             }
+        }else{
+            AlertBox.display("Porušena kompatibilita vstupního,\n" +
+                    "a výstupního portu propoje .\n\n" +
+                    "Blok/y které jsou postiženy jsou \n" +
+                    "zvýrazněny červeně\n", "Porušena kompatibilita");
         }
 
     }
@@ -783,14 +876,28 @@ public class MainDisplay extends AnchorPane {
                 main_display.getChildren().add(btnDebugFinish);
                 main_display.getChildren().add(btsDebugStop);
 
+            }else{
+                AlertBox.display("Ve vašem schématu se vyskytuje cyklus,\n" +
+                        "prosím proveďte jeho odstranění.\n\n" +
+                        "Bloky které tvoří cyklus jsou \n" +
+                        "zvýrazněny červeně\n", "Nalezen cyklus");
             }
+        }else{
+            AlertBox.display("Porušena kompatibilita vstupního,\n" +
+                    "a výstupního portu propoje .\n\n" +
+                    "Blok/y které jsou postiženy jsou \n" +
+                    "zvýrazněny červeně\n", "Porušena kompatibilita");
         }
     }
 
     public Boolean executeBlock(Boolean executedSome){
         for(int i = 0; i < schema.getBlocks().size(); i++){
             if(executedSome){
-                dragBlockList.get(_index).removeHiglight();
+                if(schema.getBlocks().size() == 1){
+                    dragBlockList.get(0).removeHiglight();
+                }else{
+                    dragBlockList.get(_index).removeHiglight();
+                }
             }
             executedSome = false;
             System.out.println(schema.getBlocks().get(i));
@@ -941,6 +1048,27 @@ public class MainDisplay extends AnchorPane {
 
         }
         return false;
+    }
+
+    public void wipeSchema(){
+        for(int i = 0; i < dragBlockList.size(); i++){
+            dragBlockList.get(i).setVisible(false);
+            if(dragBlockList.get(i).getInputPortLine1().getLine() != null){
+                dragBlockList.get(i).getInputPortLine1().getLine().setVisible(false);
+            }
+            if(dragBlockList.get(i).getInputPortLine2().getLine() != null){
+                dragBlockList.get(i).getInputPortLine2().getLine().setVisible(false);
+            }
+        }
+
+        dragBlockList = new ArrayList<>();
+        System.out.println("DELKA " + dragBlockList.size() + " " + schema.getBlocks().size() );
+
+        schema = new Schema("Unnamed");
+        System.out.println("DELKA " + dragBlockList.size() + " " + schema.getBlocks().size() );
+
+        Index = 1;
+
     }
 
 }

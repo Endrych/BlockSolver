@@ -220,31 +220,7 @@ public class SaveSchema {
                 }
 
             }
-//            // supercars element
-//            Element supercar = doc.createElement("supercars");
-//            rootElement.appendChild(supercar);
-//
-//            // setting attribute to element
-//            Attr attr = doc.createAttribute("company");
-//            attr.setValue("Ferrari");
-//            supercar.setAttributeNode(attr);
-//
-//            // carname element
-//            Element carname = doc.createElement("carname");
-//            Attr attrType = doc.createAttribute("type");
-//            attrType.setValue("formula one");
-//            carname.setAttributeNode(attrType);
-//            carname.appendChild(doc.createTextNode("Ferrari 101"));
-//            supercar.appendChild(carname);
-//
-//            Element carname1 = doc.createElement("carname");
-//            Attr attrType1 = doc.createAttribute("type");
-//            attrType1.setValue("sports");
-//            carname1.setAttributeNode(attrType1);
-//            carname1.appendChild(doc.createTextNode("Ferrari 202"));
-//            supercar.appendChild(carname1);
 
-            // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
@@ -252,13 +228,15 @@ public class SaveSchema {
             fileChooser.setTitle("Save Schema");
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XML", "*.xml"));
             File file = fileChooser.showSaveDialog(primaryStage);
-            StreamResult result = new StreamResult(file);
-            System.out.println("CREATED FILE?");
-            transformer.transform(source, result);
+            if(file != null){
+                StreamResult result = new StreamResult(file);
+                transformer.transform(source, result);
 //
 //            // Output to console for testing
-            StreamResult consoleResult = new StreamResult(System.out);
-            transformer.transform(source, consoleResult);
+                StreamResult consoleResult = new StreamResult(System.out);
+                transformer.transform(source, consoleResult);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }
