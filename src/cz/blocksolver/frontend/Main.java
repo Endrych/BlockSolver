@@ -7,8 +7,16 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+/**
+ * Hlavni trida
+ */
 public class Main extends Application {
 
+    /**
+     * Vytvori zakladni Scenu
+     * @param primaryStage
+     * @throws Exception
+     */
     @Override
     public void start(Stage primaryStage) throws Exception{
         BorderPane root = new BorderPane();

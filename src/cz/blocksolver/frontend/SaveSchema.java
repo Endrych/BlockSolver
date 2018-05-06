@@ -20,8 +20,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Stara se o ulozeni Schematu do XML souboru
+ */
 public class SaveSchema {
 
+    /**
+     * Provede ulozeni aktualniho schematu do XML souboru
+     * @param schema
+     * @param dragBlocks
+     * @param primaryStage
+     */
     public void execute(Schema schema, ArrayList<DragBlock> dragBlocks, Stage primaryStage) {
 
 
@@ -30,7 +39,6 @@ public class SaveSchema {
             DocumentBuilder dBuilder = dbFactory.newDocumentBuilder();
             Document doc = dBuilder.newDocument();
 
-            // root element
             Element rootElement = doc.createElement("schema");
             doc.appendChild(rootElement);
 
@@ -40,24 +48,17 @@ public class SaveSchema {
             Element blockCoordYElement;
             Element blockWidthElement;
             Element blockHeightElement;
-            Element blockOutputPortElement;
             Element blockTypeElement;
             Element blockInputPort1Element;
             Element blockInputPort2Element;
             Element blockOperatioTypeElement;
             Element inputOutputPortElement;
             Element input2OutputPortElement;
-            Element inputNameElement;
-            Element inputValueSetElement;
-            Element inputConnectedToOutputPortElement;
             Element inputPortTypeElement;
-            Element input2PortTypeElement;
             Element inputValueElement;
             Element input2ValueElement;
             Element blockIndexElement;
-            Element outputPortBlockIndex;
             Element line1Element;
-            Element line1PortNum;
             Element line1OutX;
             Element line1OutY;
             Element line1InX;
@@ -65,7 +66,6 @@ public class SaveSchema {
             Element line1Type;
             Element line1OutportIndex;
             Element line2Element;
-            Element line2PortNum;
             Element line2OutX;
             Element line2OutY;
             Element line2InX;
@@ -106,8 +106,6 @@ public class SaveSchema {
                 blockHeightElement.setTextContent(currentBlock.getHeight().toString());
                 blockElement.appendChild(blockHeightElement);
 
-//                blockOutputPortElement = doc.createElement("output_port");
-//                blockElement.appendChild(blockOutputPortElement);
                 blockTypeElement = doc.createElement("block_type");
                 blockTypeElement.setTextContent(currentBlock.getType().toString());
                 blockElement.appendChild(blockTypeElement);
@@ -118,7 +116,6 @@ public class SaveSchema {
                 inputOutputPortElement = doc.createElement("in1_output_port");
                 inputValueElement = doc.createElement("in1_value");
 
-                System.out.println(currentBlock.getInputPort(1).getConnectedToOutputPort());
                 if(!currentBlock.getInputPort(1).getConnectedToOutputPort()){
                     if(currentBlock.getInputPort(1).getValueSet()){
                         inputValueElement.setTextContent(currentBlock.getInputPort(1).getValue().toString());
@@ -127,7 +124,6 @@ public class SaveSchema {
                     }
                     blockElement.appendChild(inputValueElement);
                 }else{
-//                    System.out.println("SAD " + currentBlock.getInputPort(1).getOutputPort().getBlockIndex());
                     inputOutputPortElement.setTextContent(currentBlock.getInputPort(1).getOutputPort().getBlockIndex().toString());
                     blockElement.appendChild(inputOutputPortElement);
                 }
@@ -149,7 +145,6 @@ public class SaveSchema {
                         }
                         blockElement.appendChild(input2ValueElement);
                     }else{
-//                    System.out.println("SAD " + currentBlock.getInputPort(1).getOutputPort().getBlockIndex());
                         input2OutputPortElement.setTextContent(currentBlock.getInputPort(2).getOutputPort().getBlockIndex().toString());
                         blockElement.appendChild(input2OutputPortElement);
                     }
@@ -220,31 +215,7 @@ public class SaveSchema {
                 }
 
             }
-//            // supercars element
-//            Element supercar = doc.createElement("supercars");
-//            rootElement.appendChild(supercar);
-//
-//            // setting attribute to element
-//            Attr attr = doc.createAttribute("company");
-//            attr.setValue("Ferrari");
-//            supercar.setAttributeNode(attr);
-//
-//            // carname element
-//            Element carname = doc.createElement("carname");
-//            Attr attrType = doc.createAttribute("type");
-//            attrType.setValue("formula one");
-//            carname.setAttributeNode(attrType);
-//            carname.appendChild(doc.createTextNode("Ferrari 101"));
-//            supercar.appendChild(carname);
-//
-//            Element carname1 = doc.createElement("carname");
-//            Attr attrType1 = doc.createAttribute("type");
-//            attrType1.setValue("sports");
-//            carname1.setAttributeNode(attrType1);
-//            carname1.appendChild(doc.createTextNode("Ferrari 202"));
-//            supercar.appendChild(carname1);
 
-            // write the content into xml file
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(doc);
@@ -252,13 +223,14 @@ public class SaveSchema {
             fileChooser.setTitle("Save Schema");
             fileChooser.getExtensionFilters().add(new FileChooser.ExtensionFilter("XML", "*.xml"));
             File file = fileChooser.showSaveDialog(primaryStage);
-            StreamResult result = new StreamResult(file);
-            System.out.println("CREATED FILE?");
-            transformer.transform(source, result);
-//
-//            // Output to console for testing
-            StreamResult consoleResult = new StreamResult(System.out);
-            transformer.transform(source, consoleResult);
+            if(file != null){
+                StreamResult result = new StreamResult(file);
+                transformer.transform(source, result);
+
+                StreamResult consoleResult = new StreamResult(System.out);
+                transformer.transform(source, consoleResult);
+            }
+
         } catch (Exception e) {
             e.printStackTrace();
         }

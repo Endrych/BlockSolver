@@ -8,6 +8,9 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Slouzi k ulozeni hodnot pri pretahovani bloku
+ */
 public class DragContainer implements Serializable{
 
     private static final long serialVersionUID = -1514551545454564L;
@@ -20,20 +23,21 @@ public class DragContainer implements Serializable{
 
     public DragContainer(){}
 
+    /**
+     * Ulozi hodnotu s klicem do listu
+     * @param key
+     * @param value
+     */
     public void addData(String key, Object value){
         dataPairs.add(new Pair<>(key, value));
     }
 
-//    public String getValue(String key){
-//        for (Pair<String, String> data: dataPairs){
-//            if(data.getKey().equals(key)){
-//                return data.getValue();
-//            }
-//        }
-//
-//        return null;
-//    }
-
+    /**
+     * Ziska hodnotu z listu podle klice
+     * @param key
+     * @param <T>
+     * @return
+     */
     public <T> T getValue(String key){
         for (Pair<String, Object> data: dataPairs){
             if(data.getKey().equals(key)){
@@ -44,7 +48,10 @@ public class DragContainer implements Serializable{
         return null;
     }
 
-
+    /**
+     * Vrati list paru klicu s hodnotami
+     * @return
+     */
     public List<Pair<String, Object> > getData () {return dataPairs; }
 
     public static final DataFormat AddNode = new DataFormat("cz.blocksolver.frontend.Block.add");

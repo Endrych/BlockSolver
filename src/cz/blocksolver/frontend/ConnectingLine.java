@@ -3,6 +3,10 @@ package cz.blocksolver.frontend;
 import cz.blocksolver.backend.port.OutputPort;
 import javafx.scene.shape.Line;
 
+/**
+ * Slouzi k vytvoreni objektu, ktery reprezentuje spoj mezi
+ * dvema bloky
+ */
 public class ConnectingLine {
     OutputPort outputPort;
     Integer outX;
@@ -14,21 +18,23 @@ public class ConnectingLine {
     Line line;
     Boolean showed = false;
 
+    /**
+     * Konstruktor
+     */
     public ConnectingLine() {
         this.line = null;
     }
 
-    public ConnectingLine(OutputPort outputPort, Integer outX, Integer outY, Integer inX, Integer inY, Integer portNum, String type, Line line) {
-        this.outputPort = outputPort;
-        this.outX = outX;
-        this.outY = outY;
-        this.inX = inX;
-        this.inY = inY;
-        this.portNum = portNum;
-        this.type = type;
-        this.line = line;
-    }
-
+    /**
+     * Konstruktor
+     * @param outputPort - vystupni port
+     * @param outX - souradnice X vystupniho portu
+     * @param outY - souradnice Y vystupniho portu
+     * @param inX - souradnice X vstupniho portu
+     * @param inY -souradnice Y vstupniho portu
+     * @param portNum - pozice vstupniho portu zda se jedna i prvni nebo druhy port
+     * @param type - typ bloku, kteremu patri vstupni port
+     */
     public ConnectingLine(OutputPort outputPort, Integer outX, Integer outY, Integer inX, Integer inY, Integer portNum, String type) {
         this.outputPort = outputPort;
         this.outX = outX;
@@ -40,9 +46,14 @@ public class ConnectingLine {
     }
 
 
+    /**
+     * Vrati informaci zda je Line zobrazena
+     * @return
+     */
     public Boolean getShowed() {
         return showed;
     }
+
 
     public void setShowed(Boolean showed) {
         this.showed = showed;

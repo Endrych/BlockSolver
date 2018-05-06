@@ -20,12 +20,12 @@
                         </Menu>
                         <Menu mnemonicParsing="false" text="Edit">
                             <items>
-                                <MenuItem fx:id="rename_schema" mnemonicParsing="false" text="New Schema" />
+                                <MenuItem fx:id="new_schema" mnemonicParsing="false" text="New Schema" />
                             </items>
                         </Menu>
                   <Menu mnemonicParsing="false" text="Display">
                      <items>
-                        <CheckMenuItem mnemonicParsing="false" text="Block value" />
+                        <CheckMenuItem fx:id="block_value" mnemonicParsing="false" text="Block value" />
                      </items>
                   </Menu>
                   <Menu mnemonicParsing="false" text="Run">

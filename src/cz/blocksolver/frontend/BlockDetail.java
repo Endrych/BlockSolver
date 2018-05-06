@@ -12,9 +12,19 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Slouzi k vytvoreni a zobrazeni boxu, ktery obsahuje
+ * detailni informace jednotlivych bloku
+ */
 public class BlockDetail {
     static String newName;
 
+    /**
+     * Vytvori a zobrazi box, ktery obsahuje zakladni informace o bloku
+     * @param block - objekt typu Block
+     * @param dragBlock - objekt typu DragBlock
+     * @return - vraci nove ziskane jmeno nebo prazdny retezec
+     */
     public static String display(Block block, DragBlock dragBlock){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);
@@ -54,7 +64,7 @@ public class BlockDetail {
         input1Label.setText("Input 1");
         if(block.getInputPort(1).getConnectedToOutputPort()){
             if(block.getInputPort(1).getOutputPort().getContainsResult()){
-                input1Field.setText(block.getInputPort(1).getOutputPort().getContainsResult().toString());
+                input1Field.setText(block.getInputPort(1).getOutputPort().getValue().toString());
             }else{
                 input1Field.setText("None");
             }
@@ -71,7 +81,7 @@ public class BlockDetail {
 
             if(block.getInputPort(2).getConnectedToOutputPort()){
                 if(block.getInputPort(2).getOutputPort().getContainsResult()){
-                    input2Field.setText(block.getInputPort(2).getOutputPort().getContainsResult().toString());
+                    input2Field.setText(block.getInputPort(2).getOutputPort().getValue().toString());
                 }else{
                     input2Field.setText("None");
                 }
