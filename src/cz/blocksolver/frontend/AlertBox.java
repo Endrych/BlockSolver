@@ -10,8 +10,19 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
+/**
+ * Slouzi k vytvoreni a zobrazeni boxu s nejakym varovanim
+ * nebo upozornenim
+ */
 public class AlertBox {
 
+    /**
+     * Slouzi k vytvoreni a zobrazeni boxu
+     * @param showText - text, ktery informuje o tom co se stalo
+     *                 a co je spatne
+     * @param Title - nazev varovani nebo upozorneni
+     */
     public static void display(String showText, String Title) {
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

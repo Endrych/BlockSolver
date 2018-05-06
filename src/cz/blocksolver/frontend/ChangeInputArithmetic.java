@@ -10,10 +10,20 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Umoznuje rucni zadavani hodnot do jednotlivych Aritmetickych bloku
+ */
 public class ChangeInputArithmetic {
 
     static String newValue;
 
+    /**
+     * Slouzi k rucnimu zadani hodnoty vstupniho portu
+     * @param position - znaci zda se jedna o prvni nebo druhy port
+     * @param current - momentalni hodnota ulozena ve vstupnim portu
+     * @return - nova hodnota vstupniho portu nebo retezec "canceled"
+     * v pripade ze nedoslo, k upraveni hodnoty
+     */
     public static String display(String position, Double current){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

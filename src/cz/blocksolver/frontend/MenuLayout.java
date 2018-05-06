@@ -24,6 +24,9 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+/**
+ * Vytvori a zobrazi menu
+ */
 public class MenuLayout extends VBox {
 
     @FXML public MenuItem save;
@@ -34,6 +37,12 @@ public class MenuLayout extends VBox {
     @FXML public MenuItem new_schema;
     @FXML public MenuItem about;
 
+    /**
+     * Provede vytvoreni a zobrazeni menu a jeho
+     * jednotlivych menu itemu a nastavi jejich Event Handlery
+     * @param display
+     * @param primaryStage
+     */
     public MenuLayout(MainDisplay display, Stage primaryStage){
 
         FXMLLoader loader = new FXMLLoader();
@@ -88,6 +97,12 @@ public class MenuLayout extends VBox {
     @FXML
     private void initialize() {}
 
+    /**
+     * Stara se o nacteni souboru a pote vyvola funcki, ktera
+     * provede nacteni dat ze souboru
+     * @param display
+     * @param primaryStage
+     */
     public void loadSchema(MainDisplay display, Stage primaryStage){
         System.out.println("NEW DISPLAY " + display);
 
@@ -114,6 +129,11 @@ public class MenuLayout extends VBox {
 
     }
 
+    /**
+     * Vyvola funkci, ktera se postara o ulozeni schematu do XML souboru
+     * @param display
+     * @param primaryStage
+     */
     public void saveSchema(MainDisplay display, Stage primaryStage){
         SaveSchema sch = new SaveSchema();
         sch.execute(display.schema, display.getDragBlockList(), primaryStage);

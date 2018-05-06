@@ -13,7 +13,17 @@ import javafx.scene.text.Text;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+
+/**
+ * Slouzi k vytvoreni zobrazeni boxu se zakladnimi
+ * infromacemi k aplikaci
+ */
 public class About {
+
+    /**
+     * Vytvori box, ktery bude obsahovat zakladni
+     * informace o aplikaci
+     */
     public static void display(){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

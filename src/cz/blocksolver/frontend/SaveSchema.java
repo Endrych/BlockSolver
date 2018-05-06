@@ -20,8 +20,17 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Stara se o ulozeni Schematu do XML souboru
+ */
 public class SaveSchema {
 
+    /**
+     * Provede ulozeni aktualniho schematu do XML souboru
+     * @param schema
+     * @param dragBlocks
+     * @param primaryStage
+     */
     public void execute(Schema schema, ArrayList<DragBlock> dragBlocks, Stage primaryStage) {
 
 

@@ -35,6 +35,9 @@ import java.time.Duration;
 import java.util.*;
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Reprezentuje hlavni cast obrazovky
+ */
 public class MainDisplay extends AnchorPane {
 
 
@@ -64,30 +67,13 @@ public class MainDisplay extends AnchorPane {
     public Boolean showBlockValue = false;
     public DragBlock outputDragBlock;
 
-    public ArrayList<DragBlock> getDragBlockList() {
-        return dragBlockList;
-    }
-
-    public Boolean getOutputActive() {
-        return outputActive;
-    }
-
-    public void setOutputActive(Boolean outputActive) {
-        this.outputActive = outputActive;
-    }
-
-    public Map<String, Integer> getOutputCoords() {
-        return outputCoords;
-    }
-
-    public void setOutputCoords(Integer x,Integer y) {
-        System.out.println(x + " " + y);
-        outputCoords.put("x" , x);
-        outputCoords.put("y", y);
-    }
 
     private Integer Index = 1;
 
+    /**
+     * Konstruktor
+     * @param primaryStage
+     */
     public MainDisplay(Stage primaryStage){
 
         FXMLLoader loader = new FXMLLoader();
@@ -103,9 +89,12 @@ public class MainDisplay extends AnchorPane {
         }
     }
 
+    /**
+     * Provede inicializaci obrazovky, vygeeruje jednotlive typy
+     * bloku, ze kterych se pote daji skladat schemata
+     */
     @FXML
     private void initialize() {
-//
 
         Button btnStartExecuteSchema = new Button("Start");
         btnStartExecuteSchema.setLayoutX(400);
@@ -324,14 +313,17 @@ public class MainDisplay extends AnchorPane {
         buildDragHandlers();
     }
 
-    public Integer getIndex() {
-        return Index;
-    }
 
-    public void setIndex(Integer index) {
-        Index = index;
-    }
-
+    /**
+     * Vytvori objekt reprezentujici propoj
+     * @param x - pozice X vstupniho portu
+     * @param y - pozice Y vstupniho portu
+     * @param type
+     * @param portNum
+     * @param outPort
+     * @param conLine
+     * @return
+     */
     public Line ConnectBlocks(Integer x, Integer y, String type, Integer portNum, OutputPort outPort, ConnectingLine conLine){
         Line line = new Line();
 
@@ -357,7 +349,6 @@ public class MainDisplay extends AnchorPane {
                     conLine.setShowed(true);
                     if(outPort.getContainsResult()){
                         //vlakna
-                        System.out.println(outPort.getValue());
                         Label tempLabel = new Label();
                         tempLabel.setText(outPort.getValue().toString());
                         tempLabel.setLayoutX(event.getX());
@@ -379,7 +370,6 @@ public class MainDisplay extends AnchorPane {
 
 //                    main_display.getChildren().remove(tempLabel);
                     }else{
-                        System.out.println("none");
                         Label tempLabel = new Label();
                         tempLabel.setText("none");
                         tempLabel.setLayoutX(event.getX());
@@ -411,6 +401,20 @@ public class MainDisplay extends AnchorPane {
         return line;
     }
 
+    /**
+     * Provede vytvoreni a vykresleni objektu Line z hodnot a nastaveni
+     * evenet handleru pro objekt ConnectingLine
+     * nactenych z XML souboru
+     * @param out_x
+     * @param out_y
+     * @param in_x
+     * @param in_y
+     * @param type
+     * @param portNum
+     * @param outPort
+     * @param conLine
+     * @return
+     */
     public Line LoadLines(Integer out_x, Integer out_y, Integer in_x, Integer in_y, String type, Integer portNum, OutputPort outPort, ConnectingLine conLine){
         Line line = new Line();
         out_x += 32;
@@ -489,12 +493,18 @@ public class MainDisplay extends AnchorPane {
         return line;
     }
 
+    /**
+     * Odstrani Label nad propojem
+     * @param label
+     */
     public void removeLineLabel(Label label){
         main_display.getChildren().remove(label);
     }
 
+    /**
+     * Nastavi eventHandlery pro drag a drop operace
+     */
     private void buildDragHandlers(){
-
         blockDragOverRoot = new EventHandler <DragEvent>(){
             @Override
             public void handle(DragEvent event) {
@@ -594,6 +604,10 @@ public class MainDisplay extends AnchorPane {
         });
     }
 
+    /**
+     * Nastavi detekovani v pripade operace drag
+     * @param block
+     */
     private void addDragDetection(DragBlock block){
         block.setOnDragDetected( event -> {
             base_pane.setOnDragOver(blockDragOverRoot);
@@ -628,6 +642,11 @@ public class MainDisplay extends AnchorPane {
         });
     }
 
+    /**
+     * provede kontrolu zda se nesnazime spojit
+     * vystupni a vstupni port stejneho bloku
+     * @return
+     */
     public boolean checkPortsIndex() {
         if(outputIndex == inputIndex){
             return false;
@@ -636,6 +655,11 @@ public class MainDisplay extends AnchorPane {
         }
     }
 
+    /**
+     * Ziska hodnotu ze vstupniho portu
+     * @param port
+     * @return
+     */
     private Double getPortValue(InputPort port){
         if(port.getConnectedToOutputPort()){
             return port.getOutputPort().getValue();
@@ -646,6 +670,11 @@ public class MainDisplay extends AnchorPane {
         }
     }
 
+    /**
+     * Zjisti zda ma vstupni port zadanou hodnotu
+     * @param port
+     * @return
+     */
     private Boolean hasSetValue(InputPort port){
         if(port.getConnectedToOutputPort()){
             if(port.getOutputPort().getContainsResult()){
@@ -659,6 +688,12 @@ public class MainDisplay extends AnchorPane {
         }
     }
 
+
+    /**
+     * Provede kontrolu zda jsou vsechny vstupni porty
+     * vyplneny a vybidne k vyplneni zatim prazdnych vstupnich
+     * portu
+     */
     public void fillBlocks(){
         for(int i = 0; i < schema.getBlocks().size(); i++) {
             if(!schema.getBlocks().get(i).getInputPort(1).getValueSet() &&
@@ -679,6 +714,11 @@ public class MainDisplay extends AnchorPane {
         }
     }
 
+    /**
+     * Provede kontrolu zda schema obshaju cyklus a
+     * pokud ano oznaci bloky v danem cyklu cervene
+     * @return
+     */
     public Boolean checkForCycles(){
         List inputIndex = new ArrayList();
         Boolean hasCycle = false;
@@ -718,6 +758,12 @@ public class MainDisplay extends AnchorPane {
         return hasCycle;
     }
 
+    /**
+     * Provede kontrolu zda jsou dane propoje mezi vstupnimi
+     * a vystupnimi porty kompatibilni a pokud ne oznaci
+     * bloky kde nastal problem cervene
+     * @return
+     */
     public Boolean checkPortTypes(){
         Boolean found = false;
         for(int i = 0; i < schema.getBlocks().size(); i++) {
@@ -754,6 +800,13 @@ public class MainDisplay extends AnchorPane {
         return found;
     }
 
+    /**
+     * Provede vypocet celeho schematu
+     * @throws InterruptedException
+     * @throws IOException
+     * @throws SAXException
+     * @throws ParserConfigurationException
+     */
     public void executeSchema() throws InterruptedException, IOException, SAXException, ParserConfigurationException {
 
         fillBlocks();
@@ -790,6 +843,10 @@ public class MainDisplay extends AnchorPane {
 
     }
 
+    /**
+     * Vyvola degugovani, vygeneruji se 3 tlacitka, ktera pote
+     * ovladaji proce postupneho krokovani vypoctu
+     */
     public void debugSchema(){
 
         fillBlocks();
@@ -890,6 +947,12 @@ public class MainDisplay extends AnchorPane {
         }
     }
 
+    /**
+     * Provede vypocet bloku a vyznaci blok, ktery byl prave vypocten
+     * a odstrani oznaceni bloku, ktery byl vypocten minule
+     * @param executedSome
+     * @return
+     */
     public Boolean executeBlock(Boolean executedSome){
         for(int i = 0; i < schema.getBlocks().size(); i++){
             if(executedSome){
@@ -1004,6 +1067,10 @@ public class MainDisplay extends AnchorPane {
         return false;
     }
 
+    /**
+     * Slouzi pri kontorle cyklu v schematu
+     * @return
+     */
     public Boolean cycleChecker(){
         for(int i = 0; i < schema.getBlocks().size(); i++){
             System.out.println(schema.getBlocks().get(i));
@@ -1030,12 +1097,9 @@ public class MainDisplay extends AnchorPane {
                     }
                 }
             }else if(schema.getBlocks().get(i).getType() == BlockType.GONIOMETRIC){
-                System.out.println("Je Goniometricky");
                 if(hasSetValue(schema.getBlocks().get(i).getInputPort(1))){
-                    System.out.println("Hodnoty nastaveny");
                     if(!schema.getBlocks().get(i).getExecuted()){
                         if(schema.getBlocks().get(i).executeBlock(getPortValue(schema.getBlocks().get(i).getInputPort(1)))){
-                            System.out.println("Value in executed block " + schema.getBlocks().get(i).getOutputPort().getValue());
                             schema.getBlocks().get(i).setExecuted(true);
                             schema.getBlocks().get(i).getOutputPort().setContainsResult(true);
                             schema.getBlocks().get(i).getOutputPort().setValue(0.0);
@@ -1050,6 +1114,9 @@ public class MainDisplay extends AnchorPane {
         return false;
     }
 
+    /**
+     * Provede se vraceni schematu do stavu po nacteni aplikace
+     */
     public void wipeSchema(){
         for(int i = 0; i < dragBlockList.size(); i++){
             dragBlockList.get(i).setVisible(false);
@@ -1070,5 +1137,68 @@ public class MainDisplay extends AnchorPane {
         Index = 1;
 
     }
+
+    /**
+     * Vrati List vsech DragBlocku v schematu
+     * @return
+     */
+    public ArrayList<DragBlock> getDragBlockList() {
+        return dragBlockList;
+    }
+
+    /**
+     * Vrati informaci zda je aktivni cekani na
+     * dokonceni propoje
+     * @return
+     */
+    public Boolean getOutputActive() {
+        return outputActive;
+    }
+
+    /**
+     * @param outputActive
+     */
+    public void setOutputActive(Boolean outputActive) {
+        this.outputActive = outputActive;
+    }
+
+    /**
+     * Vrati koordinaty vystupniho portu, ktery prave propojujeme s vstupnim portem
+     * @return
+     */
+    public Map<String, Integer> getOutputCoords() {
+        return outputCoords;
+    }
+
+
+    /**
+     * Nastavi koordinaty vystupniho portu, ktery chceme propojit
+     * se vstupnim portem
+     * @param x
+     * @param y
+     */
+    public void setOutputCoords(Integer x,Integer y) {
+        System.out.println(x + " " + y);
+        outputCoords.put("x" , x);
+        outputCoords.put("y", y);
+    }
+
+    /**
+     * Vrati Index
+     * @return
+     */
+    public Integer getIndex() {
+        return Index;
+    }
+
+    /**
+     * Nastavi Index 
+     * @param index
+     */
+    public void setIndex(Integer index) {
+        Index = index;
+    }
+
+
 
 }

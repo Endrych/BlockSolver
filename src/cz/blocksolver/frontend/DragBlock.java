@@ -31,6 +31,9 @@ import static javafx.scene.paint.Color.DODGERBLUE;
 import static javafx.scene.paint.Paint.valueOf;
 
 
+/**
+ * Objekt, ktery reprezentuje jednotlive zobrazene bloky
+ */
 public class DragBlock extends AnchorPane{
 
     @FXML public AnchorPane block_pane;
@@ -59,6 +62,9 @@ public class DragBlock extends AnchorPane{
 //    public Boolean eventsActive = false;
     public Block dragBlock =  new ArithmeticBlock("Unknown", 0, 0, 64, 64, AddOperation.getInstance());
 
+    /**
+     * Konstruktor, nastavi styl bloku
+     */
     public DragBlock(){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation((getClass().getResource("/cz/blocksolver/frontend/resources/DragBlock.fxml")));
@@ -80,13 +86,16 @@ public class DragBlock extends AnchorPane{
         output.setStroke(valueOf("white"));
     }
 
+    /**
+     * Konstruktor, nastavi styl bloku
+     * @param display - objekt reprezentujici hlavni obrazovku
+     */
     public DragBlock(MainDisplay display){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation((getClass().getResource("/cz/blocksolver/frontend/resources/DragBlock.fxml")));
         loader.setRoot(this);
         loader.setController(this);
         this.display = display;
-        System.out.println("display " + this.display);
         try {
             loader.load();
         }catch (IOException exception){
@@ -94,13 +103,17 @@ public class DragBlock extends AnchorPane{
         }
     }
 
+    /**
+     * Konstruktor, nastavi styl bloku
+     * @param type - typ bloku
+     * @param display - objekt reprezentujici hlavni obrazovku
+     */
     public DragBlock(String type, MainDisplay display){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation((getClass().getResource("/cz/blocksolver/frontend/resources/DragBlock.fxml")));
         loader.setRoot(this);
         loader.setController(this);
         this.display = display;
-        System.out.println("display " + this.display);
         try {
             loader.load();
         }catch (IOException exception){
@@ -130,42 +143,12 @@ public class DragBlock extends AnchorPane{
 
     }
 
-    public Boolean getHiglighted() {
-        return isHiglighted;
-    }
-
-    public ConnectingLine getInputPortLine1() {
-        return inputPortLine1;
-    }
-
-    public void setInputPortLine1(ConnectingLine inputPortLine1) {
-        this.inputPortLine1 = inputPortLine1;
-    }
-
-    public ConnectingLine getInputPortLine2() {
-        return inputPortLine2;
-    }
-
-    public void setInputPortLine2(ConnectingLine inputPortLine2) {
-        this.inputPortLine2 = inputPortLine2;
-    }
-
-    public MainDisplay getDisplay() {
-        return display;
-    }
-
-    public void setDisplay(MainDisplay display) {
-        this.display = display;
-    }
-
-    public void setName(String name){
-        block_type.setText(name);
-    }
-
-    public String getName(){
-        return block_type.getText();
-    }
-
+    /**
+     * Slouzi k nastaveni event handleru
+     * @param load - informuje zda jsou event handlery
+     *             nastavovany na bloku, ktery byl nacten
+     *             z XML dokumentu
+     */
     public void activateEvents(Boolean load) {
         if(!load){
             chooseBlock();
@@ -252,9 +235,6 @@ public class DragBlock extends AnchorPane{
 
         Handle_showResult(display.showBlockValue);
 
-        System.out.println(display.schema.getBlocks());
-        System.out.println(Type);
-        System.out.println("RUN");
         dragBlock.getOutputPort().setBlockIndex(Index);
         if(Type.equals("arithmetic")){
             handle_input1 = new EventHandler<MouseEvent>() {
@@ -279,18 +259,14 @@ public class DragBlock extends AnchorPane{
                         }
 
                     }else{
-                        System.out.println(dragBlock.getType());
                         String val;
                         if(dragBlock.getInputPort(1).getOutputPort() != null){
                             val = ChangeInputArithmetic.display("first", dragBlock.getInputPort(1).getOutputPort().getValue());
-                            System.out.println(dragBlock.getInputPort(1).getOutputPort());
                         }else{
                             val = ChangeInputArithmetic.display("first", dragBlock.getInputPort(1).getValue());
                         }
                         if(val.equals("canceled")){
-                            System.out.println(val);
                         }else{
-                            System.out.println("Change " + val);
                             dragBlock.getInputPort(1).setValueSet(true);
                             if(inputPortLine1.getLine() != null){
                                 inputPortLine1.getLine().setVisible(false);
@@ -324,18 +300,14 @@ public class DragBlock extends AnchorPane{
                         }
 
                     }else{
-                        System.out.println(dragBlock.getType());
                         String val;
                         if(dragBlock.getInputPort(2).getOutputPort() != null){
                             val = ChangeInputArithmetic.display("second", dragBlock.getInputPort(2).getOutputPort().getValue());
-                            System.out.println(dragBlock.getInputPort(2).getOutputPort());
                         }else{
                             val = ChangeInputArithmetic.display("second", dragBlock.getInputPort(2).getValue());
                         }
                         if(val.equals("canceled")){
-                            System.out.println(val);
                         }else{
-                            System.out.println("Change " + val);
                             if(inputPortLine2.getLine() != null){
                                 inputPortLine2.getLine().setVisible(false);
                                 inputPortLine2.setLine(null);
@@ -391,32 +363,24 @@ public class DragBlock extends AnchorPane{
                             dragBlock.getInputPort(1).setOutputPort(display.outputPort);
                             dragBlock.getInputPort(1).setConnectedToOutputPort(true);
                             if(display.outputPort.getType() == PortType.NUMBER){
-                                System.out.println(display.outputPort.getType());
                                 dragBlock.getInputPort(1).setType(PortType.NUMBER);
                             }else if(display.outputPort.getType() == PortType.DEGREE){
-                                System.out.println(display.outputPort.getType());
                                 dragBlock.getInputPort(1).setType(PortType.DEGREE);
                             }else if(display.outputPort.getType() == PortType.RADIAN){
-                                System.out.println(display.outputPort.getType());
                                 dragBlock.getInputPort(1).setType(PortType.RADIAN);
                             }
 //                            dragBlock.getInputPort(1).setType();
                         }
                     }else{
-                        System.out.println(dragBlock.getType());
                         GoniometricInput val;
                         if(dragBlock.getInputPort(1).getOutputPort() != null){
                             val = ChangeInputGoniometric.display("first", dragBlock.getInputPort(1).getOutputPort().getValue(),dragBlock.getInputPort(1).getType());
-                            System.out.println(dragBlock.getInputPort(1).getOutputPort());
                         }else{
                             val = ChangeInputGoniometric.display("first", dragBlock.getInputPort(1).getValue(), dragBlock.getInputPort(1).getType());
                         }
 
                         if(val.getValue().equals("canceled")){
-                            System.out.println(val.getValue());
                         }else{
-                            System.out.println("Change " + val.getType());
-                            System.out.println("Change " + val.getValue());
                             if(Double.parseDouble(val.getValue()) == dragBlock.getInputPort(1).getValue()){
                                 dragBlock.getInputPort(1).setType(val.getType());
                             }else{
@@ -430,7 +394,6 @@ public class DragBlock extends AnchorPane{
                                 dragBlock.getInputPort(1).setType(val.getType());
                                 dragBlock.getInputPort(1).setValueSet(true);
 
-                                //TODO smazat linku a zbavit se ji
                             }
                         }
                     }
@@ -440,7 +403,7 @@ public class DragBlock extends AnchorPane{
 
             input_1.setOnMouseClicked(handle_input1);
             output.setOnMouseClicked(handle_output);
-//            block_pane.setOnMouseEntered(handle_showResult);
+
         }else if(Type.equals("unary")){
             input_2.setVisible(false);
             handle_input1 = new EventHandler<MouseEvent>() {
@@ -465,18 +428,14 @@ public class DragBlock extends AnchorPane{
                             dragBlock.getInputPort(1).setConnectedToOutputPort(true);
                         }
                     }else{
-                        System.out.println(dragBlock.getType());
                         String val;
                         if(dragBlock.getInputPort(1).getOutputPort() != null){
                             val = ChangeInputUnary.display("first", dragBlock.getInputPort(1).getOutputPort().getValue());
-                            System.out.println(dragBlock.getInputPort(1).getOutputPort());
                         }else{
                             val = ChangeInputUnary.display("first", dragBlock.getInputPort(1).getValue());
                         }
                         if(val.equals("canceled")){
-                            System.out.println(val);
                         }else{
-                            System.out.println("Change " + val);
                             dragBlock.getInputPort(1).setValueSet(true);
                             if(inputPortLine1.getLine() != null){
                                 inputPortLine1.getLine().setVisible(false);
@@ -491,11 +450,8 @@ public class DragBlock extends AnchorPane{
             };
 
             handle_output = Handle_output();
-//            handle_showResult = getHandle_showResult();
-
             input_1.setOnMouseClicked(handle_input1);
             output.setOnMouseClicked(handle_output);
-//            block_pane.setOnMouseEntered(handle_showResult);
         }
 
     }
@@ -504,6 +460,11 @@ public class DragBlock extends AnchorPane{
     @FXML
     private void initialize() {}
 
+
+    /**
+     * Vytvori a zobrazi box, ktery pozaduje zadat vstupni hodnotu portu
+     * @param portNum - pozice vstupniho portu
+     */
     public void demandInputValue(Integer portNum){
         if(dragBlock.getType() == BlockType.ARITHMETIC || dragBlock.getType() == BlockType.UNARY){
             if(portNum == 1){
@@ -515,14 +476,12 @@ public class DragBlock extends AnchorPane{
                     val = ChangeInputUnary.display("first", dragBlock.getInputPort(1).getValue());
                 }
 
-                System.out.println("Forced change " + val);
                 dragBlock.getInputPort(1).setValueSet(true);
                 dragBlock.getInputPort(1).setValue(Double.parseDouble(val));
             }else{
                 String val;
                 val = "45";
                 val = ChangeInputArithmetic.display("second", dragBlock.getInputPort(2).getValue());
-                System.out.println("Forced change2 " + val);
                 dragBlock.getInputPort(2).setValueSet(true);
                 dragBlock.getInputPort(2).setValue(Double.parseDouble(val));
             }
@@ -535,6 +494,11 @@ public class DragBlock extends AnchorPane{
         }
     }
 
+
+    /**
+     * Presune DragBlock na danou pozici
+     * @param point2D - koordinaty nove pozice
+     */
     public void relocateToPoint(Point2D point2D) {
         Point2D localCoordinates = getParent().sceneToLocal(point2D);
 
@@ -544,32 +508,10 @@ public class DragBlock extends AnchorPane{
         );
     }
 
-    public String getType() {
-        return Type;
-    }
-
-    public Integer getIndex() {
-        return Index;
-    }
-
-    public String getOperation() {
-        return Operation;
-    }
-
-    public void setIndex(Integer index) {
-        Index = index;
-    }
-
-    public void setType(String type) {
-        Type = type;
-    }
-
-    public void setOperation(String operation) {
-        Operation = operation;
-    }
-
+    /**
+     * V zavislosti na typu blocku a operaci nastavi objekt Block
+     */
     public void chooseBlock(){
-        System.out.println("choose " + Operation);
         if (Type.equals("arithmetic")){
             if(Operation.equals("add")){
                 dragBlock =  new ArithmeticBlock("Arr", XCoord, YCoord, 64, 64, AddOperation.getInstance());
@@ -618,15 +560,23 @@ public class DragBlock extends AnchorPane{
         }
     }
 
+
+    /**
+     * Nastavi koordinaty pro DragBlock
+     * @param x - pozice X pro DragBlock
+     * @param y - pozice Y pro DragBlock
+     */
     public void setCoordinates(double x, double y) {
         Double dx = new Double(x);
         Double dy = new Double(y);
-        System.out.println(dx + " / " + dy);
         XCoord = dx.intValue();
         YCoord = dy.intValue();
-        System.out.println(XCoord + " / " + YCoord);
     }
 
+
+    /**
+     * Zvyrazni DragBlock
+     */
     public void higlight() {
         isHiglighted = true;
         if(Type.equals("goniometric")){
@@ -644,12 +594,19 @@ public class DragBlock extends AnchorPane{
         }
     }
 
+    /**
+     * Odstrani zvyrazneni DragBlocku
+     */
     public void removeHiglight() {
         isHiglighted = false;
         setBlockStyle();
 
     }
 
+    /**
+     * Stara se o zobrazovani hodnoty DragBlocku v pripadeze je vyzadovano
+     * @param On - informace zda ma zobrazit hodnotu DragBlocku
+     */
     public void Handle_showResult(Boolean On) {
         display.showBlockValue = On;
         if(On){
@@ -703,6 +660,9 @@ public class DragBlock extends AnchorPane{
         block_pane.setOnMouseEntered(handle_showResult);
     }
 
+    /**
+     * Nastavi styl blocku
+     */
     public void setBlockStyle(){
         if(Type.equals("goniometric")){
             input_2.setVisible(false);
@@ -725,6 +685,10 @@ public class DragBlock extends AnchorPane{
         }
     }
 
+    /**
+     * Slouzi k navraceni Event handleru
+     * @return - Event handler pro vystupno port
+     */
     public EventHandler Handle_output() {
         EventHandler ev = handle_output = new EventHandler<MouseEvent>() {
             @Override
@@ -745,13 +709,143 @@ public class DragBlock extends AnchorPane{
         return ev;
     }
 
+    /**
+     * Zvyrazni vystupni port
+     */
     public void higlightOutputPort(){
         output.setFill(valueOf("#eda2a2"));
         output.setStroke(valueOf("#d00000"));
     }
 
+    /**
+     * Zrusi oznaceni vystupniho portu
+     */
     public void removeHiglightOutputPort(){
         output.setFill(valueOf("white"));
         output.setStroke(valueOf("black"));
     }
+
+
+    /**
+     * Vraci informaci jestli je DragBlock zvyrazneny
+     * @return
+     */
+    public Boolean getHiglighted() {
+        return isHiglighted;
+    }
+
+    /**
+     * Vrati objekt, ktery drzi informace o propoji prvniho vstupniho portu
+     * @return
+     */
+    public ConnectingLine getInputPortLine1() {
+        return inputPortLine1;
+    }
+
+
+    /**
+     * Nastavi objekt, ktery drzi informace o propoji prvniho vstupniho portu
+     * @param inputPortLine1
+     */
+    public void setInputPortLine1(ConnectingLine inputPortLine1) {
+        this.inputPortLine1 = inputPortLine1;
+    }
+
+    /**
+     * Vrati objekt, ktery drzi informace o propoji druheho vstupniho portu
+     * @return
+     */
+    public ConnectingLine getInputPortLine2() {
+        return inputPortLine2;
+    }
+    /**
+     * Nastavi objekt, ktery drzi informace o propoji druheho vstupniho portu
+     * @param inputPortLine2
+     */
+    public void setInputPortLine2(ConnectingLine inputPortLine2) {
+        this.inputPortLine2 = inputPortLine2;
+    }
+
+    /**
+     * Vrati objekt reprezentujici hlavni displej
+     * @return
+     */
+    public MainDisplay getDisplay() {
+        return display;
+    }
+
+    /**
+     * Nastavi hodnotu objektu reprezentujici hlavni displej
+     * @param display
+     */
+    public void setDisplay(MainDisplay display) {
+        this.display = display;
+    }
+
+    /**
+     * Nastavi jmeno dragBLock
+     * @param name
+     */
+    public void setName(String name){
+        block_type.setText(name);
+    }
+
+    /**
+     * Vrati jmeno dragBLock
+     * @return
+     */
+    public String getName(){
+        return block_type.getText();
+    }
+
+
+    /**
+     * Vrati typ bloku
+     * @return
+     */
+    public String getType() {
+        return Type;
+    }
+
+    /**
+     * Vrati index bloku
+     * @return
+     */
+    public Integer getIndex() {
+        return Index;
+    }
+
+    /**
+     * Vrati operaci, kterou blok vykonava
+     * @return
+     */
+    public String getOperation() {
+        return Operation;
+    }
+
+    /**
+     * Nastavi Index Dragblock
+     * @param index
+     */
+    public void setIndex(Integer index) {
+        Index = index;
+    }
+
+    /**
+     * Nastavy typ DragBlocku
+     * @param type
+     */
+    public void setType(String type) {
+        Type = type;
+    }
+
+    /**
+     * Nastavi operaci DragBlocku
+     * @param operation
+     */
+    public void setOperation(String operation) {
+        Operation = operation;
+    }
+
+
 }

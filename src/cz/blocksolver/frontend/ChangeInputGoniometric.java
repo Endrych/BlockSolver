@@ -12,10 +12,21 @@ import javafx.scene.layout.VBox;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+/**
+ * Umoznuje rucni zadavani hodnot a typu do jednotlivych Goniometrickych bloku
+ */
 public class ChangeInputGoniometric {
     static String newValue;
     static String newType;
 
+    /**
+     * Slouzi k rucnimu zadani hodnoty a typu vstupniho portu
+     * @param position - znaci o jaky port se jedna, v tomto pripade vzdy first
+     * @param current - momentalni hodnota ulozena ve vstupnim portu
+     * @param type - typ vstupniho portu
+     * @return - nova hodnota vstupniho portu nebo retezec "canceled"
+     * v pripade ze nedoslo, k upraveni hodnoty
+     */
     public static GoniometricInput display(String position, Double current, PortType type){
         Stage window = new Stage();
         window.initModality(Modality.APPLICATION_MODAL);

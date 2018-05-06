@@ -20,7 +20,21 @@ import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 
+
+/**
+ * Slouzi k nacteni schematu z ulozeneho XML souboru
+ */
 public class LoadSchema {
+    /**
+     * Provede nacteni schematu ze zadaneho XML souboru
+     * @param display
+     * @param schema
+     * @param dragBlocks
+     * @param xmlFile
+     * @throws ParserConfigurationException
+     * @throws IOException
+     * @throws SAXException
+     */
     public void execute(MainDisplay display, Schema schema, ArrayList<DragBlock> dragBlocks, File xmlFile) throws ParserConfigurationException, IOException, SAXException {
 
         Integer Index = 1;
@@ -39,8 +53,6 @@ public class LoadSchema {
                 for (int temp = 0; temp < nList.getLength(); temp++) {
 
                     Node nNode = nList.item(temp);
-
-                    System.out.println("\nCurrent Element :" + nNode.getNodeName());
 
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
@@ -142,27 +154,21 @@ public class LoadSchema {
                         newBlock.XCoord = Integer.parseInt(eElement.getElementsByTagName("coord_x").item(0).getTextContent());
                         newBlock.YCoord = Integer.parseInt(eElement.getElementsByTagName("coord_y").item(0).getTextContent());
 
-                        //                    System.out.println("???? " + eElement.getElementsByTagName("input_port1").item(0).getTextContent());
                         newBlock.setIndex(Integer.parseInt(eElement.getElementsByTagName("index").item(0).getTextContent()));
                         if (Index < (Integer.parseInt(eElement.getElementsByTagName("index").item(0).getTextContent()))) {
                             Index = (Integer.parseInt(eElement.getElementsByTagName("index").item(0).getTextContent()));
                         }
                         newBlock.dragBlock.setOutputPort(new OutputPort(PortType.NUMBER, 0.0));
                         newBlock.dragBlock.getOutputPort().setBlockIndex(newBlock.getIndex());
-//                        System.out.println("???? " + eElement.getElementsByTagName("value").item(0).getTextContent());
 
                         newBlock.dragBlock.getInputPort(1);
                         schema.addBlock(newBlock.dragBlock);
                         dragBlocks.add(newBlock);
-//  schema.addBlock();
-                        System.out.println("First Name : " + newBlock.dragBlock);
 
                     }
                 }
                 for (int temp = 0; temp < nList.getLength(); temp++) {
                     Node nNode = nList.item(temp);
-
-                    System.out.println("\nCurrent Element :" + nNode.getNodeName());
 
                     if (nNode.getNodeType() == Node.ELEMENT_NODE) {
 
