@@ -26,7 +26,6 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.sun.xml.internal.ws.client.ContentNegotiation.none;
 import static javafx.scene.paint.Color.DODGERBLUE;
 import static javafx.scene.paint.Paint.valueOf;
 

@@ -1,6 +1,0 @@
-Testsuite: cz.blocksolver.tests.port.OutputPortTest
-Tests run: 3, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.16 sec
-
-Testcase: twoEqualsOutputPorts took 0.006 sec
-Testcase: outputHashTest took 0 sec
-Testcase: outputPortToString took 0 sec

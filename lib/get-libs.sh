@@ -1,0 +1,1 @@
+wget 'blocksolver.kvalitne.cz/ant-javafx.jar'

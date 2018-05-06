@@ -1,6 +1,5 @@
 package cz.blocksolver.frontend;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import cz.blocksolver.backend.block.Block;
 import cz.blocksolver.backend.block.BlockType;
 import cz.blocksolver.backend.port.InputPort;
@@ -25,7 +24,6 @@ import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.scene.shape.Line;
 import javafx.stage.Stage;
-import jdk.internal.util.xml.impl.Input;
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
